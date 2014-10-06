@@ -1,0 +1,54 @@
+PODS:
+  - AFNetworking (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.4.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.4.1)
+  - AFNetworking/Security (2.4.1)
+  - AFNetworking/Serialization (2.4.1)
+  - AFNetworking/UIKit (2.4.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CocoaLumberjack (1.9.2):
+    - CocoaLumberjack/Extensions
+  - CocoaLumberjack/Core (1.9.2)
+  - CocoaLumberjack/Extensions (1.9.2):
+    - CocoaLumberjack/Core
+  - Mantle (1.5):
+    - Mantle/extobjc
+  - Mantle/extobjc (1.5)
+  - ReactiveCocoa (2.3.1):
+    - ReactiveCocoa/UI
+  - ReactiveCocoa/Core (2.3.1):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.3.1)
+  - ReactiveCocoa/UI (2.3.1):
+    - ReactiveCocoa/Core
+  - SSKeychain (1.2.2)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.4.1)
+  - CocoaLumberjack (~> 1.9.2)
+  - Mantle (~> 1.5)
+  - ReactiveCocoa (~> 2.3.1)
+  - SSKeychain (~> 1.2.2)
+
+SPEC CHECKSUMS:
+  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
+  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
+  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+
+COCOAPODS: 0.34.1

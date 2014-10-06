@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
 		914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA818D0652A42F6B84A519D /* DXAppDelegate.m */; };
+		A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECA6A45C067A7A7786C03E /* libPods-tixing.a */; };
 		B392A7C1A7804C8F969AB43D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9422FA6F9A48FDBC16A903 /* main.m */; };
 		C57D093B534B4B2F890B1EF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2E34414980F4D82BB40AA34 /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -25,9 +26,12 @@
 
 /* Begin PBXFileReference section */
 		0F6310A0995E4DA499386AB5 /* tixing-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "tixing-Info.plist"; sourceTree = "<group>"; };
+		181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.release.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.release.xcconfig"; sourceTree = "<group>"; };
 		183453294DCF4BA0A79EA4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.debug.xcconfig"; sourceTree = "<group>"; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6570A88D113C4127BD21E3F1 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E34414980F4D82BB40AA34 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6F2F1B026544C84A36F0504 /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */,
+				A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,15 @@
 				ED3C05C647D4470A94B1D799 /* Views */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		24544C2C947C533098707F0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */,
+				18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		26026D18D6C34CFC99213DA5 /* Controllers */ = {
@@ -120,6 +134,7 @@
 				E4C5CCCFB52F41E1B69F0D7E /* UnitTests */,
 				8F00DBADA83646A3A9002065 /* Frameworks */,
 				F90D4EDCA68440DB887AD621 /* Products */,
+				24544C2C947C533098707F0F /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D6937746B0014F0BBC9645D5 /* iOS */,
+				5AECA6A45C067A7A7786C03E /* libPods-tixing.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,10 +259,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DFAD2FE4E378409087BACEC4 /* Build configuration list for PBXNativeTarget "tixing" */;
 			buildPhases = (
+				2E80018E5CFDD9A0BB35B0E8 /* Check Pods Manifest.lock */,
 				136BC2A2EF7F4C24ABEAF313 /* Sources */,
 				B82195AE81EF403CAE040244 /* Frameworks */,
 				18B1A207CF4749649D33F245 /* Resources */,
 				6330EA35EC764BAABAB5ACB8 /* Warn for TODO and FIXME comments */,
+				81F1D8B11C6B69783BAF42D7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -322,6 +340,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E80018E5CFDD9A0BB35B0E8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		6330EA35EC764BAABAB5ACB8 /* Warn for TODO and FIXME comments */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +368,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nFILE_EXTENSIONS=\"h|m|mm|c|cpp\"\nfind -E \"${SRCROOT}\" -ipath \"${SRCROOT}/pods\" -prune -o \\( -regex \".*\\.($FILE_EXTENSIONS)$\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"\n";
+		};
+		81F1D8B11C6B69783BAF42D7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tixing/Pods-tixing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -435,6 +483,7 @@
 		};
 		8D97B5AE2A5A466CB384C9DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
@@ -464,6 +513,7 @@
 		};
 		CC0DE092B8A9437BA681A163 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
