@@ -10,4 +10,16 @@
 
 @implementation DXAppDelegate
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  [self setupLogging];
+  return YES;
+}
+
+- (void)setupLogging
+{
+  [DDLog addLogger:[DDTTYLogger sharedInstance]];
+  [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+}
+
 @end

@@ -8,3 +8,12 @@
     @import UIKit;
     @import Foundation;
 #endif
+
+#import <CocoaLumberjack/DDLog.h>
+#import <DDTTYLogger.h>
+
+#ifdef DEBUG
+static int ddLogLevel = LOG_LEVEL_DEBUG;
+#else
+static int ddLogLevel = LOG_LEVEL_WARN;
+#endif
