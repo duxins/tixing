@@ -49,6 +49,7 @@ static NSString *const kAuthTokenKey = @"AuthToken";
     [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
   }
   
+  DDLogDebug(@"Set authtoken: %@", authToken);
   [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationTokenChanged
                                                       object:self
                                                     userInfo:nil];

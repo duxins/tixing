@@ -88,6 +88,8 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
 {
   URLString = [[NSURL URLWithString:URLString relativeToURL:self.manager.baseURL] absoluteString];
   
+  DDLogDebug(@"%@ %@ %@", method, URLString, parameters);
+  
   return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
     
     

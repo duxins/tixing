@@ -18,3 +18,7 @@
 - (RACSignal *)DELETE:(NSString *)URLString parameters:(NSDictionary *)parameters;
 
 @end
+
+
+#import "DXAPIClient+User.h"
+
