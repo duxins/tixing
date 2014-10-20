@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA519F4F32400B2626A /* DXCredentialStore.m */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
 		914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA818D0652A42F6B84A519D /* DXAppDelegate.m */; };
 		A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECA6A45C067A7A7786C03E /* libPods-tixing.a */; };
@@ -29,6 +30,8 @@
 		181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.release.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.release.xcconfig"; sourceTree = "<group>"; };
 		183453294DCF4BA0A79EA4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.debug.xcconfig"; sourceTree = "<group>"; };
+		270A1FA419F4F32400B2626A /* DXCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXCredentialStore.h; sourceTree = "<group>"; };
+		270A1FA519F4F32400B2626A /* DXCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXCredentialStore.m; sourceTree = "<group>"; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +67,7 @@
 		104F85A08B9A414588C161C4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				270A1FA019F4ED2500B2626A /* APIClient */,
 				26026D18D6C34CFC99213DA5 /* Controllers */,
 				DA0F7C8B375842BCA597DC7C /* DataSources */,
 				71668A3D6D1641B4B8DDC1D3 /* Delegates */,
@@ -88,6 +92,15 @@
 			children = (
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		270A1FA019F4ED2500B2626A /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				270A1FA419F4F32400B2626A /* DXCredentialStore.h */,
+				270A1FA519F4F32400B2626A /* DXCredentialStore.m */,
+			);
+			path = APIClient;
 			sourceTree = "<group>";
 		};
 		412A0C7B4D9C4BDA8F6A6E34 /* Other-Sources */ = {
@@ -392,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,
+				270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
