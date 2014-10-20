@@ -1,0 +1,5 @@
+#ifdef DEBUG
+NSString *const TixingBaseURLString = @"http://localhost:3000/api/";
+#else
+NSString *const TixingBaseURLString = @"http://localhost:3000/api/";
+#endif
