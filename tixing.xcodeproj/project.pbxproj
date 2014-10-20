@@ -11,6 +11,7 @@
 		270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA519F4F32400B2626A /* DXCredentialStore.m */; };
 		270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA919F4F6A000B2626A /* DXConfig.m */; };
 		270A1FB119F502FD00B2626A /* DXAPIClient+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FB019F502FD00B2626A /* DXAPIClient+User.m */; };
+		270A1FB419F506B400B2626A /* DXAPIClient+Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FB319F506B400B2626A /* DXAPIClient+Device.m */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
 		914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA818D0652A42F6B84A519D /* DXAppDelegate.m */; };
 		A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECA6A45C067A7A7786C03E /* libPods-tixing.a */; };
@@ -41,6 +42,8 @@
 		270A1FA919F4F6A000B2626A /* DXConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXConfig.m; sourceTree = "<group>"; };
 		270A1FAF19F502FD00B2626A /* DXAPIClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+User.h"; sourceTree = "<group>"; };
 		270A1FB019F502FD00B2626A /* DXAPIClient+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+User.m"; sourceTree = "<group>"; };
+		270A1FB219F506B400B2626A /* DXAPIClient+Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+Device.h"; sourceTree = "<group>"; };
+		270A1FB319F506B400B2626A /* DXAPIClient+Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Device.m"; sourceTree = "<group>"; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +115,8 @@
 				270A1FA519F4F32400B2626A /* DXCredentialStore.m */,
 				270A1FAF19F502FD00B2626A /* DXAPIClient+User.h */,
 				270A1FB019F502FD00B2626A /* DXAPIClient+User.m */,
+				270A1FB219F506B400B2626A /* DXAPIClient+Device.h */,
+				270A1FB319F506B400B2626A /* DXAPIClient+Device.m */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,
 				270A1FA319F4ED4A00B2626A /* DXAPIClient.m in Sources */,
 				270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */,
+				270A1FB419F506B400B2626A /* DXAPIClient+Device.m in Sources */,
 				270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */,
 				270A1FB119F502FD00B2626A /* DXAPIClient+User.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
