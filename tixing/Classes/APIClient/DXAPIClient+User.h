@@ -11,4 +11,5 @@
 @interface DXAPIClient (User)
 
 - (RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
+- (RACSignal *)retrieveMyInfo;
 @end

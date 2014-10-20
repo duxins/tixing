@@ -26,4 +26,9 @@
          }];
 }
 
+- (RACSignal *)retrieveMyInfo
+{
+  return [self GET:@"user" parameters:nil];
+}
+
 @end
