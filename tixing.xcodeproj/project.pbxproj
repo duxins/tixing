@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270A1FA319F4ED4A00B2626A /* DXAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA219F4ED4A00B2626A /* DXAPIClient.m */; };
 		270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA519F4F32400B2626A /* DXCredentialStore.m */; };
 		270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA919F4F6A000B2626A /* DXConfig.m */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
@@ -31,6 +32,8 @@
 		181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.release.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.release.xcconfig"; sourceTree = "<group>"; };
 		183453294DCF4BA0A79EA4E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.debug.xcconfig"; sourceTree = "<group>"; };
+		270A1FA119F4ED4A00B2626A /* DXAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAPIClient.h; sourceTree = "<group>"; };
+		270A1FA219F4ED4A00B2626A /* DXAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAPIClient.m; sourceTree = "<group>"; };
 		270A1FA419F4F32400B2626A /* DXCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXCredentialStore.h; sourceTree = "<group>"; };
 		270A1FA519F4F32400B2626A /* DXCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXCredentialStore.m; sourceTree = "<group>"; };
 		270A1FA819F4F6A000B2626A /* DXConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXConfig.h; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 		270A1FA019F4ED2500B2626A /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
+				270A1FA119F4ED4A00B2626A /* DXAPIClient.h */,
+				270A1FA219F4ED4A00B2626A /* DXAPIClient.m */,
 				270A1FA419F4F32400B2626A /* DXCredentialStore.h */,
 				270A1FA519F4F32400B2626A /* DXCredentialStore.m */,
 			);
@@ -418,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,
+				270A1FA319F4ED4A00B2626A /* DXAPIClient.m in Sources */,
 				270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */,
 				270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
