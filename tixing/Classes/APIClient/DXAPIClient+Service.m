@@ -12,7 +12,7 @@
 
 - (RACSignal *)retrieveServices
 {
-  return [self GET:@"services" parameters:nil];
+  return [self GET:@"services/public" parameters:nil];
 }
 
 - (RACSignal *)retrieveServiceWithId:(NSString *)serviceId
