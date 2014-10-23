@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const TixingNotificationTokenChanged;
+extern NSString *const TixingNotificationLogout;
 
 @interface DXCredentialStore : NSObject
 

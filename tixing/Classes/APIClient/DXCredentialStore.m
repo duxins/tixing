@@ -10,6 +10,7 @@
 #import <SSKeychain/SSKeychain.h>
 
 NSString *const TixingNotificationTokenChanged = @"TixingNotificationTokenChanged";
+NSString *const TixingNotificationLogout = @"TixingNotificationLogout";
 
 static NSString *const kServiceName = @"Tixing";
 static NSString *const kAuthTokenKey = @"AuthToken";
@@ -45,14 +46,17 @@ static NSString *const kAuthTokenKey = @"AuthToken";
 {
   if (!authToken) {
     [SSKeychain deletePasswordForService:kServiceName account:kAuthTokenKey];
-  }else{
-    [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
-  }
-  
-  DDLogDebug(@"Set authtoken: %@", authToken);
-  [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationTokenChanged
+    DDLogDebug(@"Delete authtoken");
+    [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationLogout
                                                       object:self
                                                     userInfo:nil];
+  }else{
+    DDLogDebug(@"Set authtoken: %@", authToken);
+    [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationTokenChanged
+                                                      object:self
+                                                    userInfo:nil];
+  }
 }
 
 
