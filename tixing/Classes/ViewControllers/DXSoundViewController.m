@@ -8,6 +8,8 @@
 
 #import "DXSoundViewController.h"
 #import "DXAPIClient.h"
+#import "DXSoundStore.h"
+
 @import AudioToolbox;
 
 @interface DXSoundViewController ()
@@ -22,14 +24,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.selectedSound = @"default";
-  [self loadSounds];
-}
-
-- (void)loadSounds
-{
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sounds" ofType:@"json"];
-  NSData *data = [NSData dataWithContentsOfFile:filePath];
-  self.sounds = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+  self.sounds = [DXSoundStore sharedStore].sounds;
 }
 
 #pragma -
@@ -57,9 +52,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SoundCell" forIndexPath:indexPath];
-  NSDictionary *sound = self.sounds[(NSUInteger)indexPath.row];
-  cell.textLabel.text = sound[@"name"];
-  if ([sound[@"file"] isEqualToString:self.selectedSound]) {
+  DXSound *sound = self.sounds[(NSUInteger)indexPath.row];
+  cell.textLabel.text = sound.label;
+  
+  if ([sound.name isEqualToString:self.selectedSound]) {
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
   }else{
     cell.accessoryType = UITableViewCellAccessoryNone;
@@ -73,15 +69,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   
-  NSDictionary *sound = self.sounds[(NSUInteger)indexPath.row];
-  NSString *file = sound[@"file"];
+  DXSound *sound = self.sounds[(NSUInteger)indexPath.row];
   
-  if (![file isEqualToString:@"default"] && ![file isEqualToString:@""]) {
-    [self playSound:file];
+  if (![sound.name isEqualToString:@"default"]) {
+    [self playSound:sound.name];
   }
   
   [tableView reloadData];
-  self.selectedSound = file;
+  self.selectedSound = sound.name;
   [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

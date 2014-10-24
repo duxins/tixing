@@ -29,6 +29,8 @@
 		2787227B19FA0E2E00714D67 /* DXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2787227A19FA0E2E00714D67 /* DXService.m */; };
 		27B547F419FA2D02001C963E /* DXServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F319FA2D02001C963E /* DXServiceCell.m */; };
 		27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F619FA47EA001C963E /* DXServiceDetailViewController.m */; };
+		27B547FA19FA55E2001C963E /* DXSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F919FA55E2001C963E /* DXSound.m */; };
+		27B547FD19FA56CD001C963E /* DXSoundStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547FC19FA56CD001C963E /* DXSoundStore.m */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
 		914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA818D0652A42F6B84A519D /* DXAppDelegate.m */; };
 		A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECA6A45C067A7A7786C03E /* libPods-tixing.a */; };
@@ -90,6 +92,10 @@
 		27B547F319FA2D02001C963E /* DXServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXServiceCell.m; sourceTree = "<group>"; };
 		27B547F519FA47EA001C963E /* DXServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXServiceDetailViewController.h; sourceTree = "<group>"; };
 		27B547F619FA47EA001C963E /* DXServiceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXServiceDetailViewController.m; sourceTree = "<group>"; };
+		27B547F819FA55E2001C963E /* DXSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSound.h; sourceTree = "<group>"; };
+		27B547F919FA55E2001C963E /* DXSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSound.m; sourceTree = "<group>"; };
+		27B547FB19FA56CD001C963E /* DXSoundStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSoundStore.h; sourceTree = "<group>"; };
+		27B547FC19FA56CD001C963E /* DXSoundStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSoundStore.m; sourceTree = "<group>"; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +316,8 @@
 		DA0F7C8B375842BCA597DC7C /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				27B547FB19FA56CD001C963E /* DXSoundStore.h */,
+				27B547FC19FA56CD001C963E /* DXSoundStore.m */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -360,6 +368,8 @@
 			children = (
 				2787227919FA0E2E00714D67 /* DXService.h */,
 				2787227A19FA0E2E00714D67 /* DXService.m */,
+				27B547F819FA55E2001C963E /* DXSound.h */,
+				27B547F919FA55E2001C963E /* DXSound.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -531,12 +541,14 @@
 				277AE5CA19F633BE009422FE /* DXMainViewController.m in Sources */,
 				270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */,
 				270A1FB419F506B400B2626A /* DXAPIClient+Device.m in Sources */,
+				27B547FD19FA56CD001C963E /* DXSoundStore.m in Sources */,
 				2787227819F9E38600714D67 /* DXWebViewController.m in Sources */,
 				277AE5D619F64760009422FE /* DXServicesViewController.m in Sources */,
 				270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */,
 				270A1FB119F502FD00B2626A /* DXAPIClient+User.m in Sources */,
 				277AE5CD19F636EE009422FE /* DXSettingsViewController.m in Sources */,
 				277AE5C719F62FCD009422FE /* DXLoginViewController.m in Sources */,
+				27B547FA19FA55E2001C963E /* DXSound.m in Sources */,
 				27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
 			);
