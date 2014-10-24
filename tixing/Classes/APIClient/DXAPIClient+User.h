@@ -12,4 +12,5 @@
 
 - (RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
 - (RACSignal *)retrieveMyInfo;
+- (RACSignal *)updateCustomSound:(NSString *)sound;
 @end

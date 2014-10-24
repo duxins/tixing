@@ -31,4 +31,10 @@
   return [self GET:@"user" parameters:nil];
 }
 
+- (RACSignal *)updateCustomSound:(NSString *)sound
+{
+  return [self PUT:@"user/sound"
+        parameters:@{ @"sound": sound } ];
+}
+
 @end
