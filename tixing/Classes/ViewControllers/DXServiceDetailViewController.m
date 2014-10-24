@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [self loadWebView];
+  self.title = self.service.name;
 }
 
 - (void)loadWebView
