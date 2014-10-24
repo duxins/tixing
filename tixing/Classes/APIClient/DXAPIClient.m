@@ -101,13 +101,16 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
     AFHTTPRequestOperation *operation =
       [self.manager HTTPRequestOperationWithRequest:request
                                             success:^(AFHTTPRequestOperation *op, id responseObject) {
+                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                               [subscriber sendNext:responseObject];
                                               [subscriber sendCompleted];
                                             } failure:^(AFHTTPRequestOperation *op, NSError *error) {
+                                              [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                                               [subscriber sendError:error];
                                             }];
     
     [self.manager.operationQueue addOperation:operation];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     return [RACDisposable disposableWithBlock:^{
       [operation cancel];
     }];
