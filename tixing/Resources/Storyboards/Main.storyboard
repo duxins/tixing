@@ -340,10 +340,10 @@
             </objects>
             <point key="canvasLocation" x="2415" y="872"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Service Detail View Controller-->
         <scene sceneID="vDy-48-41i">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="jly-1T-n1G" customClass="DXWebViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="jly-1T-n1G" customClass="DXServiceDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="t5h-Cj-mXb"/>
                         <viewControllerLayoutGuide type="bottom" id="MnX-gV-Cav"/>
@@ -355,15 +355,22 @@
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-a3-SMP">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jly-1T-n1G" id="uGV-IJ-cu3"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="FzR-Hi-u1W">
-                        <barButtonItem key="rightBarButtonItem" title="卸载" id="a5c-AI-2Xu"/>
+                        <barButtonItem key="rightBarButtonItem" title="卸载" id="a5c-AI-2Xu">
+                            <connections>
+                                <action selector="uninstallService:" destination="jly-1T-n1G" id="NO4-tb-1iS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webView" destination="W7h-a3-SMP" id="H3M-7p-eki"/>
+                        <outlet property="webView" destination="W7h-a3-SMP" id="GPT-HF-qTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qks-K8-6A2" userLabel="First Responder" sceneMemberID="firstResponder"/>

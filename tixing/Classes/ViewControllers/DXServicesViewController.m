@@ -8,8 +8,8 @@
 
 #import "DXServicesViewController.h"
 #import "DXAPIClient.h"
-#import "DXWebViewController.h"
 #import "DXService.h"
+#import "DXServiceDetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -144,9 +144,12 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
   if ([segue.identifier isEqualToString:@"ShowService"]) {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     DXService *service = self.installedServices[(NSUInteger)indexPath.row];
-    NSURL *URL = service.URL;
-    DXWebViewController *vc = segue.destinationViewController;
-    vc.URL = URL;
+    DXServiceDetailViewController *vc= segue.destinationViewController;
+    vc.service = service;
+    vc.uninstallBlock = ^(){
+      [self.navigationController popViewControllerAnimated:YES];
+      [self reloadServices];
+    };
   }
 }
 
