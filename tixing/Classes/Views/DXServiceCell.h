@@ -1,5 +1,5 @@
 //
-//  DXWebViewController.h
+//  DXServiceCell.h
 //  tixing
 //
 //  Created by Du Xin on 10/24/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DXWebViewController : UIViewController
-
-@property (nonatomic, copy) NSURL *URL;
+@interface DXServiceCell : UITableViewCell
 
 @end

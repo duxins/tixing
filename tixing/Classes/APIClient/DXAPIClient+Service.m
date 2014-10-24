@@ -7,12 +7,22 @@
 //
 
 #import "DXAPIClient+Service.h"
+#import "DXService.h"
 
 @implementation DXAPIClient (Service)
 
 - (RACSignal *)retrieveServices
 {
-  return [self GET:@"services/public" parameters:nil];
+  return [[self GET:@"services" parameters:nil] map:^id(NSDictionary *result) {
+    
+    NSArray *installed = [MTLJSONAdapter modelsOfClass:[DXService class] fromJSONArray:result[@"installed"] error:nil];
+    NSArray *uninstalled = [MTLJSONAdapter modelsOfClass:[DXService class] fromJSONArray:result[@"uninstalled"] error:nil];
+    
+    return @{
+             @"installed": installed,
+             @"uninstalled": uninstalled
+             };
+  }];
 }
 
 - (RACSignal *)retrieveServiceWithId:(NSString *)serviceId

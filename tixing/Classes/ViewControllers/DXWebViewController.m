@@ -16,15 +16,14 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  if (self.urlString) {
+  if (self.URL) {
     [self loadWebView];
   }
 }
 
 - (void)loadWebView
 {
-  NSURL *url = [NSURL URLWithString:self.urlString];
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.URL];
   [request setValue:@"abcd" forHTTPHeaderField:@"Auth-Token"];
   [self.webView loadRequest:request];
 }
