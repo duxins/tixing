@@ -37,7 +37,7 @@
   return [self PUT:urlString parameters:nil];
 }
 
-- (RACSignal *)removeServiceWithId:(NSString *)serviceId
+- (RACSignal *)uninstallServiceWithId:(NSString *)serviceId
 {
   NSString *urlString = [NSString stringWithFormat:@"services/%@/installation", serviceId];
   return [self DELETE:urlString parameters:nil];

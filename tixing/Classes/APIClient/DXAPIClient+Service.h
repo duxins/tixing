@@ -13,6 +13,6 @@
 - (RACSignal *)retrieveServices;
 - (RACSignal *)retrieveServiceWithId:(NSString *)serviceId;
 - (RACSignal *)installServiceWithId:(NSString *)serviceId;
-- (RACSignal *)removeServiceWithId:(NSString *)serviceId;
+- (RACSignal *)uninstallServiceWithId:(NSString *)serviceId;
 
 @end
