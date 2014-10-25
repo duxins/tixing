@@ -15,6 +15,7 @@
 		270A1FB719F5085700B2626A /* DXAPIClient+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FB619F5085700B2626A /* DXAPIClient+Notification.m */; };
 		270A1FBA19F50CA600B2626A /* DXAPIClient+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FB919F50CA600B2626A /* DXAPIClient+Service.m */; };
 		27655D1219FB94F200C5D011 /* DXDeviceTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */; };
+		27655D1519FBA0A600C5D011 /* DXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1419FBA0A600C5D011 /* DXUser.m */; };
 		277AE5C419F62F6D009422FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277AE5C319F62F6D009422FE /* Main.storyboard */; };
 		277AE5C719F62FCD009422FE /* DXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C619F62FCD009422FE /* DXLoginViewController.m */; };
 		277AE5CA19F633BE009422FE /* DXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C919F633BE009422FE /* DXMainViewController.m */; };
@@ -70,6 +71,8 @@
 		270A1FB919F50CA600B2626A /* DXAPIClient+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Service.m"; sourceTree = "<group>"; };
 		27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXDeviceTokenStore.h; sourceTree = "<group>"; };
 		27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDeviceTokenStore.m; sourceTree = "<group>"; };
+		27655D1319FBA0A600C5D011 /* DXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXUser.h; sourceTree = "<group>"; };
+		27655D1419FBA0A600C5D011 /* DXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXUser.m; sourceTree = "<group>"; };
 		277AE5C319F62F6D009422FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		277AE5C519F62FCD009422FE /* DXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXLoginViewController.h; sourceTree = "<group>"; };
 		277AE5C619F62FCD009422FE /* DXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXLoginViewController.m; sourceTree = "<group>"; };
@@ -375,6 +378,8 @@
 				2787227A19FA0E2E00714D67 /* DXService.m */,
 				27B547F819FA55E2001C963E /* DXSound.h */,
 				27B547F919FA55E2001C963E /* DXSound.m */,
+				27655D1319FBA0A600C5D011 /* DXUser.h */,
+				27655D1419FBA0A600C5D011 /* DXUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				27B547FA19FA55E2001C963E /* DXSound.m in Sources */,
 				27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
+				27655D1519FBA0A600C5D011 /* DXUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

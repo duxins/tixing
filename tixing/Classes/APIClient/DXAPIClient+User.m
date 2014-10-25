@@ -8,21 +8,19 @@
 
 #import "DXAPIClient+User.h"
 #import "DXCredentialStore.h"
+#import <Mantle/Mantle.h>
+#import "DXUser.h"
 
 @implementation DXAPIClient (User)
 
 - (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password
 {
-  return [[self POST:@"login"
-         parameters:@{
-                      @"name": name,
-                      @"password": password
-                      }] doNext:^(NSDictionary *result) {
-            DDLogDebug(@"Login successfully.");
-            NSString *authToken = result[@"auth_token"];
-            if(authToken){
-              [DXCredentialStore sharedStore].authToken = authToken;
-            }
+  return [[[self POST:@"login" parameters:@{@"name":name, @"password": password}]
+            map:^id(id result) {
+            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:nil];
+         }]doNext:^(DXUser *user) {
+           DDLogDebug(@"Login successfully.");
+           [DXCredentialStore sharedStore].authToken = user.authToken;
          }];
 }
 
