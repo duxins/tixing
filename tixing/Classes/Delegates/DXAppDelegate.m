@@ -7,6 +7,7 @@
 //
 
 #import "DXAppDelegate.h"
+#import "DXDeviceTokenStore.h"
 
 @implementation DXAppDelegate
 
@@ -57,7 +58,7 @@
                      stringByReplacingOccurrencesOfString:@" " withString:@""];
   
   DDLogDebug(@"DeviceToken = %@", token);
-  
+  [DXDeviceTokenStore sharedStore].token = token;
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
