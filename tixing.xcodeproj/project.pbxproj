@@ -57,8 +57,8 @@
 		18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tixing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tixing/Pods-tixing.debug.xcconfig"; sourceTree = "<group>"; };
 		270A1FA119F4ED4A00B2626A /* DXAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAPIClient.h; sourceTree = "<group>"; };
 		270A1FA219F4ED4A00B2626A /* DXAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAPIClient.m; sourceTree = "<group>"; };
-		270A1FA419F4F32400B2626A /* DXCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXCredentialStore.h; sourceTree = "<group>"; };
-		270A1FA519F4F32400B2626A /* DXCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXCredentialStore.m; sourceTree = "<group>"; };
+		270A1FA419F4F32400B2626A /* DXCredentialStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXCredentialStore.h; path = ../APIClient/DXCredentialStore.h; sourceTree = "<group>"; };
+		270A1FA519F4F32400B2626A /* DXCredentialStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXCredentialStore.m; path = ../APIClient/DXCredentialStore.m; sourceTree = "<group>"; };
 		270A1FA819F4F6A000B2626A /* DXConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXConfig.h; sourceTree = "<group>"; };
 		270A1FA919F4F6A000B2626A /* DXConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXConfig.m; sourceTree = "<group>"; };
 		270A1FAF19F502FD00B2626A /* DXAPIClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+User.h"; sourceTree = "<group>"; };
@@ -169,8 +169,6 @@
 			children = (
 				270A1FA119F4ED4A00B2626A /* DXAPIClient.h */,
 				270A1FA219F4ED4A00B2626A /* DXAPIClient.m */,
-				270A1FA419F4F32400B2626A /* DXCredentialStore.h */,
-				270A1FA519F4F32400B2626A /* DXCredentialStore.m */,
 				270A1FAF19F502FD00B2626A /* DXAPIClient+User.h */,
 				270A1FB019F502FD00B2626A /* DXAPIClient+User.m */,
 				270A1FB219F506B400B2626A /* DXAPIClient+Device.h */,
@@ -322,6 +320,8 @@
 		DA0F7C8B375842BCA597DC7C /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				270A1FA419F4F32400B2626A /* DXCredentialStore.h */,
+				270A1FA519F4F32400B2626A /* DXCredentialStore.m */,
 				27B547FB19FA56CD001C963E /* DXSoundStore.h */,
 				27B547FC19FA56CD001C963E /* DXSoundStore.m */,
 				27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */,
