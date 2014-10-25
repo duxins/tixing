@@ -10,7 +10,7 @@
 
 @interface DXAPIClient (User)
 
-- (RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password;
+- (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password;
 - (RACSignal *)retrieveMyInfo;
 - (RACSignal *)updateCustomSound:(NSString *)sound;
 @end

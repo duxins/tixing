@@ -46,10 +46,10 @@
 }
 
 - (IBAction)loginButtonPressed:(id)sender {
-  NSString *email = self.emailField.text;
+  NSString *name = self.emailField.text;
   NSString *password = self.passwordField.text;
   
-  [[[DXAPIClient sharedClient] loginWithEmail:email password:password] subscribeNext:^(id x) {
+  [[[DXAPIClient sharedClient] loginWithName:name password:password] subscribeNext:^(id x) {
     [self didLogInAnimated:YES];
   } error:^(NSError *error) {
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

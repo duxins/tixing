@@ -11,11 +11,11 @@
 
 @implementation DXAPIClient (User)
 
-- (RACSignal *)loginWithEmail:(NSString *)email password:(NSString *)password
+- (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password
 {
   return [[self POST:@"login"
          parameters:@{
-                      @"email": email,
+                      @"name": name,
                       @"password": password
                       }] doNext:^(NSDictionary *result) {
             DDLogDebug(@"Login successfully.");
