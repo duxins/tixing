@@ -20,4 +20,11 @@
                      }];
 }
 
+- (RACSignal *)revokeDeviceToken:(NSString *)deviceToken
+{
+  return [self DELETE:@"devices"
+           parameters:@{
+                        @"token": deviceToken
+                        }];
+}
 @end

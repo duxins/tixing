@@ -11,5 +11,6 @@
 @interface DXAPIClient (Device)
 
 - (RACSignal *)updateDeviceToken:(NSString *)deviceToken;
+- (RACSignal *)revokeDeviceToken:(NSString *)deviceToken;
 
 @end
