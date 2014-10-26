@@ -13,10 +13,13 @@
 - (RACSignal *)updateDeviceToken:(NSString *)deviceToken
 {
   NSString *deviceName = [[UIDevice currentDevice] name];
+  NSInteger deviceTimezone = [[NSTimeZone localTimeZone] secondsFromGMT] / 3600;
+  
   return [self PUT:@"devices"
         parameters:@{
                      @"name": deviceName,
-                     @"token": deviceToken
+                     @"token": deviceToken,
+                     @"timezone": @(deviceTimezone)
                      }];
 }
 

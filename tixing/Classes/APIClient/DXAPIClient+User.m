@@ -35,4 +35,13 @@
         parameters:@{ @"sound": sound } ];
 }
 
+- (RACSignal *)keepSilentAtNight:(BOOL)silent
+{
+  if (silent) {
+    return [self PUT:@"user/silence_at_night" parameters:@{}];
+  }else{
+    return [self DELETE:@"user/silence_at_night" parameters:@{}];
+  }
+}
+
 @end

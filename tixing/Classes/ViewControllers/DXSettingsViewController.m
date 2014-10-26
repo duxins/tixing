@@ -8,9 +8,15 @@
 
 #import "DXSettingsViewController.h"
 #import "DXCredentialStore.h"
+#import "DXAPIClient.h"
+
+static NSString *const kServiceIndexPathKey = @"service";
+static NSString *const kSilentIndexPathKey  = @"silent";
+static NSString *const kLogoutIndexPathKey  = @"logout";
 
 @interface DXSettingsViewController ()
 @property (nonatomic, strong) NSDictionary *indexPathsByKey;
+@property (nonatomic, weak) IBOutlet UISwitch *soundSwitch;
 @end
 
 @implementation DXSettingsViewController
@@ -24,17 +30,26 @@
   if (!_indexPathsByKey) {
     _indexPathsByKey = @{
                          
-                         @"service": [NSIndexPath indexPathForRow:0 inSection:0], //服务
-                         @"logout":  [NSIndexPath indexPathForRow:0 inSection:3], //退出登录
+                         kServiceIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:0], //服务
+                         kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
+                         kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:3], //退出登录
                          
                          };
   }
   return _indexPathsByKey;
 }
 
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+#pragma mark -
+#pragma mark Actions
+- (IBAction)soundSwitchChanged:(UISwitch *)sender
+{
+  sender.enabled = NO;
+  [[[DXAPIClient sharedClient] keepSilentAtNight:sender.isOn] subscribeNext:^(id x) {
+    sender.enabled = YES;
+  } error:^(NSError *error) {
+    sender.enabled = YES;
+    [sender setOn:!sender.isOn animated:YES];
+  }];
 }
 
 #pragma mark -
@@ -42,11 +57,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ([indexPath isEqual: self.indexPathsByKey[@"logout"]]) {
+  if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
     [DXCredentialStore sharedStore].authToken = nil;
   }
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if ([indexPath isEqual:self.indexPathsByKey[kSilentIndexPathKey]]) {
+    return nil;
+  }
+  return indexPath;
 }
 
 @end

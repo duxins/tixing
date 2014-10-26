@@ -19,6 +19,7 @@
            @"name":       @"name",
            @"services":   @"services",
            @"sound":      @"sound",
+           @"silentAtNight": @"silent_at_night",
            @"authToken":  @"auth_token"
            };
 }

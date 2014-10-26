@@ -13,4 +13,5 @@
 - (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password;
 - (RACSignal *)retrieveMyInfo;
 - (RACSignal *)updateCustomSound:(NSString *)sound;
+- (RACSignal *)keepSilentAtNight:(BOOL)silent;
 @end

@@ -16,5 +16,6 @@
 @property (nonatomic, copy, readonly) NSString *authToken;
 @property (nonatomic, copy, readonly) NSString *sound;
 @property (nonatomic, strong) NSArray *services;
+@property (nonatomic, assign) BOOL silentAtNight;
 
 @end
