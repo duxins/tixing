@@ -20,18 +20,21 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
 @interface DXServicesViewController ()
 @property (nonatomic, copy) NSArray *installedServices;
 @property (nonatomic, copy) NSArray *uninstalledServices;
+@property (nonatomic, assign) BOOL hasLoaded;
 @end
 
 @implementation DXServicesViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.hasLoaded = NO;
   [self reloadServices];
 }
 
 - (void)reloadServices
 {
   [[[DXAPIClient sharedClient] retrieveServices] subscribeNext:^(NSDictionary *result) {
+    self.hasLoaded = YES;
     self.installedServices = result[@"installed"];
     self.uninstalledServices = result[@"uninstalled"];
     [self.tableView reloadData];
@@ -48,9 +51,10 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   if (section == kInstalledServicesSectionIndex) {
-    return (NSInteger)self.installedServices.count;
+    NSInteger ajustment = self.hasLoaded ? 0 : 1;
+    return (NSInteger)self.installedServices.count + ajustment;
   }else if(section == kUninstalledServicesSectionIndex){
-    return (NSInteger)self.uninstalledServices.count + 1;
+    return (NSInteger)self.uninstalledServices.count + 1; //coming soon cell
   }
   return 0;
 }
@@ -77,11 +81,16 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
 
 - (UITableViewCell *)configureInstalledServiceCellAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstalledServiceCell"];
-  DXService *service;
-  service = self.installedServices[(NSUInteger)indexPath.row];
-  cell.textLabel.text = service.name;
-  [cell.imageView setImageWithURL:service.iconURL placeholderImage:[UIImage imageNamed:@"service-placeholder"]];
+  UITableViewCell *cell;
+  if (!self.hasLoaded) {
+    cell = [self.tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+  }else{
+    cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstalledServiceCell"];
+    DXService *service;
+    service = self.installedServices[(NSUInteger)indexPath.row];
+    cell.textLabel.text = service.name;
+    [cell.imageView setImageWithURL:service.iconURL placeholderImage:[UIImage imageNamed:@"service-placeholder"]];
+  }
   return cell;
 }
 
