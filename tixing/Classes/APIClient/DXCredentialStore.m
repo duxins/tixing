@@ -75,7 +75,7 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
     [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
   }else{
     self.authToken = user.authToken;
-    [self saveUser];
+    [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
   }
 }
 
