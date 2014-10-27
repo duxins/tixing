@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -84,10 +83,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="iDq-Jx-5rH" secondAttribute="bottom" id="a1W-zY-RWa"/>
-                            <constraint firstItem="iDq-Jx-5rH" firstAttribute="top" secondItem="hMf-g3-azk" secondAttribute="topMargin" id="bAw-cd-2d6"/>
-                            <constraint firstItem="iDq-Jx-5rH" firstAttribute="leading" secondItem="hMf-g3-azk" secondAttribute="leadingMargin" constant="-16" id="ff8-mR-GBR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iDq-Jx-5rH" secondAttribute="trailing" constant="-16" id="jDL-GZ-BN9"/>
+                            <constraint firstAttribute="trailing" secondItem="iDq-Jx-5rH" secondAttribute="trailing" id="4gU-JS-9b8"/>
+                            <constraint firstItem="iDq-Jx-5rH" firstAttribute="top" secondItem="hMf-g3-azk" secondAttribute="top" id="aIv-a8-N2E"/>
+                            <constraint firstItem="iDq-Jx-5rH" firstAttribute="leading" secondItem="hMf-g3-azk" secondAttribute="leading" id="chb-mT-WW7"/>
+                            <constraint firstItem="ajt-ta-nd5" firstAttribute="top" secondItem="iDq-Jx-5rH" secondAttribute="bottom" id="nnY-g5-iTl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="全部" id="6dV-AS-pq8">
