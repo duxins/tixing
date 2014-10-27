@@ -78,7 +78,7 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
                          kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
                          kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
                          kAppStoreIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:3], //去评分
-                         kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:2 inSection:3], //退出登录
+                         kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:4], //退出登录
                          };
   }
   return _indexPathsByKey;
