@@ -18,6 +18,7 @@ extern NSString *const TixingNotificationLogout;
 @property (nonatomic, strong) DXUser *user;
 
 + (instancetype)sharedStore;
+- (void)saveUser;
 - (BOOL)isLoggedIn;
 
 @end

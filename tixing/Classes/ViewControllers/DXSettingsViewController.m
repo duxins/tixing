@@ -41,14 +41,33 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
   self.user = [DXCredentialStore sharedStore].user;
   self.accountCell.detailTextLabel.text = self.user.name;
   [self.soundSwitch setOn:self.user.silentAtNight animated:NO];
-  [self refreshSound];
+  [self displaySoundName];
 }
 
-- (void)refreshSound
+
+#pragma mark -
+#pragma mark Sounds
+
+- (void)displaySoundName
 {
   self.soundIndicator.hidden = YES;
   self.sound = [[DXSoundStore sharedStore] soundByName:self.user.sound];
   self.soundLabel.text = self.sound.label;
+}
+
+- (void)updateSoundName:(NSString *)soundName
+{
+  self.soundIndicator.hidden = NO;
+  self.soundLabel.text = @"";
+  
+  [[[DXAPIClient sharedClient] updateCustomSound:soundName] subscribeNext:^(id x) {
+    self.user.sound = soundName;
+    [[DXCredentialStore sharedStore] saveUser];
+    [self displaySoundName];
+  }error:^(NSError *error) {
+    [self displaySoundName];
+    DDLogError(@"error:%@", error);
+  }];
 }
 
 - (NSDictionary *)indexPathsByKey
@@ -126,19 +145,12 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
     DXSoundViewController *vc =  segue.destinationViewController;
     vc.selectedSound = self.sound;
     vc.didSelecteBlock = ^(DXSound *sound){
-      if ([sound isEqual:self.sound]) { return; }
-      self.soundIndicator.hidden = NO;
-      self.soundLabel.text = @"";
-      [[[DXAPIClient sharedClient] updateCustomSound:sound.name] subscribeNext:^(id x) {
-        self.user.sound = sound.name;
-        [self refreshSound];
-      }error:^(NSError *error) {
-        [self refreshSound];
-        DDLogError(@"error:%@", error);
-      }];
+      if (!sound || [sound isEqual:self.sound]) { return; }
+      [self updateSoundName:sound.name];
     };
   }
 }
+
 
 
 @end
