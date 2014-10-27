@@ -89,7 +89,14 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
   }
   
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
-    [DXCredentialStore sharedStore].user = nil;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"是否确认退出？" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert show];
+    
+    [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
+      return [index integerValue] == 1;
+    }] subscribeNext:^(id x) {
+      [DXCredentialStore sharedStore].user = nil;
+    }];
   }
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
