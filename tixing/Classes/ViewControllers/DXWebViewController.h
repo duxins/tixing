@@ -10,6 +10,6 @@
 
 @interface DXWebViewController : UIViewController
 
-@property (nonatomic, copy) NSURL *URL;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end

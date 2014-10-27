@@ -9,3 +9,5 @@
 #define DXConfirm(msg) ([[UIAlertView alloc] initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil])
 #define DXAlert(msg) ([[UIAlertView alloc] initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil])
 
+#define DXVersionNumber ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
+#define DXBuildNumber   ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"])

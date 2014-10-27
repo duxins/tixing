@@ -9,23 +9,13 @@
 #import "DXWebViewController.h"
 
 @interface DXWebViewController ()
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
 @end
 
 @implementation DXWebViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  if (self.URL) {
-    [self loadWebView];
-  }
 }
 
-- (void)loadWebView
-{
-  NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.URL];
-  [request setValue:@"abcd" forHTTPHeaderField:@"Auth-Token"];
-  [self.webView loadRequest:request];
-}
 
 @end
