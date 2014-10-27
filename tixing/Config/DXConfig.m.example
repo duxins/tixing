@@ -3,3 +3,5 @@ NSString *const TixingBaseURLString = @"http://localhost:3000/api/";
 #else
 NSString *const TixingBaseURLString = @"http://localhost:3000/api/";
 #endif
+
+NSString *const TixingAppStoreURLString = @"https://itunes.apple.com/us/app/xiao-xi-ti-xing/id933267052?l=zh&ls=1&mt=8";

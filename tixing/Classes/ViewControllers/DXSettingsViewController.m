@@ -12,11 +12,13 @@
 #import "DXUser.h"
 #import "DXSoundStore.h"
 #import "DXSoundViewController.h"
+#import "DXConfig.h"
 
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
 static NSString *const kLogoutIndexPathKey  = @"logout";
 static NSString *const kAccountIndexPathKey = @"account";
+static NSString *const kAppStoreIndexPathKey = @"appstore";
 
 @interface DXSettingsViewController ()
 @property (nonatomic, strong) NSDictionary *indexPathsByKey;
@@ -55,7 +57,8 @@ static NSString *const kAccountIndexPathKey = @"account";
                          kServiceIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:0], //服务
                          kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
                          kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
-                         kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:3], //退出登录
+                         kAppStoreIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:3], //去评分
+                         kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:3], //退出登录
                          };
   }
   return _indexPathsByKey;
@@ -80,6 +83,11 @@ static NSString *const kAccountIndexPathKey = @"account";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if ([indexPath isEqual:self.indexPathsByKey[kAppStoreIndexPathKey]]) {
+    NSURL *URL = [NSURL URLWithString:TixingAppStoreURLString];
+    [[UIApplication sharedApplication] openURL:URL];
+  }
+  
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
     [DXCredentialStore sharedStore].user = nil;
   }
