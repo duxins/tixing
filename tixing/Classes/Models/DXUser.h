@@ -14,7 +14,7 @@
 @property (nonatomic, copy, readonly) NSString *userId;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *authToken;
-@property (nonatomic, copy, readonly) NSString *sound;
+@property (nonatomic, copy) NSString *sound;
 @property (nonatomic, strong) NSArray *services;
 @property (nonatomic, assign) BOOL silentAtNight;
 

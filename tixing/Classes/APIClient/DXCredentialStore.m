@@ -8,12 +8,16 @@
 
 #import "DXCredentialStore.h"
 #import <SSKeychain/SSKeychain.h>
+#import <TMCache/TMCache.h>
+#import "DXUser.h"
 
 NSString *const TixingNotificationTokenChanged = @"TixingNotificationTokenChanged";
 NSString *const TixingNotificationLogout = @"TixingNotificationLogout";
 
 static NSString *const kServiceName = @"Tixing";
 static NSString *const kAuthTokenKey = @"AuthToken";
+
+static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
 
 @implementation DXCredentialStore
 
@@ -50,7 +54,7 @@ static NSString *const kAuthTokenKey = @"AuthToken";
     [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationLogout
                                                       object:self
                                                     userInfo:nil];
-  }else{
+  }else if(![self.authToken isEqualToString:authToken]){
     DDLogDebug(@"Set authtoken: %@", authToken);
     [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
     [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationTokenChanged
@@ -59,5 +63,20 @@ static NSString *const kAuthTokenKey = @"AuthToken";
   }
 }
 
+- (DXUser *)user
+{
+  return [[TMCache sharedCache] objectForKey:kCurrentUserCacheKey];
+}
+
+- (void)setUser:(DXUser *)user
+{
+  if (!user) {
+    self.authToken = nil;
+    [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
+  }else{
+    self.authToken = user.authToken;
+    [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
+  }
+}
 
 @end

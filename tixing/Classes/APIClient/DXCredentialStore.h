@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class DXUser;
 
 extern NSString *const TixingNotificationTokenChanged;
 extern NSString *const TixingNotificationLogout;
@@ -14,6 +15,7 @@ extern NSString *const TixingNotificationLogout;
 @interface DXCredentialStore : NSObject
 
 @property (nonatomic, strong) NSString *authToken;
+@property (nonatomic, strong) DXUser *user;
 
 + (instancetype)sharedStore;
 - (BOOL)isLoggedIn;
