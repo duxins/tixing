@@ -10,6 +10,7 @@
 #import "DXService.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "DXAPIClient.h"
+#import "DXMacros.h"
 
 @interface DXServiceDetailViewController ()
 @property(nonatomic, weak) IBOutlet UIWebView *webView;
@@ -33,7 +34,7 @@
 
 - (IBAction)uninstallService:(id)sender {
   NSString *message = [NSString stringWithFormat:@"是否确认卸载\"%@\"?", self.service.name];
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+  UIAlertView *alert = DXConfirm(message);
   [alert show];
   
   [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {

@@ -69,6 +69,7 @@
 		270A1FB619F5085700B2626A /* DXAPIClient+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Notification.m"; sourceTree = "<group>"; };
 		270A1FB819F50CA600B2626A /* DXAPIClient+Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+Service.h"; sourceTree = "<group>"; };
 		270A1FB919F50CA600B2626A /* DXAPIClient+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Service.m"; sourceTree = "<group>"; };
+		2735672119FE3095007E9521 /* DXMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXMacros.h; sourceTree = "<group>"; };
 		27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXDeviceTokenStore.h; sourceTree = "<group>"; };
 		27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDeviceTokenStore.m; sourceTree = "<group>"; };
 		27655D1319FBA0A600C5D011 /* DXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXUser.h; sourceTree = "<group>"; };
@@ -296,6 +297,7 @@
 		B6D63B1FE1BD44388B483061 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				2735672119FE3095007E9521 /* DXMacros.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";

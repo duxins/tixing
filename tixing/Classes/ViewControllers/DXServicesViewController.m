@@ -12,6 +12,7 @@
 #import "DXServiceDetailViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "DXMacros.h"
 
 static NSInteger const kNumberOfSections = 2;
 static NSInteger const kInstalledServicesSectionIndex = 0;
@@ -120,7 +121,7 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
     DXService *service = self.uninstalledServices[row];
     
     NSString *message = [NSString stringWithFormat:@"是否确认安装\"%@\"", service.name];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = DXConfirm(message);
     [alert show];
     
     [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {

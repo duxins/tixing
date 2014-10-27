@@ -135,7 +135,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="提醒" id="gJn-TO-32P">
+                            <tableViewSection headerTitle="提醒" footerTitle="开启后，晚上22:00 ~ 早上 8:00 将不会发出提示音" id="gJn-TO-32P">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Evi-vG-tQD">
                                         <autoresizingMask key="autoresizingMask"/>

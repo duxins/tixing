@@ -13,6 +13,7 @@
 #import "DXSoundStore.h"
 #import "DXSoundViewController.h"
 #import "DXConfig.h"
+#import "DXMacros.h"
 
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
@@ -89,7 +90,7 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
   }
   
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"是否确认退出？" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView *alert = DXConfirm(@"是否确认退出？");
     [alert show];
     
     [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
