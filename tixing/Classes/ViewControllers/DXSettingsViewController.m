@@ -9,6 +9,9 @@
 #import "DXSettingsViewController.h"
 #import "DXCredentialStore.h"
 #import "DXAPIClient.h"
+#import "DXUser.h"
+#import "DXSoundStore.h"
+#import "DXSoundViewController.h"
 
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
@@ -16,13 +19,30 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 
 @interface DXSettingsViewController ()
 @property (nonatomic, strong) NSDictionary *indexPathsByKey;
+@property (nonatomic, strong) DXUser *user;
+@property (nonatomic, strong) DXSound *sound;
+
 @property (nonatomic, weak) IBOutlet UISwitch *soundSwitch;
+@property (nonatomic, weak) IBOutlet UILabel *soundLabel;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *soundIndicator;
+
 @end
 
 @implementation DXSettingsViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.user = [DXCredentialStore sharedStore].user;
+  [self.soundSwitch setOn:self.user.silentAtNight animated:NO];
+  [self refreshSound];
+}
+
+- (void)refreshSound
+{
+  self.soundIndicator.hidden = YES;
+  self.sound = [[DXSoundStore sharedStore] soundByName:self.user.sound];
+  self.soundLabel.text = self.sound.label;
 }
 
 - (NSDictionary *)indexPathsByKey
@@ -45,6 +65,7 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 {
   sender.enabled = NO;
   [[[DXAPIClient sharedClient] keepSilentAtNight:sender.isOn] subscribeNext:^(id x) {
+    [DXCredentialStore sharedStore].user.silentAtNight = sender.isOn;
     sender.enabled = YES;
   } error:^(NSError *error) {
     sender.enabled = YES;
@@ -58,7 +79,7 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
-    [DXCredentialStore sharedStore].authToken = nil;
+    [DXCredentialStore sharedStore].user = nil;
   }
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -71,5 +92,28 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
   }
   return indexPath;
 }
+
+#pragma mark -
+#pragma mark Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"ShowSound"]) {
+    DXSoundViewController *vc =  segue.destinationViewController;
+    vc.selectedSound = self.sound;
+    vc.didSelecteBlock = ^(DXSound *sound){
+      if ([sound isEqual:self.sound]) { return; }
+      self.soundIndicator.hidden = NO;
+      self.soundLabel.text = @"";
+      [[[DXAPIClient sharedClient] updateCustomSound:sound.name] subscribeNext:^(id x) {
+        self.user.sound = sound.name;
+        [self refreshSound];
+      }error:^(NSError *error) {
+        [self refreshSound];
+        DDLogError(@"error:%@", error);
+      }];
+    };
+  }
+}
+
 
 @end

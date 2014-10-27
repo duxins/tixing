@@ -14,7 +14,6 @@
 
 @interface DXSoundViewController ()
 @property (nonatomic, copy) NSArray *sounds;
-@property (nonatomic, copy) NSString *selectedSound;
 @end
 
 @implementation DXSoundViewController{
@@ -23,8 +22,15 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.selectedSound = @"default";
   self.sounds = [DXSoundStore sharedStore].sounds;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+  [super viewDidDisappear:animated];
+  if (self.didSelecteBlock) {
+    self.didSelecteBlock(self.selectedSound);
+  }
 }
 
 #pragma -
@@ -55,7 +61,7 @@
   DXSound *sound = self.sounds[(NSUInteger)indexPath.row];
   cell.textLabel.text = sound.label;
   
-  if ([sound.name isEqualToString:self.selectedSound]) {
+  if ([sound isEqual:self.selectedSound]) {
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
   }else{
     cell.accessoryType = UITableViewCellAccessoryNone;
@@ -76,10 +82,11 @@
   }
   
   [tableView reloadData];
-  self.selectedSound = sound.name;
+  self.selectedSound = sound;
   [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
   });
 }
+
 @end

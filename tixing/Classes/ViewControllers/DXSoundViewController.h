@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DXSound;
 
 @interface DXSoundViewController : UITableViewController
+
+@property (nonatomic, copy) DXSound *selectedSound;
+@property (nonatomic, copy) void (^didSelecteBlock)(DXSound *newSound);
 
 @end
