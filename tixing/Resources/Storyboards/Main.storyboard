@@ -187,7 +187,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="帐号" id="87F-GY-kMl">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Sa4-r6-qGY" detailTextLabel="IpL-SN-fSM" style="IBUITableViewCellStyleValue1" id="tAg-SE-DMY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Sa4-r6-qGY" detailTextLabel="IpL-SN-fSM" style="IBUITableViewCellStyleValue1" id="tAg-SE-DMY">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tAg-SE-DMY" id="Hp8-49-hbQ">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -235,6 +235,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="sq0-VA-f3j"/>
                     <connections>
+                        <outlet property="accountCell" destination="tAg-SE-DMY" id="gcb-eK-rZS"/>
                         <outlet property="soundIndicator" destination="6FL-no-fBX" id="qaa-Sr-Gkv"/>
                         <outlet property="soundLabel" destination="B6v-CR-WV6" id="VIK-35-C1m"/>
                         <outlet property="soundSwitch" destination="gMU-p9-b1b" id="TiN-yZ-lVg"/>

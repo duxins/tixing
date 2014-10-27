@@ -16,6 +16,7 @@
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
 static NSString *const kLogoutIndexPathKey  = @"logout";
+static NSString *const kAccountIndexPathKey = @"account";
 
 @interface DXSettingsViewController ()
 @property (nonatomic, strong) NSDictionary *indexPathsByKey;
@@ -25,6 +26,7 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 @property (nonatomic, weak) IBOutlet UISwitch *soundSwitch;
 @property (nonatomic, weak) IBOutlet UILabel *soundLabel;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *soundIndicator;
+@property (nonatomic, weak) IBOutlet UITableViewCell *accountCell;
 
 @end
 
@@ -34,6 +36,7 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
   [super viewDidLoad];
   
   self.user = [DXCredentialStore sharedStore].user;
+  self.accountCell.detailTextLabel.text = self.user.name;
   [self.soundSwitch setOn:self.user.silentAtNight animated:NO];
   [self refreshSound];
 }
@@ -49,11 +52,10 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 {
   if (!_indexPathsByKey) {
     _indexPathsByKey = @{
-                         
                          kServiceIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:0], //服务
                          kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
+                         kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
                          kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:3], //退出登录
-                         
                          };
   }
   return _indexPathsByKey;
@@ -87,10 +89,17 @@ static NSString *const kLogoutIndexPathKey  = @"logout";
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ([indexPath isEqual:self.indexPathsByKey[kSilentIndexPathKey]]) {
-    return nil;
-  }
-  return indexPath;
+  __block NSIndexPath *newIndexPath = indexPath;
+  
+  [@[kSilentIndexPathKey, kAccountIndexPathKey]
+  enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    if ([indexPath isEqual:self.indexPathsByKey[obj]]) {
+      newIndexPath = nil;
+      *stop = YES;
+    }
+  }];
+  
+  return newIndexPath;
 }
 
 #pragma mark -
