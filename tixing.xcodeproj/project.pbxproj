@@ -196,12 +196,12 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		2735672519FE67EA007E9521 /* Htmls */ = {
+		2735672519FE67EA007E9521 /* HTMLs */ = {
 			isa = PBXGroup;
 			children = (
 				2735672619FE6842007E9521 /* about.html */,
 			);
-			path = Htmls;
+			path = HTMLs;
 			sourceTree = "<group>";
 		};
 		2787224019F90C1A00714D67 /* Sounds */ = {
@@ -404,7 +404,7 @@
 		FCA47628E8EE4BE686A164B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2735672519FE67EA007E9521 /* Htmls */,
+				2735672519FE67EA007E9521 /* HTMLs */,
 				2787224019F90C1A00714D67 /* Sounds */,
 				A2E34414980F4D82BB40AA34 /* Images.xcassets */,
 				929F081A9880473899EE0048 /* Storyboards */,
