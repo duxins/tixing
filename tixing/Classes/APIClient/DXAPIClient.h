@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "NSError+DXError.h"
 
 @interface DXAPIClient : NSObject
 

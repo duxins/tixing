@@ -88,9 +88,8 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
 {
   URLString = [[NSURL URLWithString:URLString relativeToURL:self.manager.baseURL] absoluteString];
   
-  DDLogDebug(@"%@ %@ %@", method, URLString, parameters);
   
-  return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+  return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
     
     
     NSError *err = nil;
@@ -102,10 +101,20 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
       [self.manager HTTPRequestOperationWithRequest:request
                                             success:^(AFHTTPRequestOperation *op, id responseObject) {
                                               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                              DDLogDebug(@"%@ %@ %@ (%@)", method, URLString, parameters, @(op.response.statusCode));
                                               [subscriber sendNext:responseObject];
                                               [subscriber sendCompleted];
                                             } failure:^(AFHTTPRequestOperation *op, NSError *error) {
+                                              DDLogDebug(@"%@ %@ %@ (%@)", method, URLString, parameters, @(op.response.statusCode));
                                               [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+                                              
+                                              NSDictionary *JSON = [self parseResponseData:op.responseData];
+                                              
+                                              if (JSON[@"error"]) {
+                                                NSDictionary *userInfo = @{NSLocalizedDescriptionKey: JSON[@"error"]};
+                                                error = [[NSError alloc] initWithDomain:TixingAPIErrorDomain code:[JSON[@"code"] integerValue] userInfo:userInfo];
+                                              }
+                                              
                                               [subscriber sendError:error];
                                             }];
     
@@ -114,7 +123,20 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
     return [RACDisposable disposableWithBlock:^{
       [operation cancel];
     }];
+  }] doError:^(NSError *error) {
+    if ([error.domain isEqualToString: TixingAPIErrorDomain] && error.code == 1000) { //Authorization failed
+      [DXCredentialStore sharedStore].user = nil;
+    }
   }];
+}
+
+- (id)parseResponseData:(NSData *)data
+{
+  if (!data) {
+    return nil;
+  }
+  
+  return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 }
 
 
