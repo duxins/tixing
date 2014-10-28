@@ -20,6 +20,7 @@ static NSString *const kSilentIndexPathKey  = @"silent";
 static NSString *const kLogoutIndexPathKey  = @"logout";
 static NSString *const kAccountIndexPathKey = @"account";
 static NSString *const kAppStoreIndexPathKey = @"appstore";
+static NSString *const kCheckUpdatesIndexPathKey = @"update";
 
 @interface DXSettingsViewController ()
 @property (nonatomic, strong) NSDictionary *indexPathsByKey;
@@ -78,6 +79,7 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
                          kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
                          kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
                          kAppStoreIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:3], //去评分
+                         kCheckUpdatesIndexPathKey: [NSIndexPath indexPathForRow:1 inSection:3], //检查新版本
                          kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:4], //退出登录
                          };
   }
@@ -116,6 +118,29 @@ static NSString *const kAppStoreIndexPathKey = @"appstore";
       return [index integerValue] == 1;
     }] subscribeNext:^(id x) {
       [DXCredentialStore sharedStore].user = nil;
+    }];
+  }
+  
+  if ([indexPath isEqual:self.indexPathsByKey[kCheckUpdatesIndexPathKey]]) {
+    [[[DXAPIClient sharedClient] checkForUpdates] subscribeNext:^(id x) {
+      if (x[@"version"]) { //
+        NSString *message = [NSString stringWithFormat:@"发现新版本%@", x[@"version"]];
+        NSString *updateURLString = x[@"update_url"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:message delegate:nil cancelButtonTitle:@"忽略" otherButtonTitles:@"立即升级", nil];
+        [alert show];
+        
+        [[alert rac_buttonClickedSignal] subscribeNext:^(NSNumber *button) {
+          if ([button integerValue] == 1) {
+            NSURL *URL = [NSURL URLWithString:updateURLString];
+            [[UIApplication sharedApplication] openURL:URL];
+          }
+        }];
+        
+      }else{
+        [DXAlert(@"当前版本已是最新版") show];
+      }
+    } error:^(NSError *error) {
+      DDLogError(@"%@", error);
     }];
   }
   

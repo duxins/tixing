@@ -24,4 +24,5 @@
 #import "DXAPIClient+Device.h"
 #import "DXAPIClient+Notification.h"
 #import "DXAPIClient+Service.h"
+#import "DXAPIClient+Misc.h"
 
