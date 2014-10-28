@@ -8,6 +8,7 @@
 
 #import "DXAPIClient+Notification.h"
 #import "DXNotification.h"
+#import "DXPagination.h"
 
 @implementation DXAPIClient (Notification)
 
@@ -15,12 +16,14 @@
 {
   return [[self GET:@"notifications" parameters:nil] tryMap:^id(NSDictionary *result, NSError *__autoreleasing *errorPtr) {
     NSError *error;
-    NSArray *notifications = [MTLJSONAdapter modelsOfClass:[DXNotification class] fromJSONArray:result[@"data"] error:&error];
-    if (!notifications) {
-      return nil;
-    }
     
-    return @{ @"data": notifications };
+    NSArray *notifications = [MTLJSONAdapter modelsOfClass:[DXNotification class] fromJSONArray:result[@"data"] error:&error];
+    if (!notifications) { return nil; }
+    
+    NSDictionary *pagination = [MTLJSONAdapter modelOfClass:[DXPagination class] fromJSONDictionary:result[@"pagination"] error:&error];
+    if (!pagination) { return nil; }
+    
+    return @{ @"data": notifications, @"pagination": pagination };
     
   }];
 }
