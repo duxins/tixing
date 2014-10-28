@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DXNotification;
+
 @interface DXNotificationViewController : UIViewController
 
-@property (nonatomic, copy) NSDictionary *notification;
+@property (nonatomic, strong) DXNotification *notification;
 
 @end

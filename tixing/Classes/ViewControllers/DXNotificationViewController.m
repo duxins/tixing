@@ -7,6 +7,7 @@
 //
 
 #import "DXNotificationViewController.h"
+#import "DXNotification.h"
 
 @interface DXNotificationViewController ()
 
@@ -19,7 +20,7 @@
   [super viewDidLoad];
   
   if (self.notification) {
-    self.notificationMessage.text = self.notification[@"message"];
+    self.notificationMessage.text = self.notification.message;
   }
 }
 

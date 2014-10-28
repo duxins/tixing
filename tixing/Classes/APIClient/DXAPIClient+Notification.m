@@ -7,12 +7,22 @@
 //
 
 #import "DXAPIClient+Notification.h"
+#import "DXNotification.h"
 
 @implementation DXAPIClient (Notification)
 
 - (RACSignal *)retrieveNotifications
 {
-  return [self GET:@"notifications" parameters:nil];
+  return [[self GET:@"notifications" parameters:nil] tryMap:^id(NSDictionary *result, NSError *__autoreleasing *errorPtr) {
+    NSError *error;
+    NSArray *notifications = [MTLJSONAdapter modelsOfClass:[DXNotification class] fromJSONArray:result[@"data"] error:&error];
+    if (!notifications) {
+      return nil;
+    }
+    
+    return @{ @"data": notifications };
+    
+  }];
 }
 
 - (RACSignal *)retrieveNotificationWithId:(NSString *)notificationId

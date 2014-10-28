@@ -9,6 +9,7 @@
 #import "DXMainViewController.h"
 #import "DXAPIClient.h"
 #import "DXNotificationViewController.h"
+#import "DXNotification.h"
 
 @interface DXMainViewController ()
 @property (nonatomic, copy) NSArray *notifications;
@@ -46,8 +47,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
-  NSDictionary *notification = self.notifications[(NSUInteger)indexPath.row];
-  cell.textLabel.text = notification[@"message"];
+  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+  cell.textLabel.text = notification.message;
   return cell;
 }
 
@@ -60,7 +61,7 @@
   if ([segue.identifier isEqualToString:@"ShowNotification"]) {
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSDictionary *notification = self.notifications[(NSUInteger)indexPath.row];
+    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
     DXNotificationViewController *vc = segue.destinationViewController;
     vc.notification = notification;
   }
