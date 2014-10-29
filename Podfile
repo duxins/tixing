@@ -10,6 +10,7 @@ target "tixing" do
 	pod 'SSKeychain', '~> 1.2.2'
 	pod 'CocoaLumberjack', '~>1.9.2'
     pod 'TMCache',  '~>1.2.2'
+    pod 'SSPullToRefresh', '~> 1.2.0'
 end
 
 target "UnitTests" do

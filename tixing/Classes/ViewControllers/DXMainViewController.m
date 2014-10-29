@@ -14,14 +14,18 @@
 #import "DXPagination.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "NSDate+DXDate.h"
+#import <SSPullToRefresh/SSPullToRefresh.h>
+#import "DXPullToRefreshSimpleContentView.h"
 
-@interface DXMainViewController ()
+@interface DXMainViewController () <SSPullToRefreshViewDelegate>
 @property (nonatomic, strong) NSArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
+@property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
+
 @end
 
 @implementation DXMainViewController
@@ -31,6 +35,9 @@
   
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateFormat = @"yyyy-MM-dd";
+  
+  self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+  self.pullToRefreshView.contentView = [[DXPullToRefreshSimpleContentView alloc] init];
   
   [self setupTableView];
   [self refresh];
@@ -46,12 +53,31 @@
 - (void)refresh
 {
   [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(NSDictionary *result) {
+    [self.pullToRefreshView finishLoading];
     self.notifications = result[@"data"];
     self.pagination = result[@"pagination"];
     [self.tableView reloadData];
   } error:^(NSError *error) {
+    [self.pullToRefreshView finishLoading];
     DDLogError(@"error:%@", error);
   }];
+}
+
+#pragma mark -
+#pragma mark SSPullToRefreshDelegate
+- (BOOL)pullToRefreshViewShouldStartLoading:(SSPullToRefreshView *)view
+{
+  return YES;
+}
+
+- (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view
+{
+  [self refresh];
+}
+
+- (void)pullToRefreshViewDidFinishLoading:(SSPullToRefreshView *)view
+{
+  
 }
 
 #pragma mark -
