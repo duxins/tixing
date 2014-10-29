@@ -173,9 +173,10 @@ static NSInteger const kSpacing = 10;
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
     DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
-    [self.notifications removeObjectAtIndex:(NSUInteger)indexPath.row];
+    [self.notifications removeObject:notification];
     [tableView beginUpdates];
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
+    [tableView deleteRowsAtIndexPaths:@[indexPath, spacingIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
     [tableView endUpdates];
     [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
   }
