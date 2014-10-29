@@ -4,11 +4,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target "tixing" do
-	pod 'AFNetworking', '~> 2.4.1'
-	pod 'ReactiveCocoa', '~> 2.3.1'
-	pod 'Mantle',	'~> 1.5'
-	pod 'SSKeychain', '~> 1.2.2'
-	pod 'CocoaLumberjack', '~>1.9.2'
+    pod 'AFNetworking', '~> 2.4.1'
+    pod 'ReactiveCocoa', '~> 2.3.1'
+    pod 'Mantle',	'~> 1.5'
+    pod 'SSKeychain', '~> 1.2.2'
+    pod 'CocoaLumberjack', '~>1.9.2'
     pod 'TMCache',  '~>1.2.2'
     pod 'SSPullToRefresh', '~> 1.2.0'
 end
