@@ -27,18 +27,21 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-LE-Deo">
-                        <rect key="frame" x="55" y="35" width="250" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="消息内容" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-bA-No4">
                         <rect key="frame" x="15" y="55" width="290" height="39"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-LE-Deo">
+                        <rect key="frame" x="55" y="35" width="250" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="service-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-jS-dPg">
+                        <rect key="frame" x="37" y="35" width="13" height="13"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
@@ -59,6 +62,7 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="messageLabel" destination="GaA-bA-No4" id="7UO-Fd-oFz"/>
+                <outlet property="serviceIconImageView" destination="yfp-jS-dPg" id="899-M4-s72"/>
                 <outlet property="thumbImageView" destination="lNr-uf-Npd" id="qVF-Om-fsa"/>
                 <outlet property="timeLabel" destination="JUG-LE-Deo" id="rC2-fe-YV8"/>
                 <outlet property="titleLabel" destination="b2a-5g-5E7" id="LCV-XF-CYk"/>
@@ -68,5 +72,6 @@
     </objects>
     <resources>
         <image name="bell-placeholder" width="30" height="30"/>
+        <image name="service-placeholder" width="24" height="24"/>
     </resources>
 </document>

@@ -74,7 +74,8 @@
   
   cell.messageLabel.text = notification.message;
   cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
-  
+  cell.serviceIconImageView.image = nil;
+  [cell.serviceIconImageView setImageWithURL:notification.service.iconURL];
   return cell;
 }
 
