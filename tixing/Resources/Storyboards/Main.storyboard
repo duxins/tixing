@@ -87,7 +87,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="全部" id="6dV-AS-pq8">
-                        <barButtonItem key="rightBarButtonItem" title="设置" id="QZb-KK-NzB">
+                        <barButtonItem key="rightBarButtonItem" image="settings" id="QZb-KK-NzB">
+                            <color key="tintColor" red="0.52826842420287023" green="0.54841382575757569" blue="0.54484026864225976" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="g1K-je-UiP" kind="push" id="aYL-YQ-2C5"/>
                             </connections>
@@ -530,6 +531,7 @@
     <resources>
         <image name="service-coming-soon" width="24" height="17"/>
         <image name="service-placeholder" width="24" height="24"/>
+        <image name="settings" width="24" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
