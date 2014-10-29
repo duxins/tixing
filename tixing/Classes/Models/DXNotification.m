@@ -33,7 +33,7 @@
   return dateFormatter;
 }
 
-+ (NSValueTransformer *)servicesJSONTransformer {
++ (NSValueTransformer *)serviceJSONTransformer {
   return [MTLValueTransformer transformerWithBlock:^id(NSDictionary *services) {
     return [MTLJSONAdapter modelOfClass:[DXService class] fromJSONDictionary:services error:nil];
   }];

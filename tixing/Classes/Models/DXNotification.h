@@ -7,9 +7,9 @@
 //
 
 #import "MTLModel.h"
+#import "DXService.h"
 #import <Mantle/Mantle.h>
 
-@class DXService;
 
 @interface DXNotification : MTLModel <MTLJSONSerializing>
 
