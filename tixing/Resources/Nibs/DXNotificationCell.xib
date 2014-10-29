@@ -14,6 +14,29 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fdW-ck-XZG" id="zVg-Sb-vUj">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mt1-VQ-boN">
+                        <rect key="frame" x="10" y="56" width="300" height="38"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="消息内容" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-bA-No4">
+                                <rect key="frame" x="8" y="5" width="284" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GaA-bA-No4" secondAttribute="trailing" constant="8" id="3c1-Ib-4Tl"/>
+                            <constraint firstItem="GaA-bA-No4" firstAttribute="leading" secondItem="mt1-VQ-boN" secondAttribute="leading" constant="8" id="RYp-Hg-lxX"/>
+                            <constraint firstAttribute="bottom" secondItem="GaA-bA-No4" secondAttribute="bottom" constant="5" id="d80-3t-5SZ"/>
+                            <constraint firstItem="GaA-bA-No4" firstAttribute="top" secondItem="mt1-VQ-boN" secondAttribute="top" constant="5" id="hru-z4-aBh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-uf-Npd">
                         <rect key="frame" x="15" y="15" width="30" height="30"/>
                         <constraints>
@@ -22,56 +45,55 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2a-5g-5E7">
-                        <rect key="frame" x="55" y="13" width="242" height="20"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="消息内容" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-bA-No4">
-                        <rect key="frame" x="15" y="55" width="290" height="39"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="55" y="13" width="242" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-LE-Deo">
-                        <rect key="frame" x="55" y="35" width="250" height="15"/>
+                        <rect key="frame" x="55" y="33" width="250" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="service-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="yfp-jS-dPg">
-                        <rect key="frame" x="37" y="35" width="13" height="13"/>
+                        <rect key="frame" x="36" y="34" width="16" height="16"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle" highlightedImage="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="jGw-kp-2lD">
+                        <rect key="frame" x="23" y="48" width="14" height="11"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="b2a-5g-5E7" secondAttribute="trailing" constant="15" id="1SV-4d-6p4"/>
+                    <constraint firstAttribute="bottom" secondItem="mt1-VQ-boN" secondAttribute="bottom" constant="15" id="413-jv-3Z1"/>
                     <constraint firstItem="JUG-LE-Deo" firstAttribute="top" secondItem="b2a-5g-5E7" secondAttribute="bottom" constant="2" id="5Ia-Ue-WUo"/>
                     <constraint firstItem="lNr-uf-Npd" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="15" id="Axy-G5-zWc"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="top" secondItem="zVg-Sb-vUj" secondAttribute="top" constant="13" id="CLp-q0-2Xx"/>
                     <constraint firstAttribute="trailing" secondItem="JUG-LE-Deo" secondAttribute="trailing" constant="15" id="E6E-JZ-hvY"/>
-                    <constraint firstItem="GaA-bA-No4" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="15" id="R25-1X-yx8"/>
+                    <constraint firstItem="mt1-VQ-boN" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="10" id="Mra-5Y-bxX"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="leading" secondItem="JUG-LE-Deo" secondAttribute="leading" id="Uz8-1Y-spS"/>
-                    <constraint firstAttribute="bottom" secondItem="GaA-bA-No4" secondAttribute="bottom" constant="15" id="YYw-Z8-clM"/>
-                    <constraint firstAttribute="trailing" secondItem="GaA-bA-No4" secondAttribute="trailing" constant="15" id="YjO-Gt-QRe"/>
+                    <constraint firstItem="mt1-VQ-boN" firstAttribute="top" secondItem="lNr-uf-Npd" secondAttribute="bottom" constant="11" id="Wtm-SW-eeS"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="leading" secondItem="lNr-uf-Npd" secondAttribute="trailing" constant="10" id="amg-B1-YR5"/>
-                    <constraint firstItem="GaA-bA-No4" firstAttribute="top" secondItem="lNr-uf-Npd" secondAttribute="bottom" constant="10" id="m53-Zt-gCt"/>
+                    <constraint firstAttribute="trailing" secondItem="mt1-VQ-boN" secondAttribute="trailing" constant="10" id="fGC-Sj-cDv"/>
                     <constraint firstItem="lNr-uf-Npd" firstAttribute="top" secondItem="zVg-Sb-vUj" secondAttribute="top" constant="15" id="rbr-Fv-mt8"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="ballonView" destination="mt1-VQ-boN" id="fqM-ZY-dfP"/>
                 <outlet property="messageLabel" destination="GaA-bA-No4" id="7UO-Fd-oFz"/>
                 <outlet property="serviceIconImageView" destination="yfp-jS-dPg" id="899-M4-s72"/>
                 <outlet property="thumbImageView" destination="lNr-uf-Npd" id="qVF-Om-fsa"/>
                 <outlet property="timeLabel" destination="JUG-LE-Deo" id="rC2-fe-YV8"/>
                 <outlet property="titleLabel" destination="b2a-5g-5E7" id="LCV-XF-CYk"/>
             </connections>
-            <point key="canvasLocation" x="523" y="312"/>
+            <point key="canvasLocation" x="523" y="308"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="bell-placeholder" width="30" height="30"/>
         <image name="service-placeholder" width="24" height="24"/>
+        <image name="triangle" width="14" height="11"/>
     </resources>
 </document>
