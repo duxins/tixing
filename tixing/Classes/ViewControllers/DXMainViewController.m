@@ -92,13 +92,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  return (NSInteger)self.notifications.count;
+  return (NSInteger)self.notifications.count * 2 - 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if (indexPath.row % 2 == 1){
+    UITableViewCell *spacingCell = [tableView dequeueReusableCellWithIdentifier:@"SpacingCell"];
+    spacingCell.backgroundColor = [UIColor clearColor];
+    return spacingCell;
+  }
+  
   DXNotificationCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
-  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
   
   cell.messageLabel.text = notification.message;
   cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
@@ -112,16 +118,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ((NSUInteger)indexPath.row >= self.notifications.count) {
-    return 88;
-  }
+  if (indexPath.row % 2 == 1) return 15;
   
   if (!self.offscreenCell) {
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCell" owner:self options:nil];
     self.offscreenCell = [topLevelObjects objectAtIndex:0];
   }
   
-  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
   self.offscreenCell.messageLabel.text = notification.message;
   
   [self.offscreenCell setNeedsUpdateConstraints];
@@ -137,6 +141,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if (indexPath.row % 2 == 1) return 15;
   return 150;
 }
 
@@ -173,7 +178,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
-    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
     [self.notifications removeObjectAtIndex:(NSUInteger)indexPath.row];
     [tableView beginUpdates];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
@@ -190,7 +195,7 @@
   if ([segue.identifier isEqualToString:@"ShowNotification"]) {
     UITableViewCell *cell = (UITableViewCell *)sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
     DXNotificationViewController *vc = segue.destinationViewController;
     vc.notification = notification;
   }
