@@ -60,6 +60,7 @@
             <connections>
                 <outlet property="messageLabel" destination="GaA-bA-No4" id="7UO-Fd-oFz"/>
                 <outlet property="thumbImageView" destination="lNr-uf-Npd" id="qVF-Om-fsa"/>
+                <outlet property="timeLabel" destination="JUG-LE-Deo" id="rC2-fe-YV8"/>
                 <outlet property="titleLabel" destination="b2a-5g-5E7" id="LCV-XF-CYk"/>
             </connections>
             <point key="canvasLocation" x="523" y="312"/>

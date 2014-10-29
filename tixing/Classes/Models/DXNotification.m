@@ -16,13 +16,32 @@
   return @{
            @"notificationId": @"id",
            @"message": @"message",
-           @"service": @"service"
+           @"service": @"service",
+           @"createdAt": @"created_at"
            };
+}
+
++ (NSDateFormatter *)dateFormatter
+{
+  static NSDateFormatter *dateFormatter;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+  });
+  return dateFormatter;
 }
 
 + (NSValueTransformer *)servicesJSONTransformer {
   return [MTLValueTransformer transformerWithBlock:^id(NSDictionary *services) {
     return [MTLJSONAdapter modelOfClass:[DXService class] fromJSONDictionary:services error:nil];
+  }];
+}
+
++ (NSValueTransformer *)createdAtJSONTransformer {
+  return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
+    return [self.dateFormatter dateFromString:str];
   }];
 }
 

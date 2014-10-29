@@ -13,10 +13,12 @@
 #import "DXNotificationCell.h"
 #import "DXPagination.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "NSDate+DXDate.h"
 
 @interface DXMainViewController ()
 @property (nonatomic, strong) NSArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
@@ -26,10 +28,19 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  self.dateFormatter = [[NSDateFormatter alloc] init];
+  self.dateFormatter.dateFormat = @"yyyy-MM-dd";
+  
+  [self setupTableView];
+  [self refresh];
+}
+
+- (void)setupTableView
+{
   UINib *nib = [UINib nibWithNibName:@"DXNotificationCell" bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
   self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
-  [self refresh];
 }
 
 - (void)refresh
@@ -60,7 +71,10 @@
 {
   DXNotificationCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
   DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+  
   cell.messageLabel.text = notification.message;
+  cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
+  
   return cell;
 }
 
