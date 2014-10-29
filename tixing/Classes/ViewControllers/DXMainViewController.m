@@ -18,7 +18,7 @@
 #import "DXPullToRefreshSimpleContentView.h"
 
 @interface DXMainViewController () <SSPullToRefreshViewDelegate>
-@property (nonatomic, strong) NSArray *notifications;
+@property (nonatomic, strong) NSMutableArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
@@ -108,7 +108,7 @@
 }
 
 #pragma mark -
-#pragma mark Tableview delegate
+#pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -153,6 +153,18 @@
 - (NSString*) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section
 {
   return nil;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle == UITableViewCellEditingStyleDelete){
+    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+    [self.notifications removeObjectAtIndex:(NSUInteger)indexPath.row];
+    [tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    [tableView endUpdates];
+    [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
+  }
 }
 
 #pragma mark -
