@@ -10,25 +10,37 @@
 #import "DXAPIClient.h"
 #import "DXNotificationViewController.h"
 #import "DXNotification.h"
+#import "DXNotificationCell.h"
+#import "DXPagination.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface DXMainViewController ()
-@property (nonatomic, copy) NSArray *notifications;
+@property (nonatomic, strong) NSArray *notifications;
+@property (nonatomic, strong) DXPagination *pagination;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) DXNotificationCell *offscreenCell;
 @end
 
 @implementation DXMainViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(id x) {
-    self.notifications = x[@"data"];
+  UINib *nib = [UINib nibWithNibName:@"DXNotificationCell" bundle:nil];
+  [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
+  [self refresh];
+}
+
+- (void)refresh
+{
+  [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(NSDictionary *result) {
+    self.notifications = result[@"data"];
+    self.pagination = result[@"pagination"];
     [self.tableView reloadData];
   } error:^(NSError *error) {
     DDLogError(@"error:%@", error);
   }];
 }
-
 
 #pragma mark -
 #pragma mark UITableViewDataSource
@@ -43,13 +55,50 @@
   return (NSInteger)self.notifications.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
+  DXNotificationCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
   DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
-  cell.textLabel.text = notification.message;
+  cell.messageLabel.text = notification.message;
   return cell;
+}
+
+#pragma mark -
+#pragma mark Tableview delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if ((NSUInteger)indexPath.row >= self.notifications.count) {
+    return 88;
+  }
+  
+  if (!self.offscreenCell) {
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCell" owner:self options:nil];
+    self.offscreenCell = [topLevelObjects objectAtIndex:0];
+  }
+  
+  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row];
+  self.offscreenCell.messageLabel.text = notification.message;
+  
+  [self.offscreenCell setNeedsUpdateConstraints];
+  [self.offscreenCell updateConstraintsIfNeeded];
+  self.offscreenCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(self.offscreenCell.bounds));
+  [self.offscreenCell setNeedsLayout];
+  [self.offscreenCell layoutIfNeeded];
+  
+  CGFloat height = [self.offscreenCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+  
+  return height + 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 150;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -66,7 +115,5 @@
     vc.notification = notification;
   }
 }
-
-
 
 @end
