@@ -28,6 +28,7 @@
   [super viewDidLoad];
   UINib *nib = [UINib nibWithNibName:@"DXNotificationCell" bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
+  self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
   [self refresh];
 }
 
@@ -101,6 +102,15 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+  return 1.0f;
+}
+
+- (NSString*) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section
+{
+  return nil;
+}
 
 #pragma mark -
 #pragma mark Navigation
