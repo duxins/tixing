@@ -17,6 +17,8 @@
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
 
+static NSInteger const kSpacing = 10;
+
 @interface DXMainViewController () <SSPullToRefreshViewDelegate>
 @property (nonatomic, strong) NSMutableArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
@@ -47,7 +49,6 @@
 {
   UINib *nib = [UINib nibWithNibName:@"DXNotificationCell" bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
-  self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
 }
 
 - (void)refresh
@@ -73,13 +74,6 @@
 - (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view
 {
   [self refresh];
-}
-
-- (void)pullToRefreshView:(SSPullToRefreshView *)view didUpdateContentInset:(UIEdgeInsets)contentInset
-{
-  if(contentInset.top == 0){
-    self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
-  }
 }
 
 #pragma mark -
@@ -118,7 +112,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.row % 2 == 1) return 15;
+  if (indexPath.row % 2 == 1) return kSpacing;
   
   if (!self.offscreenCell) {
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCell" owner:self options:nil];
@@ -141,7 +135,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.row % 2 == 1) return 15;
+  if (indexPath.row % 2 == 1) return kSpacing;
   return 150;
 }
 
@@ -152,7 +146,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-  return 1.0f;
+  return (CGFloat)kSpacing;
 }
 
 - (NSString*) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section
