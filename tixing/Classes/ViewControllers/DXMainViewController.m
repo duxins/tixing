@@ -75,9 +75,11 @@
   [self refresh];
 }
 
-- (void)pullToRefreshViewDidFinishLoading:(SSPullToRefreshView *)view
+- (void)pullToRefreshView:(SSPullToRefreshView *)view didUpdateContentInset:(UIEdgeInsets)contentInset
 {
-  
+  if(contentInset.top == 0){
+    self.tableView.contentInset = UIEdgeInsetsMake(-1.0f, 0.0f, 0.0f, 0.0);
+  }
 }
 
 #pragma mark -
