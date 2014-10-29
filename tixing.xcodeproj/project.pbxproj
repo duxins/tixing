@@ -24,6 +24,7 @@
 		2778E09E19FF82EA0081A52D /* DXPagination.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E09D19FF82EA0081A52D /* DXPagination.m */; };
 		2778E0A719FFB6300081A52D /* DXNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E0A619FFB6300081A52D /* DXNotificationCell.m */; };
 		2778E0A91A0081340081A52D /* DXNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2778E0A81A0081340081A52D /* DXNotificationCell.xib */; };
+		2778E0AC1A00B71E0081A52D /* NSDate+DXDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E0AB1A00B71E0081A52D /* NSDate+DXDate.m */; };
 		277AE5C419F62F6D009422FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277AE5C319F62F6D009422FE /* Main.storyboard */; };
 		277AE5C719F62FCD009422FE /* DXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C619F62FCD009422FE /* DXLoginViewController.m */; };
 		277AE5CA19F633BE009422FE /* DXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C919F633BE009422FE /* DXMainViewController.m */; };
@@ -96,6 +97,8 @@
 		2778E0A519FFB6300081A52D /* DXNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXNotificationCell.h; sourceTree = "<group>"; };
 		2778E0A619FFB6300081A52D /* DXNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXNotificationCell.m; sourceTree = "<group>"; };
 		2778E0A81A0081340081A52D /* DXNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DXNotificationCell.xib; sourceTree = "<group>"; };
+		2778E0AA1A00B71E0081A52D /* NSDate+DXDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DXDate.h"; sourceTree = "<group>"; };
+		2778E0AB1A00B71E0081A52D /* NSDate+DXDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DXDate.m"; sourceTree = "<group>"; };
 		277AE5C319F62F6D009422FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		277AE5C519F62FCD009422FE /* DXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXLoginViewController.h; sourceTree = "<group>"; };
 		277AE5C619F62FCD009422FE /* DXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXLoginViewController.m; sourceTree = "<group>"; };
@@ -391,6 +394,8 @@
 			children = (
 				2778E09619FF74D50081A52D /* NSError+DXError.h */,
 				2778E09719FF74D50081A52D /* NSError+DXError.m */,
+				2778E0AA1A00B71E0081A52D /* NSDate+DXDate.h */,
+				2778E0AB1A00B71E0081A52D /* NSDate+DXDate.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -603,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2778E0AC1A00B71E0081A52D /* NSDate+DXDate.m in Sources */,
 				270A1FB719F5085700B2626A /* DXAPIClient+Notification.m in Sources */,
 				2787224A19F9113B00714D67 /* DXSoundViewController.m in Sources */,
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,
