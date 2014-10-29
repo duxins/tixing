@@ -32,7 +32,7 @@
 
 - (void)updateBallonViewBackground
 {
-  self.ballonView.backgroundColor = [UIColor colorWithRed:0.94f green:0.94f blue:0.95f alpha:1];
+  self.ballonView.backgroundColor = [UIColor colorWithRed:0.96f green:0.96f blue:0.97f alpha:1];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {

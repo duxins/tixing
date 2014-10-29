@@ -15,10 +15,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mt1-VQ-boN">
-                        <rect key="frame" x="10" y="56" width="300" height="38"/>
+                        <rect key="frame" x="8" y="56" width="304" height="38"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="消息内容" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-bA-No4">
-                                <rect key="frame" x="8" y="5" width="284" height="28"/>
+                                <rect key="frame" x="8" y="8" width="288" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -28,8 +28,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="GaA-bA-No4" secondAttribute="trailing" constant="8" id="3c1-Ib-4Tl"/>
                             <constraint firstItem="GaA-bA-No4" firstAttribute="leading" secondItem="mt1-VQ-boN" secondAttribute="leading" constant="8" id="RYp-Hg-lxX"/>
-                            <constraint firstAttribute="bottom" secondItem="GaA-bA-No4" secondAttribute="bottom" constant="5" id="d80-3t-5SZ"/>
-                            <constraint firstItem="GaA-bA-No4" firstAttribute="top" secondItem="mt1-VQ-boN" secondAttribute="top" constant="5" id="hru-z4-aBh"/>
+                            <constraint firstAttribute="bottom" secondItem="GaA-bA-No4" secondAttribute="bottom" constant="8" id="d80-3t-5SZ"/>
+                            <constraint firstItem="GaA-bA-No4" firstAttribute="top" secondItem="mt1-VQ-boN" secondAttribute="top" constant="8" id="hru-z4-aBh"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -71,11 +71,11 @@
                     <constraint firstItem="lNr-uf-Npd" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="15" id="Axy-G5-zWc"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="top" secondItem="zVg-Sb-vUj" secondAttribute="top" constant="13" id="CLp-q0-2Xx"/>
                     <constraint firstAttribute="trailing" secondItem="JUG-LE-Deo" secondAttribute="trailing" constant="15" id="E6E-JZ-hvY"/>
-                    <constraint firstItem="mt1-VQ-boN" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="10" id="Mra-5Y-bxX"/>
+                    <constraint firstItem="mt1-VQ-boN" firstAttribute="leading" secondItem="zVg-Sb-vUj" secondAttribute="leading" constant="8" id="Mra-5Y-bxX"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="leading" secondItem="JUG-LE-Deo" secondAttribute="leading" id="Uz8-1Y-spS"/>
                     <constraint firstItem="mt1-VQ-boN" firstAttribute="top" secondItem="lNr-uf-Npd" secondAttribute="bottom" constant="11" id="Wtm-SW-eeS"/>
                     <constraint firstItem="b2a-5g-5E7" firstAttribute="leading" secondItem="lNr-uf-Npd" secondAttribute="trailing" constant="10" id="amg-B1-YR5"/>
-                    <constraint firstAttribute="trailing" secondItem="mt1-VQ-boN" secondAttribute="trailing" constant="10" id="fGC-Sj-cDv"/>
+                    <constraint firstAttribute="trailing" secondItem="mt1-VQ-boN" secondAttribute="trailing" constant="8" id="fGC-Sj-cDv"/>
                     <constraint firstItem="lNr-uf-Npd" firstAttribute="top" secondItem="zVg-Sb-vUj" secondAttribute="top" constant="15" id="rbr-Fv-mt8"/>
                 </constraints>
             </tableViewCellContentView>
