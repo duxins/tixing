@@ -28,6 +28,7 @@
 		2778E0AF1A00C5E50081A52D /* DXPullToRefreshSimpleContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E0AE1A00C5E50081A52D /* DXPullToRefreshSimpleContentView.m */; };
 		2778E0B31A01B77F0081A52D /* DXNotificationCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2778E0B21A01B77F0081A52D /* DXNotificationCardCell.xib */; };
 		2778E0B61A01F3190081A52D /* DXProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E0B51A01F3190081A52D /* DXProgressHUD.m */; };
+		2778E0B91A024DFE0081A52D /* DXStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E0B81A024DFE0081A52D /* DXStartupViewController.m */; };
 		277AE5C419F62F6D009422FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277AE5C319F62F6D009422FE /* Main.storyboard */; };
 		277AE5C719F62FCD009422FE /* DXLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C619F62FCD009422FE /* DXLoginViewController.m */; };
 		277AE5CA19F633BE009422FE /* DXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AE5C919F633BE009422FE /* DXMainViewController.m */; };
@@ -107,6 +108,8 @@
 		2778E0B21A01B77F0081A52D /* DXNotificationCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DXNotificationCardCell.xib; sourceTree = "<group>"; };
 		2778E0B41A01F3190081A52D /* DXProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXProgressHUD.h; sourceTree = "<group>"; };
 		2778E0B51A01F3190081A52D /* DXProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXProgressHUD.m; sourceTree = "<group>"; };
+		2778E0B71A024DFE0081A52D /* DXStartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXStartupViewController.h; sourceTree = "<group>"; };
+		2778E0B81A024DFE0081A52D /* DXStartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXStartupViewController.m; sourceTree = "<group>"; };
 		277AE5C319F62F6D009422FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		277AE5C519F62FCD009422FE /* DXLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXLoginViewController.h; sourceTree = "<group>"; };
 		277AE5C619F62FCD009422FE /* DXLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXLoginViewController.m; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 		52B0626E119649D3844AA3E1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2778E0B71A024DFE0081A52D /* DXStartupViewController.h */,
+				2778E0B81A024DFE0081A52D /* DXStartupViewController.m */,
 				277AE5C519F62FCD009422FE /* DXLoginViewController.h */,
 				277AE5C619F62FCD009422FE /* DXLoginViewController.m */,
 				277AE5C819F633BE009422FE /* DXMainViewController.h */,
@@ -625,6 +630,7 @@
 				2778E0AC1A00B71E0081A52D /* NSDate+DXDate.m in Sources */,
 				270A1FB719F5085700B2626A /* DXAPIClient+Notification.m in Sources */,
 				2787224A19F9113B00714D67 /* DXSoundViewController.m in Sources */,
+				2778E0B91A024DFE0081A52D /* DXStartupViewController.m in Sources */,
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,
 				2787227B19FA0E2E00714D67 /* DXService.m in Sources */,
 				270A1FA319F4ED4A00B2626A /* DXAPIClient.m in Sources */,

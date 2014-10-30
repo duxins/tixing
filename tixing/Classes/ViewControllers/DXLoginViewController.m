@@ -10,9 +10,10 @@
 #import "DXCredentialStore.h"
 #import "DXAPIClient.h"
 
-@interface DXLoginViewController ()
+@interface DXLoginViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation DXLoginViewController{
@@ -24,6 +25,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.title = @"登录";
   justLaunched = YES;
   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogOut) name:TixingNotificationLogout object:nil];
 }
@@ -68,6 +70,26 @@
 {
   [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (BOOL)hidesBottomBarWhenPushed
+{
+  return YES;
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return 2;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
 
 
 @end
