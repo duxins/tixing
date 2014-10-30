@@ -19,7 +19,7 @@
 
 static NSInteger const kSpacing = 5;
 
-@interface DXMainViewController () <SSPullToRefreshViewDelegate>
+@interface DXMainViewController () <SSPullToRefreshViewDelegate, UIActionSheetDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -50,6 +50,11 @@ static NSInteger const kSpacing = 5;
   
   self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
   self.pullToRefreshView.contentView = [[DXPullToRefreshSimpleContentView alloc] init];
+  
+  UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+  longPressGesture.minimumPressDuration = 0.7;
+  longPressGesture.delegate = self;
+  [self.tableView addGestureRecognizer:longPressGesture];
 }
 
 - (void)refresh
@@ -142,6 +147,33 @@ static NSInteger const kSpacing = 5;
   return 150;
 }
 
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+  CGPoint p = [gestureRecognizer locationInView:self.tableView];
+  
+  NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+  
+  if (indexPath.row % 2 == 1) { return; }
+  
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"复制提醒内容", nil];
+    [actionSheet showInView:self.tableView];
+    [[actionSheet rac_buttonClickedSignal] subscribeNext:^(NSNumber* x) {
+      NSInteger index = [x integerValue];
+      switch (index) {
+        case 0: //delete
+          [self deleteNotificationAtIndexPath:indexPath];
+          break;
+        case 1: //copy
+          [self saveNotificationMessageToClipboardAtIndexPath:indexPath];
+          break;
+        default:
+          break;
+      }
+    }];
+  }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -177,14 +209,7 @@ static NSInteger const kSpacing = 5;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
-    DXNotification *notification = [self notificationForIndexPath:indexPath];
-    [self.notifications removeObject:notification];
-    [tableView beginUpdates];
-    //Delete notification along with the associated spacing cell.
-    NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
-    [tableView deleteRowsAtIndexPaths:@[indexPath, spacingIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    [tableView endUpdates];
-    [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
+    [self deleteNotificationAtIndexPath:indexPath];
   }
 }
 
@@ -199,12 +224,30 @@ static NSInteger const kSpacing = 5;
    return self.notifications[(NSUInteger)indexPath.row/2];
 }
 
+- (void)deleteNotificationAtIndexPath:(NSIndexPath *)indexPath
+{
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
+  [self.notifications removeObject:notification];
+  [self.tableView beginUpdates];
+  //Delete notification along with the associated spacing cell.
+  NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
+  [self.tableView deleteRowsAtIndexPaths:@[indexPath, spacingIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+  [self.tableView endUpdates];
+  [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
+}
+
+- (void)saveNotificationMessageToClipboardAtIndexPath:(NSIndexPath *)indexPath
+{
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
+  UIPasteboard *pb = [UIPasteboard generalPasteboard];
+  [pb setString:notification.message];
+}
+
 #pragma mark -
 #pragma mark Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  
 }
 
 @end
