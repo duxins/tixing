@@ -188,6 +188,10 @@ static NSInteger const kSpacing = 5;
   }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+  return @"删除";
+}
+
 #pragma mark -
 #pragma mark Navigation
 
