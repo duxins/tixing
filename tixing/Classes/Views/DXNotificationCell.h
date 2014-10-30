@@ -15,5 +15,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *serviceIconImageView;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
+@property (nonatomic, weak) IBOutlet UIView *cardView;
 
 @end

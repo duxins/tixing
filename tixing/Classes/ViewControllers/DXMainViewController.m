@@ -17,7 +17,7 @@
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
 
-static NSInteger const kSpacing = 10;
+static NSInteger const kSpacing = 5;
 
 @interface DXMainViewController () <SSPullToRefreshViewDelegate>
 @property (nonatomic, strong) NSMutableArray *notifications;
@@ -40,6 +40,7 @@ static NSInteger const kSpacing = 10;
   
   self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
   self.pullToRefreshView.contentView = [[DXPullToRefreshSimpleContentView alloc] init];
+  self.tableView.separatorColor = [UIColor clearColor];
   
   [self setupTableView];
   [self refresh];
@@ -47,7 +48,7 @@ static NSInteger const kSpacing = 10;
 
 - (void)setupTableView
 {
-  UINib *nib = [UINib nibWithNibName:@"DXNotificationCell" bundle:nil];
+  UINib *nib = [UINib nibWithNibName:@"DXNotificationCardCell" bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
 }
 
@@ -115,7 +116,7 @@ static NSInteger const kSpacing = 10;
   if (indexPath.row % 2 == 1) return kSpacing;
   
   if (!self.offscreenCell) {
-    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCell" owner:self options:nil];
+    NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCardCell" owner:self options:nil];
     self.offscreenCell = [topLevelObjects objectAtIndex:0];
   }
   
@@ -146,7 +147,7 @@ static NSInteger const kSpacing = 10;
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-  return (CGFloat)kSpacing;
+  return (CGFloat)kSpacing + 3;
 }
 
 - (NSString*) tableView:(UITableView *) tableView titleForHeaderInSection:(NSInteger)section
