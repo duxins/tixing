@@ -475,7 +475,7 @@
 				2E80018E5CFDD9A0BB35B0E8 /* Check Pods Manifest.lock */,
 				136BC2A2EF7F4C24ABEAF313 /* Sources */,
 				B82195AE81EF403CAE040244 /* Frameworks */,
-				2735672819FE8581007E9521 /* Run Script */,
+				2735672819FE8581007E9521 /* Auto-increment the build number */,
 				18B1A207CF4749649D33F245 /* Resources */,
 				6330EA35EC764BAABAB5ACB8 /* Warn for TODO and FIXME comments */,
 				81F1D8B11C6B69783BAF42D7 /* Copy Pods Resources */,
@@ -562,14 +562,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2735672819FE8581007E9521 /* Run Script */ = {
+		2735672819FE8581007E9521 /* Auto-increment the build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Auto-increment the build number";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
