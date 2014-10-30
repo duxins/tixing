@@ -38,10 +38,6 @@ static NSInteger const kSpacing = 5;
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateFormat = @"yyyy-MM-dd";
   
-  self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
-  self.pullToRefreshView.contentView = [[DXPullToRefreshSimpleContentView alloc] init];
-  self.tableView.separatorColor = [UIColor clearColor];
-  
   [self setupTableView];
   [self refresh];
 }
@@ -50,6 +46,10 @@ static NSInteger const kSpacing = 5;
 {
   UINib *nib = [UINib nibWithNibName:@"DXNotificationCardCell" bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:@"NotificationCell"];
+  self.tableView.separatorColor = [UIColor clearColor];
+  
+  self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+  self.pullToRefreshView.contentView = [[DXPullToRefreshSimpleContentView alloc] init];
 }
 
 - (void)refresh
@@ -116,6 +116,8 @@ static NSInteger const kSpacing = 5;
   if (indexPath.row % 2 == 1) return kSpacing;
   
   if (!self.offscreenCell) {
+    // Load UITableViewCell from Nib file
+    // http://stackoverflow.com/questions/540345/how-do-you-load-custom-uitableviewcells-from-xib-files
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DXNotificationCardCell" owner:self options:nil];
     self.offscreenCell = [topLevelObjects objectAtIndex:0];
   }
@@ -157,10 +159,12 @@ static NSInteger const kSpacing = 5;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  //Hide UITableView separator
   if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
     [tableView setSeparatorInset:UIEdgeInsetsZero];
   }
   
+  //iOS 8
   if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
     [tableView setLayoutMargins:UIEdgeInsetsZero];
   }
@@ -176,6 +180,7 @@ static NSInteger const kSpacing = 5;
     DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
     [self.notifications removeObject:notification];
     [tableView beginUpdates];
+    //Delete notification along with the associated spacing cell.
     NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
     [tableView deleteRowsAtIndexPaths:@[indexPath, spacingIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
     [tableView endUpdates];
@@ -188,13 +193,7 @@ static NSInteger const kSpacing = 5;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  if ([segue.identifier isEqualToString:@"ShowNotification"]) {
-    UITableViewCell *cell = (UITableViewCell *)sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
-    DXNotificationViewController *vc = segue.destinationViewController;
-    vc.notification = notification;
-  }
+  
 }
 
 @end
