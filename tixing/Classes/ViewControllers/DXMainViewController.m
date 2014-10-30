@@ -28,6 +28,8 @@ static NSInteger const kSpacing = 5;
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
 @property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
 
+@property (nonatomic, strong) UIActionSheet *actionSheet;
+
 @end
 
 @implementation DXMainViewController
@@ -37,6 +39,12 @@ static NSInteger const kSpacing = 5;
   
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateFormat = @"yyyy-MM-dd";
+  
+  [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(id x) {
+    if (self.actionSheet) {
+      [self.actionSheet dismissWithClickedButtonIndex:0 animated:NO];
+    }
+  }];
   
   [self setupTableView];
   [self refresh];
@@ -156,9 +164,9 @@ static NSInteger const kSpacing = 5;
   if (indexPath.row % 2 == 1) { return; }
   
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"复制提醒内容", nil];
-    [actionSheet showInView:self.tableView];
-    [[actionSheet rac_buttonClickedSignal] subscribeNext:^(NSNumber* x) {
+    self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"复制提醒内容", nil];
+    [self.actionSheet showInView:self.tableView];
+    [[self.actionSheet rac_buttonClickedSignal] subscribeNext:^(NSNumber* x) {
       NSInteger index = [x integerValue];
       switch (index) {
         case 0: //delete
