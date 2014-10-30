@@ -12,6 +12,7 @@ target "tixing" do
     pod 'TMCache',  '~>1.2.2'
     pod 'SSPullToRefresh', '~> 1.2.0'
     pod 'SDWebImage', '~>3.7.1'
+    pod 'MBProgressHUD', '~>0.9'
 end
 
 target "UnitTests" do

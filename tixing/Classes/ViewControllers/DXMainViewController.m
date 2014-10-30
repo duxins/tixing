@@ -16,6 +16,7 @@
 #import "NSDate+DXDate.h"
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
+#import "DXProgressHUD.h"
 
 static NSInteger const kSpacing = 5;
 
@@ -248,6 +249,9 @@ static NSInteger const kSpacing = 5;
   DXNotification *notification = [self notificationForIndexPath:indexPath];
   UIPasteboard *pb = [UIPasteboard generalPasteboard];
   [pb setString:notification.message];
+  
+  [DXProgressHUD showSuccessMessage:@"已复制" forView:self.view image:[UIImage imageNamed:@"clipboard"]];
+  
 }
 
 #pragma mark -
