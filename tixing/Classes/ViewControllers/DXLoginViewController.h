@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DXLoginViewController : UIViewController
+@interface DXLoginViewController : UITableViewController
 
 @end
