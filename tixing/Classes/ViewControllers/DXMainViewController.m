@@ -122,7 +122,7 @@ static NSInteger const kSpacing = 5;
     self.offscreenCell = [topLevelObjects objectAtIndex:0];
   }
   
-  DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
   self.offscreenCell.messageLabel.text = notification.message;
   
   [self.offscreenCell setNeedsUpdateConstraints];
@@ -177,7 +177,7 @@ static NSInteger const kSpacing = 5;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
-    DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
+    DXNotification *notification = [self notificationForIndexPath:indexPath];
     [self.notifications removeObject:notification];
     [tableView beginUpdates];
     //Delete notification along with the associated spacing cell.
@@ -190,6 +190,13 @@ static NSInteger const kSpacing = 5;
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
   return @"删除";
+}
+
+#pragma mark - 
+#pragma makr Helpers
+- (DXNotification *)notificationForIndexPath:(NSIndexPath *)indexPath
+{
+   return self.notifications[(NSUInteger)indexPath.row/2];
 }
 
 #pragma mark -
