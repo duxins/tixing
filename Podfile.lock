@@ -35,6 +35,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core
+  - SDWebImage/Core (3.7.1)
   - SSKeychain (1.2.2)
   - SSPullToRefresh (1.2.0)
   - TMCache (1.2.2)
@@ -44,6 +47,7 @@ DEPENDENCIES:
   - CocoaLumberjack (~> 1.9.2)
   - Mantle (~> 1.5)
   - ReactiveCocoa (~> 2.3.1)
+  - SDWebImage (~> 3.7.1)
   - SSKeychain (~> 1.2.2)
   - SSPullToRefresh (~> 1.2.0)
   - TMCache (~> 1.2.2)
@@ -53,6 +57,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
   TMCache: e2c9225de7a107b529d1d04baa58eb5eab3051f3

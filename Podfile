@@ -11,6 +11,7 @@ target "tixing" do
     pod 'CocoaLumberjack', '~>1.9.2'
     pod 'TMCache',  '~>1.2.2'
     pod 'SSPullToRefresh', '~> 1.2.0'
+    pod 'SDWebImage', '~>3.7.1'
 end
 
 target "UnitTests" do

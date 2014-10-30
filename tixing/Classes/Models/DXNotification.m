@@ -17,7 +17,8 @@
            @"notificationId": @"id",
            @"message": @"message",
            @"service": @"service",
-           @"createdAt": @"created_at"
+           @"createdAt": @"created_at",
+           @"thumbURL": @"thumb_url",
            };
 }
 
@@ -43,6 +44,10 @@
   return [MTLValueTransformer transformerWithBlock:^id(NSString *str) {
     return [self.dateFormatter dateFromString:str];
   }];
+}
+
++ (NSValueTransformer *)thumbURLTransformer {
+  return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 @end

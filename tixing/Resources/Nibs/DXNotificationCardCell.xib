@@ -96,6 +96,7 @@
                 <outlet property="ballonView" destination="ygu-t7-7PX" id="80g-ty-hGQ"/>
                 <outlet property="cardView" destination="LWQ-Qf-JCN" id="920-xs-JZO"/>
                 <outlet property="messageLabel" destination="vCK-6z-brJ" id="Hhp-OI-VNy"/>
+                <outlet property="thumbImageView" destination="u4Z-hy-EuG" id="YpK-Xu-rmg"/>
                 <outlet property="timeLabel" destination="piw-3u-0vr" id="NlT-Ll-Y7y"/>
                 <outlet property="titleLabel" destination="jtF-OG-uWt" id="QDL-4S-NVe"/>
             </connections>

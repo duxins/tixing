@@ -12,7 +12,7 @@
 #import "DXNotification.h"
 #import "DXNotificationCell.h"
 #import "DXPagination.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+DXDate.h"
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
@@ -116,8 +116,7 @@ static NSInteger const kSpacing = 5;
   
   cell.messageLabel.text = notification.message;
   cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
-  cell.serviceIconImageView.image = nil;
-  [cell.serviceIconImageView setImageWithURL:notification.service.iconURL];
+  [cell.thumbImageView sd_setImageWithURL:notification.thumbURL placeholderImage:[UIImage imageNamed:@"placeholder"] options:0];
   return cell;
 }
 

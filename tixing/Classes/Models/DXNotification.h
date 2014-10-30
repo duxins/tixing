@@ -17,4 +17,5 @@
 @property (nonatomic, copy, readonly) NSString *message;
 @property (nonatomic, strong) DXService *service;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
+@property (nonatomic, copy, readonly) NSURL *thumbURL;
 @end
