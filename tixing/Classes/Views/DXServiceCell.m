@@ -10,9 +10,6 @@
 
 @implementation DXServiceCell
 
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  self.imageView.frame = CGRectMake(15, 12, 20, 20);
-}
+
 
 @end

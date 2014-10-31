@@ -10,4 +10,8 @@
 
 @interface DXServiceCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *descLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *iconImageView;
+
 @end

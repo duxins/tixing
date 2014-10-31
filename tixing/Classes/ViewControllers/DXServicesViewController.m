@@ -10,13 +10,21 @@
 #import "DXAPIClient.h"
 #import "DXService.h"
 #import "DXServiceDetailViewController.h"
-#import <AFNetworking/UIImageView+AFNetworking.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "DXMacros.h"
+#import "DXServiceCell.h"
 
 static NSInteger const kNumberOfSections = 2;
 static NSInteger const kInstalledServicesSectionIndex = 0;
 static NSInteger const kUninstalledServicesSectionIndex = 1;
+
+typedef NS_ENUM(NSUInteger, DXServiceCellType){
+  DXServiceCellTypeInstalledService = 0,
+  DXServiceCellTypeUninstalledService,
+  DXServiceCellTypeComingSoon,
+  DXServiceCellTypeLoading
+};
 
 @interface DXServicesViewController ()
 @property (nonatomic, copy) NSArray *installedServices;
@@ -44,7 +52,7 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
   }];
 }
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   return kNumberOfSections;
@@ -72,59 +80,82 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (indexPath.section == kInstalledServicesSectionIndex) {
-    return [self configureInstalledServiceCellAtIndexPath:indexPath];
-  }else if(indexPath.section == kUninstalledServicesSectionIndex){
-    return [self configureUninstalledServiceCellAtIndexPath:indexPath];
+  switch ([self cellTypeAtIndexPath:indexPath]) {
+    case DXServiceCellTypeInstalledService:
+    case DXServiceCellTypeUninstalledService:
+      return [self configureServiceCellAtIndexPath:indexPath];
+    case DXServiceCellTypeLoading:
+      return [self.tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+    case DXServiceCellTypeComingSoon:
+      return [self.tableView dequeueReusableCellWithIdentifier:@"ComingSoonCell"];
+    default:
+      return [UITableViewCell new];
   }
-  return [UITableViewCell new];
 }
 
-- (UITableViewCell *)configureInstalledServiceCellAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)configureServiceCellAtIndexPath:(NSIndexPath *)indexPath
 {
-  UITableViewCell *cell;
-  if (!self.hasLoaded) {
-    cell = [self.tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-  }else{
-    cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstalledServiceCell"];
-    DXService *service;
+  DXServiceCell *cell;
+  DXService *service;
+  
+  cell = [self.tableView dequeueReusableCellWithIdentifier:@"ServiceCell"];
+  
+  if ([self cellTypeAtIndexPath:indexPath] == DXServiceCellTypeInstalledService) {
     service = self.installedServices[(NSUInteger)indexPath.row];
-    cell.textLabel.text = service.name;
-    [cell.imageView setImageWithURL:service.iconURL placeholderImage:[UIImage imageNamed:@"service-placeholder"]];
-  }
-  return cell;
-}
-
-- (UITableViewCell *)configureUninstalledServiceCellAtIndexPath:(NSIndexPath *)indexPath
-{
-  UITableViewCell *cell;
-  if (indexPath.row == (NSInteger)self.uninstalledServices.count) { //coming soon
-    cell = [self.tableView dequeueReusableCellWithIdentifier:@"ComingSoonCell"];
   }else{
-    cell = [self.tableView dequeueReusableCellWithIdentifier:@"UninstalledServiceCell"];
-    DXService *service;
     service = self.uninstalledServices[(NSUInteger)indexPath.row];
-    cell.textLabel.text = service.name;
-    [cell.imageView setImageWithURL:service.iconURL placeholderImage:[UIImage imageNamed:@"service-placeholder"]];
   }
+  
+  cell.titleLabel.text = service.name;
+  cell.descLabel.text = service.desc;
+  cell.iconImageView.image = nil;
+  [cell.iconImageView sd_setImageWithURL:service.iconURL placeholderImage:[UIImage imageNamed:@"service-placeholder"]];
+  
   return cell;
 }
 
-#pragma mark - Table view delegation
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  NSInteger section = indexPath.section;
-  NSUInteger row = (NSUInteger)indexPath.row;
-  if (section == kUninstalledServicesSectionIndex && row < self.uninstalledServices.count) {
+  
+  DXServiceCellType type = [self cellTypeAtIndexPath:indexPath];
+  
+  if (type == DXServiceCellTypeInstalledService) {
+    [self performSegueWithIdentifier:@"ShowService" sender:indexPath];
+  } else if(type == DXServiceCellTypeUninstalledService){
+    NSUInteger row = (NSUInteger)indexPath.row;
     DXService *service = self.uninstalledServices[row];
-    
-    NSString *message = [NSString stringWithFormat:@"是否确认安装\"%@\"", service.name];
-    UIAlertView *alert = DXConfirm(message);
-    [alert show];
-    
-    [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
+    [self installService:service];
+  }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  switch ([self cellTypeAtIndexPath:indexPath]) {
+    case DXServiceCellTypeInstalledService:
+    case DXServiceCellTypeUninstalledService:
+      return 55;
+      break;
+    default:
+      break;
+  }
+  
+  return 44;
+}
+
+
+#pragma mark - 
+#pragma mark Helpers
+
+- (void)installService:(DXService *)service
+{
+  NSString *message = [NSString stringWithFormat:@"是否确认安装\"%@\"", service.name];
+  UIAlertView *alert = DXConfirm(message);
+  [alert show];
+  [[[[alert rac_buttonClickedSignal]
+    filter:^BOOL(NSNumber *index) {
       return [index integerValue] == 1;
     }] flattenMap:^RACStream *(id value) {
       return [[DXAPIClient sharedClient] installServiceWithId:service.serviceId];
@@ -133,7 +164,15 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
     } error:^(NSError *error) {
       DDLogError(@"%@", error);
     }];
+}
+
+- (DXServiceCellType)cellTypeAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.section == 0) {
+    return self.hasLoaded ? DXServiceCellTypeInstalledService : DXServiceCellTypeLoading;
   }
+  
+  return indexPath.row < (NSInteger)self.uninstalledServices.count ? DXServiceCellTypeUninstalledService : DXServiceCellTypeComingSoon;
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,7 +191,7 @@ static NSInteger const kUninstalledServicesSectionIndex = 1;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"ShowService"]) {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    NSIndexPath *indexPath = sender;
     DXService *service = self.installedServices[(NSUInteger)indexPath.row];
     DXServiceDetailViewController *vc= segue.destinationViewController;
     vc.service = service;

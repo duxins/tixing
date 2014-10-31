@@ -471,7 +471,7 @@
         <!--服务-->
         <scene sceneID="F4v-1R-OZa">
             <objects>
-                <tableViewController id="gm1-lW-cDN" customClass="DXServicesViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ServiceViewController" id="gm1-lW-cDN" customClass="DXServicesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="U8t-TK-kI8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,9 +494,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <segue destination="jly-1T-n1G" kind="push" identifier="ShowService" id="spN-j0-Zt4"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UninstalledServiceCell" textLabel="EFz-2W-OdZ" imageView="k2N-Bg-85s" style="IBUITableViewCellStyleDefault" id="gLy-pT-5IV" customClass="DXServiceCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -545,6 +542,35 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ServiceCell" rowHeight="55" id="cZ7-kQ-GcC" customClass="DXServiceCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cZ7-kQ-GcC" id="p6c-7b-G8L">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服务名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ni-ym-1GU">
+                                            <rect key="frame" x="54" y="8" width="233" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新浪微博新帖提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rz3-R9-AqQ">
+                                            <rect key="frame" x="55" y="28" width="232" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.41335227270000002" green="0.41335227270000002" blue="0.41335227270000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="service-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-kN-VZo">
+                                            <rect key="frame" x="15" y="12" width="30" height="30"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descLabel" destination="Rz3-R9-AqQ" id="eZB-Lx-lL5"/>
+                                    <outlet property="iconImageView" destination="v2N-kN-VZo" id="DXg-ao-Az9"/>
+                                    <outlet property="titleLabel" destination="4Ni-ym-1GU" id="xFl-K5-FRL"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="gm1-lW-cDN" id="5KJ-3h-7mo"/>
@@ -552,10 +578,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="服务" id="idg-oy-EXM"/>
+                    <connections>
+                        <segue destination="jly-1T-n1G" kind="push" identifier="ShowService" id="142-uX-PTv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAE-7N-zeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3067" y="-99"/>
+            <point key="canvasLocation" x="3067" y="-101"/>
         </scene>
         <!--铃声-->
         <scene sceneID="Y4D-Zl-XHz">
