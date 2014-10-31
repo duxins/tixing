@@ -296,7 +296,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="提醒" footerTitle="开启后，晚上22:00 ~ 早上 8:00 将不会发出提示音" id="gJn-TO-32P">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Evi-vG-tQD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="45" id="Evi-vG-tQD">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Evi-vG-tQD" id="inM-0o-KoU">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -307,22 +307,32 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6v-CR-WV6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6v-CR-WV6">
                                                     <rect key="frame" x="151" y="12" width="136" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="dSO-6T-NBf"/>
+                                                        <constraint firstAttribute="width" constant="136" id="gIJ-7h-ZQM"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6FL-no-fBX">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6FL-no-fBX">
                                                     <rect key="frame" x="267" y="13" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="B6v-CR-WV6" secondAttribute="trailing" id="2lT-b8-M5l"/>
+                                                <constraint firstItem="B6v-CR-WV6" firstAttribute="top" secondItem="inM-0o-KoU" secondAttribute="top" constant="12" id="Dlt-Xc-DuY"/>
+                                                <constraint firstAttribute="trailing" secondItem="6FL-no-fBX" secondAttribute="trailing" id="Lfh-d3-eed"/>
+                                                <constraint firstItem="6FL-no-fBX" firstAttribute="top" secondItem="inM-0o-KoU" secondAttribute="top" constant="13" id="MFB-MY-Umt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="KJw-WA-N8X" kind="push" identifier="ShowSound" id="9tO-hZ-TO7"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="694-Bi-eZa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="694-Bi-eZa">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="694-Bi-eZa" id="fL0-G5-fGd">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -333,13 +343,17 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-p9-b1b">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-p9-b1b">
                                                     <rect key="frame" x="256" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="soundSwitchChanged:" destination="g1K-je-UiP" eventType="valueChanged" id="SVD-kR-ZzI"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gMU-p9-b1b" secondAttribute="trailing" constant="15" id="Ppj-yq-twB"/>
+                                                <constraint firstItem="gMU-p9-b1b" firstAttribute="top" secondItem="fL0-G5-fGd" secondAttribute="top" constant="6" id="g5Y-s0-BEf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
