@@ -10,6 +10,7 @@
 #import "DXLoginViewController.h"
 #import "DXMainViewController.h"
 #import "DXCredentialStore.h"
+#import "DXSignupViewController.h"
 
 @interface DXStartupViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -86,6 +87,14 @@
       [self didLoginAnimated:YES];
     };
   }
+  
+  if ([segue.identifier isEqualToString:@"Signup"]) {
+    DXSignupViewController *vc = segue.destinationViewController;
+    vc.successBlock = ^{
+      [self didLoginAnimated:YES];
+    };
+  }
+  
 }
 
 - (void)didLoginAnimated:(BOOL)animated

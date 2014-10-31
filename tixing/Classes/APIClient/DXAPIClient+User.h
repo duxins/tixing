@@ -11,6 +11,7 @@
 @interface DXAPIClient (User)
 
 - (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password;
+- (RACSignal *)signupWithName:(NSString *)name password:(NSString *)password;
 - (RACSignal *)retrieveMyInfo;
 - (RACSignal *)updateCustomSound:(NSString *)sound;
 - (RACSignal *)keepSilentAtNight:(BOOL)silent;

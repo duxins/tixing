@@ -24,6 +24,17 @@
          }];
 }
 
+- (RACSignal *)signupWithName:(NSString *)name password:(NSString *)password
+{
+  return [[[self POST:@"signup" parameters:@{@"name": name, @"password": password}]
+          map:^id(id result) {
+            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:nil];
+          }] doNext:^(DXUser *user) {
+             DDLogDebug(@"Signup successfully.");
+             [[DXCredentialStore sharedStore] userDidLogin:user];
+          }];
+}
+
 - (RACSignal *)retrieveMyInfo
 {
   return [self GET:@"user" parameters:nil];

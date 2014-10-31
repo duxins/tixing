@@ -104,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="placeholder" width="42" height="36"/>
+        <image name="placeholder" width="39" height="39"/>
         <image name="triangle90" width="12" height="15"/>
     </resources>
 </document>
