@@ -11,6 +11,7 @@
 #import "DXMainViewController.h"
 #import "DXCredentialStore.h"
 #import "DXSignupViewController.h"
+#import "DXMainViewController.h"
 
 @interface DXStartupViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -91,17 +92,23 @@
   if ([segue.identifier isEqualToString:@"Signup"]) {
     DXSignupViewController *vc = segue.destinationViewController;
     vc.successBlock = ^{
-      [self didLoginAnimated:YES];
+      [self didLoginForTheFirstTime:YES animated:YES];
     };
   }
-  
+}
+
+- (void)didLoginForTheFirstTime:(BOOL)firstTime animated:(BOOL)animated
+{
+  [self.navigationController popViewControllerAnimated:NO];
+  UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+  DXMainViewController *vc = (DXMainViewController *)nav.topViewController;
+  vc.firstTime = firstTime;
+  [self.navigationController presentViewController:nav animated:animated completion:nil];
 }
 
 - (void)didLoginAnimated:(BOOL)animated
 {
-  [self.navigationController popViewControllerAnimated:NO];
-  UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-  [self.navigationController presentViewController:vc animated:animated completion:nil];
+  [self didLoginForTheFirstTime:NO animated:animated];
 }
 
 - (void)didLogout

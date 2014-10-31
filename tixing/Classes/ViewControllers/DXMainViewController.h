@@ -10,4 +10,6 @@
 
 @interface DXMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, assign) BOOL firstTime;
+
 @end
