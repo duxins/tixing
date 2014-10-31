@@ -11,6 +11,7 @@
 
 extern NSString *const TixingNotificationTokenChanged;
 extern NSString *const TixingNotificationLogout;
+extern NSString *const TixingNotificationLogin;
 
 @interface DXCredentialStore : NSObject
 
@@ -18,7 +19,9 @@ extern NSString *const TixingNotificationLogout;
 @property (nonatomic, strong) DXUser *user;
 
 + (instancetype)sharedStore;
-- (void)saveUser;
 - (BOOL)isLoggedIn;
+
+- (void)userDidLogin:(DXUser *)user;
+- (void)userDidLogout;
 
 @end

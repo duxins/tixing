@@ -28,7 +28,7 @@ static NSString *const kDeviceTokenKey = @"TixingDeviceToken";
 {
   self = [super init];
   if(self){
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDeviceToken) name:TixingNotificationTokenChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncDeviceToken) name:TixingNotificationLogin object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(revokeDeviceToken) name:TixingNotificationLogout object:nil];
   }
   return self;

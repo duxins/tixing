@@ -10,9 +10,11 @@
 #import <SSKeychain/SSKeychain.h>
 #import <TMCache/TMCache.h>
 #import "DXUser.h"
+#import "DXMacros.h"
 
 NSString *const TixingNotificationTokenChanged = @"TixingNotificationTokenChanged";
 NSString *const TixingNotificationLogout = @"TixingNotificationLogout";
+NSString *const TixingNotificationLogin = @"TixingNotificationLogin";
 
 static NSString *const kServiceName = @"Tixing";
 static NSString *const kAuthTokenKey = @"AuthToken";
@@ -50,17 +52,11 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
 {
   if (!authToken) {
     [SSKeychain deletePasswordForService:kServiceName account:kAuthTokenKey];
-    DDLogDebug(@"Delete authtoken");
-    [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationLogout
-                                                      object:self
-                                                    userInfo:nil];
   }else if(![self.authToken isEqualToString:authToken]){
-    DDLogDebug(@"Set authtoken: %@", authToken);
     [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TixingNotificationTokenChanged
-                                                      object:self
-                                                    userInfo:nil];
   }
+  
+  DXPostNotification(TixingNotificationTokenChanged);
 }
 
 - (DXUser *)user
@@ -71,18 +67,27 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
 - (void)setUser:(DXUser *)user
 {
   if (!user) {
-    self.authToken = nil;
     [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
   }else{
-    self.authToken = user.authToken;
     [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
   }
 }
 
-- (void)saveUser
+#pragma mark -
+#pragma mark Pubilc methods
+
+- (void)userDidLogin:(DXUser *)user
 {
-  DXUser *user = self.user;
-  [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
+  self.user = user;
+  self.authToken = user.authToken;
+  DXPostNotification(TixingNotificationLogin);
+}
+
+- (void)userDidLogout
+{
+  DXPostNotification(TixingNotificationLogout);
+  self.user = nil;
+  self.authToken = nil;
 }
 
 @end

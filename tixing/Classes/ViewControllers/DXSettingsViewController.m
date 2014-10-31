@@ -63,7 +63,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   
   [[[DXAPIClient sharedClient] updateCustomSound:soundName] subscribeNext:^(id x) {
     self.user.sound = soundName;
-    [[DXCredentialStore sharedStore] saveUser];
+    [DXCredentialStore sharedStore].user = self.user;
     [self displaySoundName];
   }error:^(NSError *error) {
     [self displaySoundName];
@@ -117,7 +117,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
     [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
       return [index integerValue] == 1;
     }] subscribeNext:^(id x) {
-      [DXCredentialStore sharedStore].user = nil;
+      [[DXCredentialStore sharedStore] userDidLogout];
     }];
   }
   

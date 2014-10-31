@@ -20,7 +20,7 @@
             return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:nil];
          }]doNext:^(DXUser *user) {
            DDLogDebug(@"Login successfully.");
-           [DXCredentialStore sharedStore].user = user;
+           [[DXCredentialStore sharedStore] userDidLogin:user];
          }];
 }
 

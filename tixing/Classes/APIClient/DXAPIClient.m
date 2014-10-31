@@ -124,9 +124,6 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
       [operation cancel];
     }];
   }] doError:^(NSError *error) {
-    if ([error.domain isEqualToString: TixingAPIErrorDomain] && error.code == 1000) { //Authorization failed
-      [DXCredentialStore sharedStore].user = nil;
-    }
   }];
 }
 
