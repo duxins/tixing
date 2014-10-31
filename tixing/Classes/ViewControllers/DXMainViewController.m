@@ -237,9 +237,19 @@ static NSInteger const kSpacing = 5;
   DXNotification *notification = [self notificationForIndexPath:indexPath];
   [self.notifications removeObject:notification];
   [self.tableView beginUpdates];
-  //Delete notification along with the associated spacing cell.
-  NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
-  [self.tableView deleteRowsAtIndexPaths:@[indexPath, spacingIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+  
+  //Delete notification along with the associated spacing cell unless there is ONLY ONE cell.
+  
+  NSArray *toBeDeleted;
+  if (self.notifications.count == 0) {
+    toBeDeleted = @[indexPath];
+  }else{
+    NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
+    toBeDeleted = @[indexPath, spacingIndexPath];
+  }
+  
+  [self.tableView deleteRowsAtIndexPaths:toBeDeleted withRowAnimation:UITableViewRowAnimationLeft];
+  
   [self.tableView endUpdates];
   [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
 }
