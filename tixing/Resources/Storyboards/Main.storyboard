@@ -129,7 +129,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="em2-jw-JBE" id="ahe-71-SGe">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tVq-df-qI7">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tVq-df-qI7">
                                                     <rect key="frame" x="86" y="12" width="214" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="214" id="Y8I-Ub-ccv"/>
@@ -235,7 +235,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名，支持字母数字" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Nc-Q9J">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名，支持字母数字" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Nc-Q9J">
                                                     <rect key="frame" x="86" y="13" width="214" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="214" id="bPV-u3-8tu"/>
