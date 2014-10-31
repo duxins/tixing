@@ -15,6 +15,7 @@
 {
   [self setupLogging];
   [self registerForNotification];
+  [self customizeUI];
   return YES;
 }
 
@@ -24,6 +25,12 @@
   [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 }
 
+#pragma mark -
+#pragma makr UI Customization
+- (void)customizeUI
+{
+  [self.window setTintColor:[UIColor colorWithRed:0.17 green:0.48 blue:0.93 alpha:1]];
+}
 
 #pragma mark - 
 #pragma mark Remote Notification
