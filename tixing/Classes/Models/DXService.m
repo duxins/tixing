@@ -16,7 +16,8 @@
            @"serviceId" :  @"id",
            @"name"      :  @"name",
            @"iconURL"   :  @"icon",
-           @"URL"       :  @"url"
+           @"URL"       :  @"url",
+           @"desc"      :  @"description"
           };
 }
 
