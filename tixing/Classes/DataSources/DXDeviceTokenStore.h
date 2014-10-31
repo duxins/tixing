@@ -11,4 +11,5 @@
 @interface DXDeviceTokenStore : NSObject
 @property (nonatomic, copy) NSString *token;
 + (instancetype)sharedStore;
+- (void)revokeDeviceToken:(void (^)())completion;
 @end

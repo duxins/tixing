@@ -14,6 +14,7 @@
 #import "DXSoundViewController.h"
 #import "DXConfig.h"
 #import "DXMacros.h"
+#import "DXDeviceTokenStore.h"
 
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
@@ -44,7 +45,6 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   [self.soundSwitch setOn:self.user.silentAtNight animated:NO];
   [self displaySoundName];
 }
-
 
 #pragma mark -
 #pragma mark Sounds
@@ -117,7 +117,9 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
     [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
       return [index integerValue] == 1;
     }] subscribeNext:^(id x) {
-      [[DXCredentialStore sharedStore] userDidLogout];
+      [[DXDeviceTokenStore sharedStore] revokeDeviceToken:^{
+        [[DXCredentialStore sharedStore] userDidLogout];
+      }];
     }];
   }
   
