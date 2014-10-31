@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"登录";
+  self.nameField.text = [DXCredentialStore sharedStore].lastUserName;
   
   RAC(self.submitButton, enabled) = [RACSignal combineLatest:@[[self.nameField rac_textSignal], [self.passwordField rac_textSignal]]
                     reduce:^id(NSString *name, NSString *password){
@@ -50,7 +51,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  [self.nameField becomeFirstResponder];
+  if (self.nameField.text.length > 0) {
+    [self.passwordField becomeFirstResponder];
+  }else{
+    [self.nameField becomeFirstResponder];
+  }
 }
 
 - (IBAction)loginButtonPressed:(id)sender {

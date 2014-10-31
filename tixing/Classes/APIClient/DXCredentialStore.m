@@ -20,6 +20,11 @@ static NSString *const kServiceName = @"Tixing";
 static NSString *const kAuthTokenKey = @"AuthToken";
 
 static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
+static NSString *const kLastUserCacheKey = @"io.tixing.cache.user.last";
+
+@interface DXCredentialStore()
+@property (nonatomic, strong, readwrite) NSString *lastUserName;
+@end
 
 @implementation DXCredentialStore
 
@@ -73,6 +78,16 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
   }
 }
 
+- (NSString *)lastUserName
+{
+  return [[TMCache sharedCache] objectForKey:kLastUserCacheKey];
+}
+
+- (void)setLastUserName:(NSString *)lastUserName
+{
+  [[TMCache sharedCache] setObject:lastUserName forKey:kLastUserCacheKey];
+}
+
 #pragma mark -
 #pragma mark Pubilc methods
 
@@ -80,6 +95,7 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
 {
   self.user = user;
   self.authToken = user.authToken;
+  self.lastUserName = user.name;
   DXPostNotification(TixingNotificationLogin);
 }
 

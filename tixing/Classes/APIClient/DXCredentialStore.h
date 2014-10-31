@@ -17,6 +17,7 @@ extern NSString *const TixingNotificationLogin;
 
 @property (nonatomic, strong) NSString *authToken;
 @property (nonatomic, strong) DXUser *user;
+@property (nonatomic, strong, readonly) NSString *lastUserName;
 
 + (instancetype)sharedStore;
 - (BOOL)isLoggedIn;
