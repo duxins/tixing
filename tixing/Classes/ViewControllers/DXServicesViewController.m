@@ -71,11 +71,22 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
   if (section == kInstalledServicesSectionIndex) {
+    if (self.hasLoaded && self.installedServices.count == 0) {
+      return nil;
+    }
     return @"已安装";
   }else if(section == kUninstalledServicesSectionIndex){
     return @"未安装";
   }
   return @"";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+  if (section == kInstalledServicesSectionIndex && self.hasLoaded && self.installedServices.count == 0) {
+    return 1.0f;
+  }
+  return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
