@@ -7,16 +7,24 @@
 //
 
 #import "DXStartupViewController.h"
+#import "DXLoginViewController.h"
+#import "DXMainViewController.h"
+#import "DXCredentialStore.h"
 
 @interface DXStartupViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @end
 
-@implementation DXStartupViewController
+@implementation DXStartupViewController{
+  BOOL justLaunched;
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = @"欢迎使用";
+  justLaunched = YES;
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:TixingNotificationLogout object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -27,6 +35,15 @@
 - (void)viewWillDisappear:(BOOL)animated {
   [self.navigationController setNavigationBarHidden:NO animated:animated];
   [super viewWillDisappear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  if (justLaunched && [DXCredentialStore sharedStore].isLoggedIn) {
+    [self didLoginAnimated:NO];
+  }
+  justLaunched = NO;
 }
 
 #pragma mark -
@@ -60,14 +77,27 @@
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - 
+#pragma mark Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  if ([segue.identifier isEqualToString:@"Login"]) {
+    DXLoginViewController *vc = segue.destinationViewController;
+    vc.successBlock = ^{
+      [self didLoginAnimated:YES];
+    };
+  }
+}
+
+- (void)didLoginAnimated:(BOOL)animated
+{
+  [self.navigationController popViewControllerAnimated:NO];
+  UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+  [self.navigationController presentViewController:vc animated:animated completion:nil];
+}
+
+- (void)didLogout
+{
+  [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DXLoginViewController : UITableViewController
-
+@property (nonatomic, copy) void(^successBlock)();
 @end

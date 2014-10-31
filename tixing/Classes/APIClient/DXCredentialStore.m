@@ -37,7 +37,7 @@ static NSString *const kCurrentUserCacheKey = @"io.tixing.cache.user";
 
 - (BOOL)isLoggedIn
 {
-  return self.authToken != nil;
+  return self.authToken && self.user;
 }
 
 #pragma mark -
