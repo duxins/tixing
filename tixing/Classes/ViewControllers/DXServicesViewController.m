@@ -14,6 +14,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DXMacros.h"
 #import "DXServiceCell.h"
+#import <SSPullToRefresh/SSPullToRefresh.h>
+#import "DXPullToRefreshSimpleContentView.h"
 
 static NSInteger const kNumberOfSections = 2;
 static NSInteger const kInstalledServicesSectionIndex = 0;
@@ -26,10 +28,12 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
   DXServiceCellTypeLoading
 };
 
-@interface DXServicesViewController ()
+@interface DXServicesViewController ()<SSPullToRefreshViewDelegate>
 @property (nonatomic, copy) NSArray *installedServices;
 @property (nonatomic, copy) NSArray *uninstalledServices;
 @property (nonatomic, assign) BOOL hasLoaded;
+@property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
+@property (nonatomic, assign) BOOL isLoading;
 @end
 
 @implementation DXServicesViewController
@@ -37,19 +41,38 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.hasLoaded = NO;
+  self.pullToRefreshView = [[SSPullToRefreshView alloc] initWithScrollView:self.tableView delegate:self];
+  self.pullToRefreshView.contentView = [DXPullToRefreshSimpleContentView new];
   [self reloadServices];
 }
 
 - (void)reloadServices
 {
+  self.isLoading = YES;
   [[[DXAPIClient sharedClient] retrieveServices] subscribeNext:^(NSDictionary *result) {
+    self.isLoading = NO;
     self.hasLoaded = YES;
     self.installedServices = result[@"installed"];
     self.uninstalledServices = result[@"uninstalled"];
+    [self.pullToRefreshView finishLoading];
     [self.tableView reloadData];
   } error:^(NSError *error) {
+    self.isLoading = NO;
+    [self.pullToRefreshView finishLoading];
     DDLogError(@"%@", error);
   }];
+}
+
+#pragma mark -
+#pragma mark - SSPullToRefreshViewDelegate
+- (BOOL)pullToRefreshViewShouldStartLoading:(SSPullToRefreshView *)view
+{
+  if (self.isLoading) {
+    return NO;
+  }
+  
+  [self reloadServices];
+  return YES;
 }
 
 #pragma mark - UITableViewDataSource
