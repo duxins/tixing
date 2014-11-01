@@ -18,4 +18,5 @@
 
 - (void)insertBridgeJS;
 
+- (void)callJSFunction:(NSString *)functionName parameters:(id)parameters;
 @end

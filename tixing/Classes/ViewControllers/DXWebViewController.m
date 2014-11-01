@@ -61,7 +61,9 @@
   
   NSData *data = [query dataUsingEncoding:NSUTF8StringEncoding];
   NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-  NSString *action = [NSString stringWithFormat:@"action%@:", [URL.host capitalizedString]];
+  NSString *methodName = URL.host;
+  methodName = [URL.host stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[methodName substringToIndex:1] uppercaseString]];
+  NSString *action = [NSString stringWithFormat:@"action%@:", methodName];
   
   DDLogDebug(@"Action: %@ (%@)", action, params);
   
@@ -69,34 +71,32 @@
   
   if ([self respondsToSelector:selector]) {
     IMP imp = [self methodForSelector:selector];
-    id (*func)(id, SEL, id) = (void *)imp;
-    id result = func(self, selector, params);
-    if (params[@"callback"]) {
-      [self callFunction:params[@"callback"] parameters:result];
-    }
+    void (*func)(id, SEL, id) = (void *)imp;
+    func(self, selector, params);
   }
 }
 
-- (void)callFunction:(NSString *)functionName parameters:(id)parameters
+- (void)callJSFunction:(NSString *)functionName parameters:(id)parameters
 {
   parameters = [self formatParameters:parameters];
-  NSString *JSString = [NSString stringWithFormat:@"%@('%@')", functionName, parameters];
+  NSString *JSString = [NSString stringWithFormat:@"%@(%@)", functionName, parameters];
   DDLogDebug(@"Call javascript function:%@", JSString);
   [self.webView stringByEvaluatingJavaScriptFromString:JSString];
 }
 
 - (NSString *)formatParameters:(id)parameters
 {
-  if (!parameters) { return @"{}"; }
+  if (!parameters) { return @""; }
   
   if ([parameters isKindOfClass:[NSString class]]) {
-    parameters = @{@"result": parameters};
+    parameters = [parameters stringByReplacingOccurrencesOfString:@"'" withString:@"\\\'"];
+    parameters = [NSString stringWithFormat:@"'%@'", parameters];
+  }else{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+    parameters = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
   }
   
-  NSData *data = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
-  parameters = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-  
-  return [parameters stringByReplacingOccurrencesOfString:@"'" withString:@"\\\'"];
+  return parameters;
 }
 
 @end
