@@ -10,8 +10,12 @@
 
 @interface DXWebViewController : UIViewController
 
+@property (nonatomic, assign) BOOL buildBridge;
+
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 - (void)loadLocalFile:(NSString *)fileName replacements:(NSDictionary *)replacements;
+
+- (void)insertBridgeJS;
 
 @end

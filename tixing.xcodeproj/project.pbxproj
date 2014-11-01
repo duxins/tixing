@@ -47,6 +47,7 @@
 		27B547FA19FA55E2001C963E /* DXSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F919FA55E2001C963E /* DXSound.m */; };
 		27B547FD19FA56CD001C963E /* DXSoundStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547FC19FA56CD001C963E /* DXSoundStore.m */; };
 		27DC7D081A037DD50027AC18 /* DXSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC7D071A037DD50027AC18 /* DXSignupViewController.m */; };
+		27DC7D111A0490DE0027AC18 /* TixingBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 27DC7D101A0490DE0027AC18 /* TixingBridge.js */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
 		914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA818D0652A42F6B84A519D /* DXAppDelegate.m */; };
 		A0FC91B6AC1AE4F86624D311 /* libPods-tixing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AECA6A45C067A7A7786C03E /* libPods-tixing.a */; };
@@ -142,6 +143,7 @@
 		27B547FC19FA56CD001C963E /* DXSoundStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSoundStore.m; sourceTree = "<group>"; };
 		27DC7D061A037DD50027AC18 /* DXSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSignupViewController.h; sourceTree = "<group>"; };
 		27DC7D071A037DD50027AC18 /* DXSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSignupViewController.m; sourceTree = "<group>"; };
+		27DC7D101A0490DE0027AC18 /* TixingBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = TixingBridge.js; sourceTree = "<group>"; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,12 +234,13 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		2735672519FE67EA007E9521 /* HTMLs */ = {
+		2735672519FE67EA007E9521 /* Web */ = {
 			isa = PBXGroup;
 			children = (
 				2735672619FE6842007E9521 /* about.html */,
+				27DC7D101A0490DE0027AC18 /* TixingBridge.js */,
 			);
-			path = HTMLs;
+			path = Web;
 			sourceTree = "<group>";
 		};
 		2787224019F90C1A00714D67 /* Sounds */ = {
@@ -460,7 +463,7 @@
 		FCA47628E8EE4BE686A164B6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2735672519FE67EA007E9521 /* HTMLs */,
+				2735672519FE67EA007E9521 /* Web */,
 				2787224019F90C1A00714D67 /* Sounds */,
 				A2E34414980F4D82BB40AA34 /* Images.xcassets */,
 				929F081A9880473899EE0048 /* Storyboards */,
@@ -545,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27DC7D111A0490DE0027AC18 /* TixingBridge.js in Resources */,
 				C57D093B534B4B2F890B1EF5 /* Images.xcassets in Resources */,
 				2778E0B31A01B77F0081A52D /* DXNotificationCardCell.xib in Resources */,
 				277AE5C419F62F6D009422FE /* Main.storyboard in Resources */,

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DXWebViewController.h"
 
 @class DXService;
 
-@interface DXServiceDetailViewController : UIViewController
+@interface DXServiceDetailViewController : DXWebViewController;
 @property (nonatomic, strong) DXService *service;
-
 @property (nonatomic, copy) void (^uninstallBlock)();
 @end

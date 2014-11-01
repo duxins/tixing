@@ -763,7 +763,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-a3-SMP">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-a3-SMP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="jly-1T-n1G" id="uGV-IJ-cu3"/>
@@ -771,6 +772,12 @@
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="W7h-a3-SMP" secondAttribute="bottom" id="3KB-5L-DMZ"/>
+                            <constraint firstItem="W7h-a3-SMP" firstAttribute="leading" secondItem="Ont-0e-aI4" secondAttribute="leading" id="92m-rV-Tgt"/>
+                            <constraint firstAttribute="trailing" secondItem="W7h-a3-SMP" secondAttribute="trailing" id="Xtt-Ms-JP8"/>
+                            <constraint firstItem="W7h-a3-SMP" firstAttribute="top" secondItem="Ont-0e-aI4" secondAttribute="top" id="wQh-B1-SoJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FzR-Hi-u1W">
                         <barButtonItem key="rightBarButtonItem" title="卸载" id="a5c-AI-2Xu">

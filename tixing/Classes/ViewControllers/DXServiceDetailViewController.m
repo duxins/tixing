@@ -22,13 +22,13 @@
   [super viewDidLoad];
   [self loadWebView];
   self.title = self.service.name;
+  self.buildBridge = YES;
 }
 
 - (void)loadWebView
 {
   NSURL *URL = self.service.URL;
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
-  [request setValue:@"abcd" forHTTPHeaderField:@"Auth-Token"];
   [self.webView loadRequest:request];
 }
 

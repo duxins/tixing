@@ -31,4 +31,72 @@
   [self.webView loadHTMLString:HTMLString baseURL:nil];
 }
 
+- (void)insertBridgeJS
+{
+  NSURL *URL = [[NSBundle mainBundle] URLForResource:@"TixingBridge" withExtension:@"js"];
+  NSString *JSString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
+  [self.webView stringByEvaluatingJavaScriptFromString:JSString];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+  if (self.buildBridge) { [self insertBridgeJS]; }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+  if ([request.URL.scheme isEqualToString:@"tixing-action"]) {
+    [self parseActionURL:request.URL];
+    return NO;
+  }
+  return YES;
+}
+
+#pragma mark -
+#pragma mark - Private methods
+
+- (void)parseActionURL:(NSURL *)URL
+{
+  NSString *query = [URL.query stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  NSData *data = [query dataUsingEncoding:NSUTF8StringEncoding];
+  NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+  NSString *action = [NSString stringWithFormat:@"action%@:", [URL.host capitalizedString]];
+  
+  DDLogDebug(@"Action: %@ (%@)", action, params);
+  
+  SEL selector = NSSelectorFromString(action);
+  
+  if ([self respondsToSelector:selector]) {
+    IMP imp = [self methodForSelector:selector];
+    id (*func)(id, SEL, id) = (void *)imp;
+    id result = func(self, selector, params);
+    if (params[@"callback"]) {
+      [self callFunction:params[@"callback"] parameters:result];
+    }
+  }
+}
+
+- (void)callFunction:(NSString *)functionName parameters:(id)parameters
+{
+  parameters = [self formatParameters:parameters];
+  NSString *JSString = [NSString stringWithFormat:@"%@('%@')", functionName, parameters];
+  DDLogDebug(@"Call javascript function:%@", JSString);
+  [self.webView stringByEvaluatingJavaScriptFromString:JSString];
+}
+
+- (NSString *)formatParameters:(id)parameters
+{
+  if (!parameters) { return @"{}"; }
+  
+  if ([parameters isKindOfClass:[NSString class]]) {
+    parameters = @{@"result": parameters};
+  }
+  
+  NSData *data = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];
+  parameters = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+  
+  return [parameters stringByReplacingOccurrencesOfString:@"'" withString:@"\\\'"];
+}
+
 @end
