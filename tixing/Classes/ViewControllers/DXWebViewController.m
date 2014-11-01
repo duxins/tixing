@@ -63,9 +63,9 @@
   NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
   NSString *methodName = URL.host;
   methodName = [URL.host stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[methodName substringToIndex:1] uppercaseString]];
-  NSString *action = [NSString stringWithFormat:@"action%@:", methodName];
+  NSString *action = [NSString stringWithFormat:@"js_action%@:", methodName];
   
-  DDLogDebug(@"Action: %@ (%@)", action, params);
+  DDLogDebug(@"JS Action: %@ (%@)", action, params);
   
   SEL selector = NSSelectorFromString(action);
   
