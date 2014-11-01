@@ -8,14 +8,27 @@
 
 #import "DXWebViewController.h"
 
-@interface DXWebViewController ()
+@interface DXWebViewController () <UIWebViewDelegate>
 @end
 
 @implementation DXWebViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.buildBridge = NO;
 }
 
+- (void)loadLocalFile:(NSString *)fileName replacements:(NSDictionary *)replacements
+{
+  NSURL *URL = [[NSBundle mainBundle] URLForResource:fileName withExtension:@""];
+  
+  __block NSString *HTMLString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
+  
+  [replacements enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, NSString *replacement, BOOL *stop) {
+    HTMLString = [HTMLString stringByReplacingOccurrencesOfString:pattern withString:replacement];
+  }];
+  
+  [self.webView loadHTMLString:HTMLString baseURL:nil];
+}
 
 @end
