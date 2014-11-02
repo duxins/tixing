@@ -194,9 +194,16 @@ static NSInteger const kSpacing = 5;
   }
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (indexPath.row % 2 == 1) { return nil; }
+  return indexPath;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  [self performSegueWithIdentifier:@"ShowNotification" sender:indexPath];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -285,6 +292,12 @@ static NSInteger const kSpacing = 5;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+  if ([segue.identifier isEqualToString:@"ShowNotification"]) {
+    NSIndexPath *indexPath = sender;
+    DXNotification *notification = [self notificationForIndexPath:indexPath];
+    DXNotificationViewController *vc = segue.destinationViewController;
+    vc.notification = notification;
+  }
 }
 
 @end

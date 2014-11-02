@@ -16,6 +16,16 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.buildBridge = NO;
+  
+  if (self.URL) {
+    [self LoadURL:self.URL];
+  }
+}
+
+- (void)LoadURL:(NSURL *)URL
+{
+  NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+  [self.webView loadRequest:request];
 }
 
 - (void)loadLocalFile:(NSString *)fileName replacements:(NSDictionary *)replacements
