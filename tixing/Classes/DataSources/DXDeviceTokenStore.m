@@ -46,16 +46,19 @@ static NSString *const kDeviceTokenKey = @"TixingDeviceToken";
   }
 }
 
-- (void)revokeDeviceToken:(void (^)())completion
+- (void)revokeDeviceTokenWithCompletionHandler:(void (^)())completion
 {
   NSString *deviceToken = self.token;
-  if (deviceToken) {
-    [[[DXAPIClient sharedClient] revokeDeviceToken:deviceToken] subscribeNext:^(id x) {
-      completion();
-    }error:^(NSError *error) {
-      completion();
-    }];
+  if (!deviceToken) {
+    completion();
+    return;
   }
+  
+  [[[DXAPIClient sharedClient] revokeDeviceToken:deviceToken] subscribeNext:^(id x) {
+    completion();
+  }error:^(NSError *error) {
+    completion();
+  }];
 }
 
 #pragma mark - 

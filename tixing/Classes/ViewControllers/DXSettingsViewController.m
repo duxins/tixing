@@ -117,7 +117,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
     [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
       return [index integerValue] == 1;
     }] subscribeNext:^(id x) {
-      [[DXDeviceTokenStore sharedStore] revokeDeviceToken:^{
+      [[DXDeviceTokenStore sharedStore] revokeDeviceTokenWithCompletionHandler:^{
         [[DXCredentialStore sharedStore] userDidLogout];
       }];
     }];
