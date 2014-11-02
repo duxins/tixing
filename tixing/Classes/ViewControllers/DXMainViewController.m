@@ -172,7 +172,7 @@ static NSInteger const kSpacing = 5;
   
   NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
   
-  if (indexPath.row % 2 == 1) { return; }
+  if (!indexPath || indexPath.row % 2 == 1) { return; }
   
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"复制提醒内容", nil];
