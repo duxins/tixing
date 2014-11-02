@@ -26,6 +26,11 @@ static NSInteger const kSpacing = 5;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *notFoundMessageLabel;
+
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
 @property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
 
@@ -68,9 +73,15 @@ static NSInteger const kSpacing = 5;
 
 - (void)refresh
 {
+  
   [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(NSDictionary *result) {
     [self.pullToRefreshView finishLoading];
     self.notifications = result[@"data"];
+    
+    [self.loadingIndicator stopAnimating];
+    self.loadingView.hidden = self.notifications.count == 0 ? NO: YES;
+    self.notFoundMessageLabel.hidden = self.loadingView.hidden;
+    
     self.pagination = result[@"pagination"];
     [self.tableView reloadData];
   } error:^(NSError *error) {
@@ -251,6 +262,10 @@ static NSInteger const kSpacing = 5;
   [self.tableView deleteRowsAtIndexPaths:toBeDeleted withRowAnimation:UITableViewRowAnimationLeft];
   
   [self.tableView endUpdates];
+  
+  self.loadingView.hidden = self.notifications.count == 0 ? NO: YES;
+  self.notFoundMessageLabel.hidden = self.loadingView.hidden;
+  
   [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
 }
 

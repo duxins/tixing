@@ -328,6 +328,27 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="iDq-Jx-5rH">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="AAJ-M7-SA6" userLabel="Not Found View">
+                                    <rect key="frame" x="0.0" y="104" width="320" height="221"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9uH-K4-39I">
+                                            <rect key="frame" x="150" y="64" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您还没有收到过提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdf-KG-boN">
+                                            <rect key="frame" x="93" y="102" width="135" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.59035669191919193" green="0.59035669191919193" blue="0.59035669191919193" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="9uH-K4-39I" secondAttribute="centerX" id="CiB-Sx-TIt"/>
+                                        <constraint firstItem="Wdf-KG-boN" firstAttribute="top" secondItem="9uH-K4-39I" secondAttribute="bottom" constant="18" id="Cxc-Kt-HIj"/>
+                                        <constraint firstItem="9uH-K4-39I" firstAttribute="top" secondItem="AAJ-M7-SA6" secondAttribute="top" constant="64" id="OCS-81-jff"/>
+                                        <constraint firstAttribute="centerX" secondItem="Wdf-KG-boN" secondAttribute="centerX" id="wau-Qn-aIY"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpacingCell" id="lRc-2Y-CLY">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -360,6 +381,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicator" destination="9uH-K4-39I" id="HLv-3f-ZOv"/>
+                        <outlet property="loadingView" destination="AAJ-M7-SA6" id="TuA-dd-lU9"/>
+                        <outlet property="notFoundMessageLabel" destination="Wdf-KG-boN" id="Y8Y-Q6-N1b"/>
                         <outlet property="tableView" destination="iDq-Jx-5rH" id="wzJ-L0-iCk"/>
                         <segue destination="nZd-ka-vaI" kind="push" identifier="ShowNotification" id="SGT-p3-nt9"/>
                     </connections>
