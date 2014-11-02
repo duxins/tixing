@@ -237,7 +237,7 @@ static NSInteger const kSpacing = 5;
 }
 
 #pragma mark - 
-#pragma makr Helpers
+#pragma mark Helpers
 - (DXNotification *)notificationForIndexPath:(NSIndexPath *)indexPath
 {
    return self.notifications[(NSUInteger)indexPath.row/2];
@@ -246,16 +246,16 @@ static NSInteger const kSpacing = 5;
 - (void)deleteNotificationAtIndexPath:(NSIndexPath *)indexPath
 {
   DXNotification *notification = [self notificationForIndexPath:indexPath];
+  BOOL isFirst = (self.notifications.firstObject == notification);
   [self.notifications removeObject:notification];
   [self.tableView beginUpdates];
   
   //Delete notification along with the associated spacing cell unless there is ONLY ONE cell.
-  
   NSArray *toBeDeleted;
   if (self.notifications.count == 0) {
     toBeDeleted = @[indexPath];
   }else{
-    NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];
+    NSIndexPath *spacingIndexPath = [NSIndexPath indexPathForRow:indexPath.row + (isFirst?1:-1) inSection:indexPath.section];
     toBeDeleted = @[indexPath, spacingIndexPath];
   }
   
