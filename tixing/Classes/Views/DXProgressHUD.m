@@ -14,7 +14,7 @@
 + (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image
 {
   if (!image) {
-    image = [UIImage imageNamed:@"clipboard"];
+    image = [UIImage imageNamed:@"tick"];
   }
   
   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];

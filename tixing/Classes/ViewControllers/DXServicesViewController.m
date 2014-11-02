@@ -16,6 +16,7 @@
 #import "DXServiceCell.h"
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
+#import "DXProgressHUD.h"
 
 static NSInteger const kNumberOfSections = 2;
 static NSInteger const kInstalledServicesSectionIndex = 0;
@@ -97,9 +98,9 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
     if (self.hasLoaded && self.installedServices.count == 0) {
       return nil;
     }
-    return @"已安装";
+    return @"已添加";
   }else if(section == kUninstalledServicesSectionIndex){
-    return @"未安装";
+    return @"未添加";
   }
   return @"";
 }
@@ -185,7 +186,7 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
 
 - (void)installService:(DXService *)service
 {
-  NSString *message = [NSString stringWithFormat:@"是否确认安装\"%@\"", service.name];
+  NSString *message = [NSString stringWithFormat:@"是否确认添加\"%@\"", service.name];
   UIAlertView *alert = DXConfirm(message);
   [alert show];
   [[[[alert rac_buttonClickedSignal]
@@ -194,6 +195,7 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
     }] flattenMap:^RACStream *(id value) {
       return [[DXAPIClient sharedClient] installServiceWithId:service.serviceId];
     }] subscribeNext:^(id x) {
+      [DXProgressHUD showSuccessMessage:@"添加成功" forView:self.view image:nil];
       [self reloadServices];
     } error:^(NSError *error) {
       DDLogError(@"%@", error);

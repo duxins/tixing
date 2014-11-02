@@ -804,7 +804,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FzR-Hi-u1W">
-                        <barButtonItem key="rightBarButtonItem" title="卸载" id="a5c-AI-2Xu">
+                        <barButtonItem key="rightBarButtonItem" title="删除" id="a5c-AI-2Xu">
                             <connections>
                                 <action selector="uninstallService:" destination="jly-1T-n1G" id="NO4-tb-1iS"/>
                             </connections>

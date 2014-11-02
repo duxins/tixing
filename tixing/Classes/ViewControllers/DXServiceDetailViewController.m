@@ -33,8 +33,13 @@
 }
 
 - (IBAction)uninstallService:(id)sender {
-  NSString *message = [NSString stringWithFormat:@"是否确认卸载\"%@\"?", self.service.name];
-  UIAlertView *alert = DXConfirm(message);
+  NSString *message = [NSString stringWithFormat:@"删除\"%@\"后，将不再收到其发送的提醒", self.service.name];
+  
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                  message:message
+                                                 delegate:nil
+                                        cancelButtonTitle:@"取消"
+                                        otherButtonTitles:@"删除", nil];
   [alert show];
   
   [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
