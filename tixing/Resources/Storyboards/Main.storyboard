@@ -562,18 +562,25 @@
                             </tableViewSection>
                             <tableViewSection id="3FX-U8-1HZ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="eOy-KE-euS" style="IBUITableViewCellStyleDefault" id="Sab-pg-gHm">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="45" id="Sab-pg-gHm">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sab-pg-gHm" id="eic-gJ-bLW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="退出当前帐号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eOy-KE-euS">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="退出当前帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwr-Cs-4Vo">
+                                                    <rect key="frame" x="109" y="11" width="102" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="1" green="0.18067175757217613" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ANR-hX-h3i">
+                                                    <rect key="frame" x="286" y="12" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ANR-hX-h3i" firstAttribute="top" secondItem="eic-gJ-bLW" secondAttribute="top" constant="12" id="fOZ-h5-Sd4"/>
+                                                <constraint firstAttribute="trailing" secondItem="ANR-hX-h3i" secondAttribute="trailing" constant="14" id="gPp-xJ-Avh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -587,6 +594,7 @@
                     <navigationItem key="navigationItem" title="设置" id="sq0-VA-f3j"/>
                     <connections>
                         <outlet property="accountCell" destination="tAg-SE-DMY" id="gcb-eK-rZS"/>
+                        <outlet property="logoutIndicator" destination="ANR-hX-h3i" id="bZp-7V-yBR"/>
                         <outlet property="soundIndicator" destination="6FL-no-fBX" id="qaa-Sr-Gkv"/>
                         <outlet property="soundLabel" destination="B6v-CR-WV6" id="VIK-35-C1m"/>
                         <outlet property="soundSwitch" destination="gMU-p9-b1b" id="TiN-yZ-lVg"/>

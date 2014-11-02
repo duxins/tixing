@@ -33,6 +33,8 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *soundIndicator;
 @property (nonatomic, weak) IBOutlet UITableViewCell *accountCell;
 
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *logoutIndicator;
+
 @end
 
 @implementation DXSettingsViewController
@@ -111,16 +113,24 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   }
   
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
-    UIAlertView *alert = DXConfirm(@"是否确认退出？");
-    [alert show];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"退出后，将不再收到任何消息提醒"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"取消"
+                                          destructiveButtonTitle:@"退出"
+                                               otherButtonTitles:nil];
+    [action showInView:self.tableView];
     
-    [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
-      return [index integerValue] == 1;
-    }] subscribeNext:^(id x) {
-      [[DXDeviceTokenStore sharedStore] revokeDeviceTokenWithCompletionHandler:^{
-        [[DXCredentialStore sharedStore] userDidLogout];
+    [[[action rac_buttonClickedSignal]
+      filter:^BOOL(NSNumber *index) {
+        return [index integerValue] == 0;
+      }] subscribeNext:^(id x) {
+        [self.logoutIndicator startAnimating];
+        [[DXDeviceTokenStore sharedStore] revokeDeviceTokenWithCompletionHandler:^{
+          [self.logoutIndicator stopAnimating];
+          [[DXCredentialStore sharedStore] userDidLogout];
+        }];
       }];
-    }];
+    
   }
   
   if ([indexPath isEqual:self.indexPathsByKey[kCheckUpdatesIndexPathKey]]) {
