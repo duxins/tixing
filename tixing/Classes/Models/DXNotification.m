@@ -18,6 +18,7 @@
            @"title": @"title",
            @"message": @"message",
            @"thumbURL": @"thumb",
+           @"URL": @"url",
            @"service": @"service",
            @"createdAt": @"created_at",
            };
@@ -47,7 +48,11 @@
   }];
 }
 
-+ (NSValueTransformer *)thumbURLTransformer {
++ (NSValueTransformer *)thumbURLJSONTransformer {
+  return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)URLJSONTransformer {
   return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
