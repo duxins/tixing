@@ -15,10 +15,11 @@
 {
   return @{
            @"notificationId": @"id",
+           @"title": @"title",
            @"message": @"message",
+           @"thumbURL": @"thumb",
            @"service": @"service",
            @"createdAt": @"created_at",
-           @"thumbURL": @"thumb_url",
            };
 }
 

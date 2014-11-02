@@ -126,6 +126,7 @@ static NSInteger const kSpacing = 5;
   DXNotificationCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NotificationCell" forIndexPath:indexPath];
   DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
   
+  cell.titleLabel.text = notification.title;
   cell.messageLabel.text = notification.message;
   cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
   [cell.thumbImageView sd_setImageWithURL:notification.thumbURL placeholderImage:[UIImage imageNamed:@"placeholder"] options:0];
