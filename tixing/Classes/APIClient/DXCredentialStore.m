@@ -56,8 +56,10 @@ static NSString *const kLastUserCacheKey = @"io.tixing.cache.user.last";
 - (void)setAuthToken:(NSString *)authToken
 {
   if (!authToken) {
+    DDLogDebug(@"Delete auth token");
     [SSKeychain deletePasswordForService:kServiceName account:kAuthTokenKey];
   }else if(![self.authToken isEqualToString:authToken]){
+    DDLogDebug(@"Set auth token = %@", authToken);
     [SSKeychain setPassword:authToken forService:kServiceName account:kAuthTokenKey];
   }
   
@@ -72,8 +74,10 @@ static NSString *const kLastUserCacheKey = @"io.tixing.cache.user.last";
 - (void)setUser:(DXUser *)user
 {
   if (!user) {
+    DDLogDebug(@"Delete user cache");
     [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
   }else{
+    DDLogDebug(@"Cache User = %@", user.name);
     [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
   }
 }

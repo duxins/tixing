@@ -11,4 +11,7 @@
 
 #define DXVersionNumber ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"])
 #define DXBuildNumber   ([[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"])
-#define DXPostNotification(name) [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:nil]
+#define DXPostNotification(name) do{\
+  [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:nil];\
+  DDLogDebug(@"Post Notification: %@", name);\
+}while(0)
