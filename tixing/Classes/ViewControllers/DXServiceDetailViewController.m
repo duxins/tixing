@@ -55,4 +55,11 @@
   }];
 }
 
+#pragma mark -
+#pragma mark JS Bridge
+- (void)js_actionUninstallService:(id)parameters
+{
+  [self uninstallService:nil];
+}
+
 @end

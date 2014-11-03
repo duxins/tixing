@@ -23,3 +23,21 @@ var TixingBridge = (function(){
     }
   };
 })();
+
+//Basic
+(function(bridge){
+  bridge.goBack = function(){
+    this.callFunction('goBack');
+  }
+
+  bridge.alert = function(message){
+    this.callFunction('alert', {'message': message});
+  }
+})(TixingBridge);
+
+//Service
+(function(bridge){
+  bridge.uninstallService = function(){
+    this.callFunction('uninstallService');
+  }
+})(TixingBridge);
