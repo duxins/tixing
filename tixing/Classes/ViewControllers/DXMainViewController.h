@@ -11,5 +11,6 @@
 @interface DXMainViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) BOOL firstTime;
+- (void)loadNotification:(NSString *)notificationId;
 
 @end

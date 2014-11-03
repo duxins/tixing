@@ -31,7 +31,10 @@
 - (RACSignal *)retrieveNotificationWithId:(NSString *)notificationId
 {
   NSString *urlString = [NSString stringWithFormat:@"notifications/%@", notificationId];
-  return [self GET:urlString parameters:nil];
+  return [[self GET:urlString parameters:nil]
+          map:^id(id value) {
+            return [MTLJSONAdapter modelOfClass:[DXNotification class] fromJSONDictionary:value error:nil];
+          }];
 }
 
 - (RACSignal *)deleteNotificationWithId:(NSString *)notificationId

@@ -56,6 +56,14 @@ static NSInteger const kSpacing = 5;
   [self refresh];
 }
 
+- (void)loadNotification:(NSString *)notificationId
+{
+  [[[DXAPIClient sharedClient] retrieveNotificationWithId:notificationId]
+   subscribeNext:^(DXNotification *notification) {
+    [self performSegueWithIdentifier:@"ShowNotification" sender:notification];
+  }];
+}
+
 - (void)setupTableView
 {
   UINib *nib = [UINib nibWithNibName:@"DXNotificationCardCell" bundle:nil];
@@ -203,7 +211,7 @@ static NSInteger const kSpacing = 5;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  [self performSegueWithIdentifier:@"ShowNotification" sender:indexPath];
+  [self performSegueWithIdentifier:@"ShowNotification" sender:[self notificationForIndexPath:indexPath]];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -293,8 +301,7 @@ static NSInteger const kSpacing = 5;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if ([segue.identifier isEqualToString:@"ShowNotification"]) {
-    NSIndexPath *indexPath = sender;
-    DXNotification *notification = [self notificationForIndexPath:indexPath];
+    DXNotification *notification = sender;
     DXNotificationViewController *vc = segue.destinationViewController;
     vc.notification = notification;
   }

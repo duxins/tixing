@@ -10,4 +10,8 @@
 
 @interface DXStartupViewController : UIViewController
 
+@property (nonatomic, copy) NSString *notificationId;
+
+- (void)didReceivePushNotification:(NSDictionary *)userInfo;
+
 @end

@@ -8,11 +8,13 @@
 
 #import "DXAppDelegate.h"
 #import "DXDeviceTokenStore.h"
+#import "DXStartupViewController.h"
 
 @implementation DXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [self handleLaunchOptions:launchOptions];
   [self setupLogging];
   [self registerForNotification];
   [self customizeUI];
@@ -25,11 +27,24 @@
   [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
 }
 
+- (void)handleLaunchOptions:(NSDictionary *)launchOptions
+{
+  NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  if (!userInfo) return;
+  
+  NSString *notificationId = userInfo[@"id"];
+  if (!notificationId) return;
+  
+  UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+  DXStartupViewController *vc = [nav.viewControllers firstObject];
+  vc.notificationId = notificationId;
+}
+
 #pragma mark -
 #pragma makr UI Customization
 - (void)customizeUI
 {
-  [self.window setTintColor:[UIColor colorWithRed:0.17 green:0.48 blue:0.93 alpha:1]];
+  [self.window setTintColor:[UIColor colorWithRed:0.17f green:0.48f blue:0.93f alpha:1]];
 }
 
 #pragma mark - 
@@ -71,6 +86,14 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
   DDLogError(@"%@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+  UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+  DXStartupViewController *vc = [nav.viewControllers firstObject];
+  [vc didReceivePushNotification:userInfo];
+  
 }
 
 @end

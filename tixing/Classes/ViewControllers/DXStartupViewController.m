@@ -12,9 +12,12 @@
 #import "DXCredentialStore.h"
 #import "DXSignupViewController.h"
 #import "DXMainViewController.h"
+#import "DXAPIClient.h"
+#import "DXNotification.h"
 
 @interface DXStartupViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) DXMainViewController *mainViewController;
 @end
 
 @implementation DXStartupViewController{
@@ -44,6 +47,9 @@
   [super viewDidAppear:animated];
   if (justLaunched && [DXCredentialStore sharedStore].isLoggedIn) {
     [self didLoginAnimated:NO];
+    if (self.notificationId) {
+      [self.mainViewController loadNotification:self.notificationId];
+    }
   }
   justLaunched = NO;
 }
@@ -101,8 +107,7 @@
 {
   [self.navigationController popViewControllerAnimated:NO];
   UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-  DXMainViewController *vc = (DXMainViewController *)nav.topViewController;
-  vc.firstTime = firstTime;
+  self.mainViewController = [nav.viewControllers firstObject];
   [self.navigationController presentViewController:nav animated:animated completion:nil];
 }
 
@@ -114,6 +119,30 @@
 - (void)didLogout
 {
   [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark Push Notification
+- (void)didReceivePushNotification:(NSDictionary *)userInfo
+{
+  if (!self.mainViewController) return;
+  
+  NSString *notificationId = userInfo[@"id"];
+  NSString *mesage = [userInfo valueForKeyPath:@"aps.alert"];
+  
+  if (!notificationId) return;
+  
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                  message:mesage
+                                                 delegate:nil
+                                        cancelButtonTitle:@"取消"
+                                        otherButtonTitles:@"点击查看", nil];
+  [alert show];
+  [[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
+      return [index integerValue] == 1;
+    }] subscribeNext:^(id x) {
+      [self.mainViewController loadNotification:notificationId];
+    }];
 }
 
 @end
