@@ -3,6 +3,8 @@
 
 source 'https://github.com/CocoaPods/Specs.git'
 
+xcodeproj 'tixing', 'AdHoc' => :release
+
 target "tixing" do
     pod 'AFNetworking', '~> 2.4.1'
     pod 'ReactiveCocoa', '~> 2.3.1'
