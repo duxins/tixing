@@ -10,6 +10,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "DXAPIClient.h"
 #import "DXMacros.h"
+#import <EXTScope.h>
 
 @interface DXSignupViewController ()<UITextFieldDelegate>
 @property (nonatomic, weak) IBOutlet UITextField *nameField;
@@ -28,8 +29,10 @@
                                                         return @(name.length > 3 && password.length > 3);
                                                       }];
   
+  @weakify(self);
   [[self rac_signalForSelector:@selector(textFieldShouldReturn:) fromProtocol:@protocol(UITextFieldDelegate)]
    subscribeNext:^(RACTuple *arguments) {
+     @strongify(self);
      UITextField *textField = arguments.first;
      if (textField == self.nameField) {
        [self.passwordField becomeFirstResponder];

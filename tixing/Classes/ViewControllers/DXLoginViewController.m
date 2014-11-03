@@ -10,6 +10,7 @@
 #import "DXCredentialStore.h"
 #import "DXAPIClient.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <EXTScope.h>
 
 @interface DXLoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -33,8 +34,10 @@
                       return @(name.length > 3 && password.length > 1);
                     }];
   
+  @weakify(self);
   [[self rac_signalForSelector:@selector(textFieldShouldReturn:) fromProtocol:@protocol(UITextFieldDelegate)]
     subscribeNext:^(RACTuple *arguments) {
+      @strongify(self);
       UITextField *textField = arguments.first;
       if (textField == self.nameField) {
         [self.passwordField becomeFirstResponder];

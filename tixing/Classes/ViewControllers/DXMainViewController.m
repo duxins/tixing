@@ -17,6 +17,7 @@
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
 #import "DXProgressHUD.h"
+#import <EXTScope.h>
 
 static NSInteger const kSpacing = 5;
 
@@ -46,7 +47,9 @@ static NSInteger const kSpacing = 5;
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateFormat = @"yyyy-MM-dd";
   
+  @weakify(self);
   [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(id x) {
+    @strongify(self);
     if (self.actionSheet) {
       [self.actionSheet dismissWithClickedButtonIndex:0 animated:NO];
     }
@@ -186,7 +189,9 @@ static NSInteger const kSpacing = 5;
   if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"删除" otherButtonTitles:@"复制提醒内容", nil];
     [self.actionSheet showInView:self.tableView];
+    @weakify(self);
     [[self.actionSheet rac_buttonClickedSignal] subscribeNext:^(NSNumber* x) {
+      @strongify(self);
       NSInteger index = [x integerValue];
       switch (index) {
         case 0: //delete
@@ -238,13 +243,6 @@ static NSInteger const kSpacing = 5;
   
   if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
     [cell setLayoutMargins:UIEdgeInsetsZero];
-  }
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  if(editingStyle == UITableViewCellEditingStyleDelete){
-    [self deleteNotificationAtIndexPath:indexPath];
   }
 }
 
