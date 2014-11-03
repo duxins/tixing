@@ -60,7 +60,6 @@ typedef NS_ENUM(NSUInteger, DXServiceCellType){
   } error:^(NSError *error) {
     self.isLoading = NO;
     [self.pullToRefreshView finishLoading];
-    DDLogError(@"%@", error);
   }];
 }
 

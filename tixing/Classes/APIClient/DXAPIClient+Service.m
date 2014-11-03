@@ -13,16 +13,23 @@
 
 - (RACSignal *)retrieveServices
 {
-  return [[self GET:@"services" parameters:nil] map:^id(NSDictionary *result) {
-    
-    NSArray *installed = [MTLJSONAdapter modelsOfClass:[DXService class] fromJSONArray:result[@"installed"] error:nil];
-    NSArray *uninstalled = [MTLJSONAdapter modelsOfClass:[DXService class] fromJSONArray:result[@"uninstalled"] error:nil];
-    
-    return @{
+  return [[self GET:@"services" parameters:nil]
+    tryMap:^id(NSDictionary *result, NSError *__autoreleasing *errorPtr) {
+      NSArray *installed = [MTLJSONAdapter modelsOfClass:[DXService class]
+                                           fromJSONArray:result[@"installed"]
+                                                   error:errorPtr];
+      if (!installed) return nil;
+      
+      NSArray *uninstalled = [MTLJSONAdapter modelsOfClass:[DXService class]
+                                             fromJSONArray:result[@"uninstalled"]
+                                                     error:errorPtr];
+      if (!uninstalled) return nil;
+      
+      return @{
              @"installed": installed,
              @"uninstalled": uninstalled
              };
-  }];
+    }];
 }
 
 - (RACSignal *)retrieveServiceWithId:(NSString *)serviceId

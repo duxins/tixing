@@ -15,20 +15,20 @@
 
 - (RACSignal *)loginWithName:(NSString *)name password:(NSString *)password
 {
-  return [[[self POST:@"login" parameters:@{@"name":name, @"password": password}]
-            map:^id(id result) {
-            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:nil];
-         }]doNext:^(DXUser *user) {
+  return [[[self POST:@"login" parameters:@{@"name": name, @"password": password}]
+          tryMap:^id(NSDictionary *result, NSError *__autoreleasing *errorPtr) {
+            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:errorPtr];
+          }] doNext:^(DXUser *user) {
            DDLogDebug(@"Login successfully.");
            [[DXCredentialStore sharedStore] userDidLogin:user];
-         }];
+          }];
 }
 
 - (RACSignal *)signupWithName:(NSString *)name password:(NSString *)password
 {
   return [[[self POST:@"signup" parameters:@{@"name": name, @"password": password}]
-          map:^id(id result) {
-            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:nil];
+          tryMap:^id(NSDictionary *result, NSError *__autoreleasing *errorPtr) {
+            return [MTLJSONAdapter modelOfClass:[DXUser class] fromJSONDictionary:result error:errorPtr];
           }] doNext:^(DXUser *user) {
              DDLogDebug(@"Signup successfully.");
              [[DXCredentialStore sharedStore] userDidLogin:user];
