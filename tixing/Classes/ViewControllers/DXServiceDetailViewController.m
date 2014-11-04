@@ -11,6 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "DXAPIClient.h"
 #import "DXMacros.h"
+#import "DXCredentialStore.h"
 
 @interface DXServiceDetailViewController ()
 @property(nonatomic, weak) IBOutlet UIWebView *webView;
@@ -29,6 +30,8 @@
 {
   NSURL *URL = self.service.URL;
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+  NSString *authToken = [DXCredentialStore sharedStore].authToken;
+  [request addValue:authToken forHTTPHeaderField:@"AUTHTOKEN"];
   [self.webView loadRequest:request];
 }
 
