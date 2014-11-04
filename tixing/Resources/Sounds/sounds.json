@@ -4,8 +4,24 @@
 		"name": "tixing"
 	},
 	{
+		"label": "叮",
+		"name": "ding"
+	},
+	{
 		"label": "电梯",
 		"name": "elevator"
+	},
+	{
+		"label": "叮咚",
+		"name": "dingdong"
+	},
+	{
+		"label": "钢琴",
+		"name": "piano"
+	},
+	{
+		"label": "弹簧",
+		"name": "spring"
 	},
 	{
 		"label": "警报",
@@ -14,5 +30,5 @@
 	{
 		"label": "无",
 		"name": "default"
-	}
+	},
 ]

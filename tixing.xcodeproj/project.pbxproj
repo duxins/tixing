@@ -19,6 +19,10 @@
 		27655D1219FB94F200C5D011 /* DXDeviceTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */; };
 		27655D1519FBA0A600C5D011 /* DXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1419FBA0A600C5D011 /* DXUser.m */; };
 		2766DDCD1A077D1300E3549C /* DXWebViewController+DXBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2766DDCC1A077D1300E3549C /* DXWebViewController+DXBridge.m */; };
+		2766DDD11A08FDE500E3549C /* spring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2766DDD01A08FDE500E3549C /* spring.caf */; };
+		2766DDD51A08FE0F00E3549C /* ding.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2766DDD41A08FE0F00E3549C /* ding.caf */; };
+		2766DDD71A08FE1B00E3549C /* dingdong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2766DDD61A08FE1B00E3549C /* dingdong.caf */; };
+		2766DDD91A08FF4700E3549C /* piano.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2766DDD81A08FF4700E3549C /* piano.caf */; };
 		2778E08619FF31BB0081A52D /* DXAPIClient+Misc.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E08519FF31BB0081A52D /* DXAPIClient+Misc.m */; };
 		2778E09819FF74D50081A52D /* NSError+DXError.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E09719FF74D50081A52D /* NSError+DXError.m */; };
 		2778E09B19FF7DA10081A52D /* DXNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2778E09A19FF7DA10081A52D /* DXNotification.m */; };
@@ -95,6 +99,10 @@
 		27655D1419FBA0A600C5D011 /* DXUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXUser.m; sourceTree = "<group>"; };
 		2766DDCB1A077D1300E3549C /* DXWebViewController+DXBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXWebViewController+DXBridge.h"; sourceTree = "<group>"; };
 		2766DDCC1A077D1300E3549C /* DXWebViewController+DXBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXWebViewController+DXBridge.m"; sourceTree = "<group>"; };
+		2766DDD01A08FDE500E3549C /* spring.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = spring.caf; sourceTree = "<group>"; };
+		2766DDD41A08FE0F00E3549C /* ding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ding.caf; sourceTree = "<group>"; };
+		2766DDD61A08FE1B00E3549C /* dingdong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dingdong.caf; sourceTree = "<group>"; };
+		2766DDD81A08FF4700E3549C /* piano.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.caf; sourceTree = "<group>"; };
 		2778E08419FF31BB0081A52D /* DXAPIClient+Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+Misc.h"; sourceTree = "<group>"; };
 		2778E08519FF31BB0081A52D /* DXAPIClient+Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Misc.m"; sourceTree = "<group>"; };
 		2778E09619FF74D50081A52D /* NSError+DXError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+DXError.h"; sourceTree = "<group>"; };
@@ -249,6 +257,10 @@
 		2787224019F90C1A00714D67 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				2766DDD81A08FF4700E3549C /* piano.caf */,
+				2766DDD61A08FE1B00E3549C /* dingdong.caf */,
+				2766DDD41A08FE0F00E3549C /* ding.caf */,
+				2766DDD01A08FDE500E3549C /* spring.caf */,
 				2787226919F9D66E00714D67 /* alarm.caf */,
 				2787226A19F9D66E00714D67 /* elevator.caf */,
 				2787226D19F9D66E00714D67 /* tixing.caf */,
@@ -553,10 +565,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2766DDD91A08FF4700E3549C /* piano.caf in Resources */,
+				2766DDD71A08FE1B00E3549C /* dingdong.caf in Resources */,
 				27DC7D111A0490DE0027AC18 /* TixingBridge.js in Resources */,
+				2766DDD11A08FDE500E3549C /* spring.caf in Resources */,
 				C57D093B534B4B2F890B1EF5 /* Images.xcassets in Resources */,
 				2778E0B31A01B77F0081A52D /* DXNotificationCardCell.xib in Resources */,
 				277AE5C419F62F6D009422FE /* Main.storyboard in Resources */,
+				2766DDD51A08FE0F00E3549C /* ding.caf in Resources */,
 				2778E0A91A0081340081A52D /* DXNotificationCell.xib in Resources */,
 				2787226E19F9D66E00714D67 /* alarm.caf in Resources */,
 				2787227219F9D66E00714D67 /* tixing.caf in Resources */,

@@ -722,7 +722,7 @@
             </objects>
             <point key="canvasLocation" x="3067" y="-101"/>
         </scene>
-        <!--铃声-->
+        <!--提示音-->
         <scene sceneID="Y4D-Zl-XHz">
             <objects>
                 <tableViewController id="KJw-WA-N8X" customClass="DXSoundViewController" sceneMemberID="viewController">
@@ -743,7 +743,7 @@
                             <outlet property="delegate" destination="KJw-WA-N8X" id="YhZ-6U-96q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="铃声" id="oYg-zP-eLC"/>
+                    <navigationItem key="navigationItem" title="提示音" id="oYg-zP-eLC"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eto-5h-gCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
