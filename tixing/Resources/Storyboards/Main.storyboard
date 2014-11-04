@@ -131,9 +131,6 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tVq-df-qI7">
                                                     <rect key="frame" x="86" y="12" width="214" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="214" id="Y8I-Ub-ccv"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -145,6 +142,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="tVq-df-qI7" firstAttribute="leading" secondItem="H2H-Se-bF3" secondAttribute="trailing" constant="18" id="Af2-bu-cLX"/>
                                                 <constraint firstItem="H2H-Se-bF3" firstAttribute="top" secondItem="ahe-71-SGe" secondAttribute="top" constant="13" id="HD3-Ve-ybq"/>
                                                 <constraint firstAttribute="centerY" secondItem="tVq-df-qI7" secondAttribute="centerY" id="ZFe-HA-RPy"/>
                                                 <constraint firstItem="H2H-Se-bF3" firstAttribute="leading" secondItem="ahe-71-SGe" secondAttribute="leading" constant="20" id="w7u-B9-Oiz"/>
@@ -162,9 +160,6 @@
                                                 </activityIndicatorView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bne-Sh-xVy">
                                                     <rect key="frame" x="86" y="12" width="214" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="214" id="eXY-tE-OIw"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
@@ -177,6 +172,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RWz-2z-VuG" firstAttribute="top" secondItem="3KE-Nw-I9E" secondAttribute="top" constant="13" id="2PB-O0-GTb"/>
+                                                <constraint firstItem="bne-Sh-xVy" firstAttribute="leading" secondItem="R5E-5Z-0Ez" secondAttribute="trailing" constant="19" id="J37-VA-jbU"/>
                                                 <constraint firstAttribute="centerY" secondItem="bne-Sh-xVy" secondAttribute="centerY" id="aRh-Vz-OUh"/>
                                                 <constraint firstItem="R5E-5Z-0Ez" firstAttribute="leading" secondItem="3KE-Nw-I9E" secondAttribute="leading" constant="35" id="fpc-KV-dL5"/>
                                                 <constraint firstAttribute="trailing" secondItem="RWz-2z-VuG" secondAttribute="trailing" constant="8" id="mkP-3f-acG"/>
@@ -237,9 +233,6 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名，支持字母数字" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lt0-Nc-Q9J">
                                                     <rect key="frame" x="86" y="13" width="214" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="214" id="bPV-u3-8tu"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -249,6 +242,7 @@
                                                 <constraint firstItem="PbH-Mf-vh2" firstAttribute="leading" secondItem="KF3-hA-hfY" secondAttribute="leading" constant="20" id="P61-wf-uOs"/>
                                                 <constraint firstItem="PbH-Mf-vh2" firstAttribute="top" secondItem="KF3-hA-hfY" secondAttribute="top" constant="13" id="VGk-tw-YDI"/>
                                                 <constraint firstAttribute="trailing" secondItem="Lt0-Nc-Q9J" secondAttribute="trailing" constant="20" id="dbe-Wy-rNy"/>
+                                                <constraint firstItem="Lt0-Nc-Q9J" firstAttribute="leading" secondItem="PbH-Mf-vh2" secondAttribute="trailing" constant="18" id="gpF-jV-p9o"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -269,9 +263,6 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="必填" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNe-o6-JIN">
                                                     <rect key="frame" x="86" y="13" width="214" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="214" id="G8E-UQ-vqW"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
@@ -281,6 +272,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="jNe-o6-JIN" secondAttribute="trailing" constant="20" id="BQI-8A-WWh"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ofk-T4-gEP" secondAttribute="trailing" constant="8" id="T8N-Ka-P6S"/>
                                                 <constraint firstItem="VRd-YK-lym" firstAttribute="top" secondItem="be5-NG-6pN" secondAttribute="top" constant="13" id="Xtj-Jn-bQK"/>
+                                                <constraint firstItem="jNe-o6-JIN" firstAttribute="leading" secondItem="VRd-YK-lym" secondAttribute="trailing" constant="19" id="bmV-QH-hkd"/>
                                                 <constraint firstItem="VRd-YK-lym" firstAttribute="leading" secondItem="be5-NG-6pN" secondAttribute="leading" constant="35" id="guu-p4-STR"/>
                                                 <constraint firstItem="Ofk-T4-gEP" firstAttribute="top" secondItem="be5-NG-6pN" secondAttribute="top" constant="13" id="qqg-WU-YIl"/>
                                             </constraints>
@@ -567,8 +559,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sab-pg-gHm" id="eic-gJ-bLW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="退出当前帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwr-Cs-4Vo">
-                                                    <rect key="frame" x="109" y="11" width="102" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出当前帐号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwr-Cs-4Vo">
+                                                    <rect key="frame" x="112" y="11" width="96" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.18067175757217613" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -578,6 +570,8 @@
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Iwr-Cs-4Vo" firstAttribute="top" secondItem="eic-gJ-bLW" secondAttribute="top" constant="11" id="1NJ-se-1tX"/>
+                                                <constraint firstAttribute="centerX" secondItem="Iwr-Cs-4Vo" secondAttribute="centerX" id="6KL-u9-HpV"/>
                                                 <constraint firstItem="ANR-hX-h3i" firstAttribute="top" secondItem="eic-gJ-bLW" secondAttribute="top" constant="12" id="fOZ-h5-Sd4"/>
                                                 <constraint firstAttribute="trailing" secondItem="ANR-hX-h3i" secondAttribute="trailing" constant="14" id="gPp-xJ-Avh"/>
                                             </constraints>
@@ -896,7 +890,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-Sa-PR6">
                                 <rect key="frame" x="0.0" y="107" width="320" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-nl-JP6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-nl-JP6">
                                         <rect key="frame" x="133" y="12" width="55" height="20"/>
                                         <state key="normal" title="  复制" image="copy"/>
                                         <connections>
@@ -907,6 +901,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TJt-FH-CiI"/>
+                                    <constraint firstAttribute="centerX" secondItem="P6w-nl-JP6" secondAttribute="centerX" id="VVb-NA-wdX"/>
+                                    <constraint firstItem="P6w-nl-JP6" firstAttribute="top" secondItem="lIi-Sa-PR6" secondAttribute="top" constant="12" id="td2-PQ-TK8"/>
                                 </constraints>
                             </view>
                         </subviews>
