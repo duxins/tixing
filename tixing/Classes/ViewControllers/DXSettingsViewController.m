@@ -113,24 +113,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   }
   
   if ([indexPath isEqual: self.indexPathsByKey[kLogoutIndexPathKey]]) {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"退出后，将不再收到任何消息提醒"
-                                                        delegate:nil
-                                               cancelButtonTitle:@"取消"
-                                          destructiveButtonTitle:@"退出"
-                                               otherButtonTitles:nil];
-    [action showInView:self.tableView];
-    
-    [[[action rac_buttonClickedSignal]
-      filter:^BOOL(NSNumber *index) {
-        return [index integerValue] == 0;
-      }] subscribeNext:^(id x) {
-        [self.logoutIndicator startAnimating];
-        [[DXDeviceTokenStore sharedStore] revokeDeviceTokenWithCompletionHandler:^{
-          [self.logoutIndicator stopAnimating];
-          [[DXCredentialStore sharedStore] userDidLogout];
-        }];
-      }];
-    
+    [self logoutButtonPressed];
   }
   
   if ([indexPath isEqual:self.indexPathsByKey[kCheckUpdatesIndexPathKey]]) {
@@ -175,6 +158,46 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
 }
 
 #pragma mark -
+#pragma mark Private
+- (void)logoutButtonPressed
+{
+  NSString *title = @"退出后，将不再收到任何消息提醒";
+  
+  if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) //ipad
+  {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:title delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+    [alert show];
+    
+    [[alert rac_buttonClickedSignal] subscribeNext:^(id x) {
+      if ([x integerValue] != 1) return;
+      [self didLogout];
+    }];
+    
+  }else{
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:title
+                                                        delegate:nil
+                                               cancelButtonTitle:@"取消"
+                                          destructiveButtonTitle:@"退出"
+                                               otherButtonTitles:nil];
+    [action showInView:self.tableView];
+    [[action rac_buttonClickedSignal] subscribeNext:^(id x) {
+      if ([x integerValue] != 0) return;
+      [self didLogout];
+    }];
+    
+  }
+}
+
+- (void)didLogout
+{
+  [self.logoutIndicator startAnimating];
+  [[DXDeviceTokenStore sharedStore] revokeDeviceTokenWithCompletionHandler:^{
+    [self.logoutIndicator stopAnimating];
+    [[DXCredentialStore sharedStore] userDidLogout];
+  }];
+}
+
+#pragma mark -
 #pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -187,7 +210,6 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
     };
   }
 }
-
 
 
 @end

@@ -26,6 +26,7 @@
   layer.borderWidth = 1.0f;
   layer.borderColor = [UIColor colorWithRed:0.85f green:0.88f blue:0.9f alpha:1].CGColor;
   self.selectionStyle = UITableViewCellSelectionStyleNone;
+  self.backgroundColor = [UIColor clearColor];
 }
 
 
