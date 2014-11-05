@@ -13,3 +13,30 @@ task :build do
   end
 end
 
+namespace :sound do
+  def convert(mp3, caf)
+    puts "Converting #{mp3} -> #{caf}"
+    system(%Q{afconvert -f caff -d LEI16 -c 1 '#{mp3}' '#{caf}'})
+  end
+
+  desc 'Convert .mp3 to .caf'
+  task :convert do
+    directory = input 'Directory', '~/Desktop/sound'
+    directory = File.expand_path(directory, __FILE__)
+
+    Dir.chdir(directory) do 
+      Dir.glob("*.mp3").each do |mp3|
+        caf = mp3.gsub(/\.mp3/, '.caf')
+        convert(mp3, caf)     
+      end
+      system('open .')
+    end
+  end
+end
+
+def input prompt, default
+  print "#{prompt}: [#{default}] "
+  value = $stdin.readline.chop
+  value = default if value.empty?
+  value
+end
