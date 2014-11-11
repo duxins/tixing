@@ -11,6 +11,8 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "DXCredentialStore.h"
 #import "DXConfig.h"
+#import "DXMacros.h"
+#import <sys/utsname.h>
 
 static NSString *kAuthTokenHeaderKey = @"Auth-Token";
 
@@ -41,6 +43,7 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
     NSURL *baseURL = [NSURL URLWithString:TixingBaseURLString];
     self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
     self.manager.requestSerializer.timeoutInterval = 10;
+    [self.manager.requestSerializer setValue:[self userAgent] forHTTPHeaderField:@"User-Agent"];
     [self addAuthTokenToHeader];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addAuthTokenToHeader)
@@ -134,6 +137,18 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
   }
   
   return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+}
+
+#pragma mark -
+#pragma mark Private methods
+- (NSString *)userAgent
+{
+  NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+  struct utsname systemInfo;
+  uname(&systemInfo);
+  NSString *machineName = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+  return [NSString stringWithFormat:@"tixing/%@.%@ (%@; iOS %@; Scale/%@)",
+          DXVersionNumber, DXBuildNumber, machineName, systemVersion, @([UIScreen mainScreen].scale)];
 }
 
 
