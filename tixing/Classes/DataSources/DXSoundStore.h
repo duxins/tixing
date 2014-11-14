@@ -16,6 +16,13 @@
 
 
 /**
+ *  播放自定义提示音
+ *
+ *  @param fileName 提示音文件名(不包括扩展名)
+ */
+- (void)playSound:(NSString *)fileName;
+
+/**
  *  Get sound object by sound name
  *
  *  @param name sound name
@@ -23,5 +30,6 @@
  *  @return sound object
  */
 - (DXSound *)soundByName:(NSString *)name;
+
 
 @end

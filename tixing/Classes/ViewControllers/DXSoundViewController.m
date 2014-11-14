@@ -10,15 +10,11 @@
 #import "DXAPIClient.h"
 #import "DXSoundStore.h"
 
-@import AudioToolbox;
-
 @interface DXSoundViewController ()
 @property (nonatomic, copy) NSArray *sounds;
 @end
 
-@implementation DXSoundViewController{
-  SystemSoundID soundID;
-}
+@implementation DXSoundViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -36,14 +32,9 @@
 #pragma -
 #pragma mark Sound
 
-- (void)playSound:(NSString *)file
+- (void)playSound:(NSString *)fileName
 {
-  NSString *soundPath = [[NSBundle mainBundle] pathForResource:file ofType:@"caf"];
-  if (!soundPath)  return;
-  
-  AudioServicesDisposeSystemSoundID(soundID);
-  AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
-  AudioServicesPlaySystemSound (soundID);
+  [[DXSoundStore sharedStore] playSound:fileName];
 }
 
 #pragma mark - Table view data source

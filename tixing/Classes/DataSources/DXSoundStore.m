@@ -8,12 +8,15 @@
 
 #import "DXSoundStore.h"
 #import "DXSound.h"
+@import AudioToolbox;
 
 @interface DXSoundStore()
 @property(nonatomic, readwrite) NSArray *sounds;
 @end
 
-@implementation DXSoundStore
+@implementation DXSoundStore{
+  SystemSoundID soundID;
+}
 
 + (instancetype)sharedStore
 {
@@ -51,5 +54,17 @@
     }
   }];
   return found;
+}
+
+- (void)playSound:(NSString *)fileName
+{
+  if (!fileName) return;
+  
+  NSString *soundPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
+  if (!soundPath)  return;
+  
+  AudioServicesDisposeSystemSoundID(soundID);
+  AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+  AudioServicesPlaySystemSound (soundID);
 }
 @end
