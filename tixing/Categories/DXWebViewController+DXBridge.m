@@ -8,6 +8,7 @@
 
 #import "DXWebViewController+DXBridge.h"
 #import "DXMacros.h"
+#import "DXSoundStore.h"
 
 @implementation DXWebViewController (DXBridge)
 
@@ -22,6 +23,14 @@
 - (void)js_actionGoBack:(id)parameters
 {
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - 
+#pragma makr Sound
+- (void)js_actionPlaySound:(id)parameters
+{
+  NSString *fileName = parameters[@"name"];
+  [[DXSoundStore sharedStore] playSound:fileName];
 }
 
 @end

@@ -41,3 +41,11 @@ var TixingBridge = (function(){
     this.callFunction('uninstallService');
   }
 })(TixingBridge);
+
+//Sound
+(function(bridge){
+  bridge.playSound = function(name){
+    this.callFunction('playSound', {'name': name});
+  }
+})(TixingBridge);
+
