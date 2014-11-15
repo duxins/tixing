@@ -970,6 +970,94 @@
             </objects>
             <point key="canvasLocation" x="1901" y="2065"/>
         </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="Vg0-8v-r5O">
+            <objects>
+                <viewController storyboardIdentifier="QRScannerViewController" id="s1t-30-aey" customClass="DXQRScannerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dm8-vX-WrB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pyd-HH-CNj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Pu-zW-HzP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beE-dU-NMY">
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp7-cx-6sF">
+                                        <rect key="frame" x="14" y="5" width="64" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="取消扫描">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goBack" destination="s1t-30-aey" eventType="touchUpInside" id="Cs2-cj-JXN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Gi9-WP-bkJ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-EU-xJE" customClass="DXMaskView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将二维码放入框内，即可自动扫描" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfK-2O-r4C">
+                                <rect key="frame" x="55" y="90" width="210" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XiP-88-28m">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="F42-cK-Udc">
+                                        <rect key="frame" x="150" y="254" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在加载" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNM-s4-W74">
+                                        <rect key="frame" x="130" y="288" width="60" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="vNM-s4-W74" firstAttribute="top" secondItem="F42-cK-Udc" secondAttribute="bottom" constant="14" id="H9Y-bM-x51"/>
+                                    <constraint firstAttribute="centerX" secondItem="F42-cK-Udc" secondAttribute="centerX" id="PsQ-6G-d5K"/>
+                                    <constraint firstAttribute="centerY" secondItem="F42-cK-Udc" secondAttribute="centerY" id="YFZ-eo-M8F"/>
+                                    <constraint firstAttribute="centerX" secondItem="vNM-s4-W74" secondAttribute="centerX" id="iQi-cL-Evb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XiP-88-28m" secondAttribute="trailing" id="7fv-DU-m4C"/>
+                            <constraint firstAttribute="trailing" secondItem="beE-dU-NMY" secondAttribute="trailing" id="Iga-wc-vRd"/>
+                            <constraint firstItem="qaE-EU-xJE" firstAttribute="top" secondItem="6Pu-zW-HzP" secondAttribute="top" id="PPf-yj-NmN"/>
+                            <constraint firstItem="Pyd-HH-CNj" firstAttribute="top" secondItem="beE-dU-NMY" secondAttribute="bottom" id="QIR-TI-fej"/>
+                            <constraint firstItem="XiP-88-28m" firstAttribute="leading" secondItem="6Pu-zW-HzP" secondAttribute="leading" id="UWG-fT-H6L"/>
+                            <constraint firstItem="Pyd-HH-CNj" firstAttribute="top" secondItem="XiP-88-28m" secondAttribute="bottom" constant="40" id="XoI-sS-SvU"/>
+                            <constraint firstItem="qaE-EU-xJE" firstAttribute="leading" secondItem="6Pu-zW-HzP" secondAttribute="leading" id="ZeS-Ei-khp"/>
+                            <constraint firstItem="beE-dU-NMY" firstAttribute="leading" secondItem="6Pu-zW-HzP" secondAttribute="leading" id="b4E-6M-cp8"/>
+                            <constraint firstAttribute="trailing" secondItem="qaE-EU-xJE" secondAttribute="trailing" id="l6h-Xr-Uo5"/>
+                            <constraint firstItem="gfK-2O-r4C" firstAttribute="top" secondItem="Dm8-vX-WrB" secondAttribute="bottom" constant="70" id="pJt-rp-xvH"/>
+                            <constraint firstAttribute="centerX" secondItem="gfK-2O-r4C" secondAttribute="centerX" id="pzU-ZM-CZ4"/>
+                            <constraint firstItem="XiP-88-28m" firstAttribute="top" secondItem="6Pu-zW-HzP" secondAttribute="top" id="qlf-LX-Jlp"/>
+                            <constraint firstItem="beE-dU-NMY" firstAttribute="top" secondItem="qaE-EU-xJE" secondAttribute="bottom" constant="-2" id="yqR-db-ko2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="maskView" destination="XiP-88-28m" id="M4q-lG-rH8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvX-qq-vLC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881" y="-790"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="spS-0O-PCy">
             <objects>

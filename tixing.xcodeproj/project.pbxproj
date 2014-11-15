@@ -48,6 +48,8 @@
 		2787227219F9D66E00714D67 /* tixing.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2787226D19F9D66E00714D67 /* tixing.caf */; };
 		2787227819F9E38600714D67 /* DXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2787227719F9E38600714D67 /* DXWebViewController.m */; };
 		2787227B19FA0E2E00714D67 /* DXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2787227A19FA0E2E00714D67 /* DXService.m */; };
+		279965021A175E7100123FD5 /* DXQRScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279965011A175E7100123FD5 /* DXQRScannerViewController.m */; };
+		279965051A1764ED00123FD5 /* DXMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 279965041A1764ED00123FD5 /* DXMaskView.m */; };
 		27B547F419FA2D02001C963E /* DXServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F319FA2D02001C963E /* DXServiceCell.m */; };
 		27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F619FA47EA001C963E /* DXServiceDetailViewController.m */; };
 		27B547FA19FA55E2001C963E /* DXSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F919FA55E2001C963E /* DXSound.m */; };
@@ -146,6 +148,10 @@
 		2787227719F9E38600714D67 /* DXWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXWebViewController.m; sourceTree = "<group>"; };
 		2787227919FA0E2E00714D67 /* DXService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXService.h; sourceTree = "<group>"; };
 		2787227A19FA0E2E00714D67 /* DXService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXService.m; sourceTree = "<group>"; };
+		279965001A175E7100123FD5 /* DXQRScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXQRScannerViewController.h; sourceTree = "<group>"; };
+		279965011A175E7100123FD5 /* DXQRScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXQRScannerViewController.m; sourceTree = "<group>"; };
+		279965031A1764ED00123FD5 /* DXMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXMaskView.h; sourceTree = "<group>"; };
+		279965041A1764ED00123FD5 /* DXMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXMaskView.m; sourceTree = "<group>"; };
 		27B547F219FA2D02001C963E /* DXServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXServiceCell.h; sourceTree = "<group>"; };
 		27B547F319FA2D02001C963E /* DXServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXServiceCell.m; sourceTree = "<group>"; };
 		27B547F519FA47EA001C963E /* DXServiceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXServiceDetailViewController.h; sourceTree = "<group>"; };
@@ -306,6 +312,8 @@
 				2787227719F9E38600714D67 /* DXWebViewController.m */,
 				2735672219FE665A007E9521 /* DXAboutViewController.h */,
 				2735672319FE665A007E9521 /* DXAboutViewController.m */,
+				279965001A175E7100123FD5 /* DXQRScannerViewController.h */,
+				279965011A175E7100123FD5 /* DXQRScannerViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -427,6 +435,8 @@
 				2778E0AE1A00C5E50081A52D /* DXPullToRefreshSimpleContentView.m */,
 				2778E0B41A01F3190081A52D /* DXProgressHUD.h */,
 				2778E0B51A01F3190081A52D /* DXProgressHUD.m */,
+				279965031A1764ED00123FD5 /* DXMaskView.h */,
+				279965041A1764ED00123FD5 /* DXMaskView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -663,6 +673,7 @@
 			files = (
 				2778E0AC1A00B71E0081A52D /* NSDate+DXDate.m in Sources */,
 				270A1FB719F5085700B2626A /* DXAPIClient+Notification.m in Sources */,
+				279965051A1764ED00123FD5 /* DXMaskView.m in Sources */,
 				2766DDCD1A077D1300E3549C /* DXWebViewController+DXBridge.m in Sources */,
 				2787224A19F9113B00714D67 /* DXSoundViewController.m in Sources */,
 				2778E0B91A024DFE0081A52D /* DXStartupViewController.m in Sources */,
@@ -695,6 +706,7 @@
 				2778E0B61A01F3190081A52D /* DXProgressHUD.m in Sources */,
 				2778E09B19FF7DA10081A52D /* DXNotification.m in Sources */,
 				B392A7C1A7804C8F969AB43D /* main.m in Sources */,
+				279965021A175E7100123FD5 /* DXQRScannerViewController.m in Sources */,
 				27655D1519FBA0A600C5D011 /* DXUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
