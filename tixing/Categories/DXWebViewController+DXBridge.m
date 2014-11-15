@@ -9,6 +9,7 @@
 #import "DXWebViewController+DXBridge.h"
 #import "DXMacros.h"
 #import "DXSoundStore.h"
+#import "DXQRScannerViewController.h"
 
 @implementation DXWebViewController (DXBridge)
 
@@ -26,11 +27,22 @@
 }
 
 #pragma mark - 
-#pragma makr Sound
+#pragma makr Media
 - (void)js_actionPlaySound:(id)parameters
 {
   NSString *fileName = parameters[@"name"];
   [[DXSoundStore sharedStore] playSound:fileName];
+}
+
+- (void)js_actionScanQRCode:(id)parameters
+{
+  NSString *callback = parameters[@"callback"];
+  if(!callback) return;
+  DXQRScannerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"QRScannerViewController"];
+  [self.navigationController presentViewController:vc animated:YES completion:nil];
+  vc.successBlock = ^(NSString *code){
+    [self callJSFunction:callback parameters:code];
+  };
 }
 
 @end

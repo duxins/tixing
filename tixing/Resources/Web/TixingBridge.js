@@ -42,10 +42,14 @@ var TixingBridge = (function(){
   }
 })(TixingBridge);
 
-//Sound
+//Media
 (function(bridge){
   bridge.playSound = function(name){
     this.callFunction('playSound', {'name': name});
+  }
+ 
+  bridge.scanQRCode = function(callback){
+    this.callFunction('scanQRCode', null, callback);
   }
 })(TixingBridge);
 
