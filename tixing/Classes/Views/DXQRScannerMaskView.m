@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Xin Du. All rights reserved.
 //
 
-#import "DXMaskView.h"
+#import "DXQRScannerMaskView.h"
 
-@implementation DXMaskView
+@implementation DXQRScannerMaskView
 
 - (void)drawRect:(CGRect)rect
 {

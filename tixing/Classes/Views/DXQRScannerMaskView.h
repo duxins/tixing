@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DXMaskView : UIView
+@interface DXQRScannerMaskView : UIView
 
 @end

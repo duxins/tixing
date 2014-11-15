@@ -1001,7 +1001,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Gi9-WP-bkJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-EU-xJE" customClass="DXMaskView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaE-EU-xJE" customClass="DXQRScannerMaskView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="530"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
