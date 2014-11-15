@@ -24,8 +24,8 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
   [super viewDidDisappear:animated];
-  if (self.didSelecteBlock) {
-    self.didSelecteBlock(self.selectedSound);
+  if (self.didSelectedBlock) {
+    self.didSelectedBlock(self.selectedSound);
   }
 }
 

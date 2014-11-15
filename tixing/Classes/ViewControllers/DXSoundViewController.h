@@ -12,6 +12,6 @@
 @interface DXSoundViewController : UITableViewController
 
 @property (nonatomic, copy) DXSound *selectedSound;
-@property (nonatomic, copy) void (^didSelecteBlock)(DXSound *newSound);
+@property (nonatomic, copy) void (^didSelectedBlock)(DXSound *newSound);
 
 @end

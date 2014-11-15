@@ -204,7 +204,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   if ([segue.identifier isEqualToString:@"ShowSound"]) {
     DXSoundViewController *vc =  segue.destinationViewController;
     vc.selectedSound = self.sound;
-    vc.didSelecteBlock = ^(DXSound *sound){
+    vc.didSelectedBlock = ^(DXSound *sound){
       if (!sound || [sound isEqual:self.sound]) { return; }
       [self updateSoundName:sound.name];
     };
