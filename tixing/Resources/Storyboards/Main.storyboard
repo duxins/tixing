@@ -1033,7 +1033,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="XiP-88-28m" secondAttribute="trailing" id="7fv-DU-m4C"/>
                             <constraint firstAttribute="trailing" secondItem="beE-dU-NMY" secondAttribute="trailing" id="Iga-wc-vRd"/>
@@ -1051,7 +1051,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="maskView" destination="XiP-88-28m" id="M4q-lG-rH8"/>
+                        <outlet property="loadingView" destination="XiP-88-28m" id="Kg2-zI-E38"/>
+                        <outlet property="maskView" destination="qaE-EU-xJE" id="rWS-oL-ZSb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cvX-qq-vLC" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,25 +7,26 @@
 //
 
 #import "DXQRScannerViewController.h"
+#import "DXQRScannerMaskView.h"
 
 @import AVFoundation;
 
 @interface DXQRScannerViewController () <AVCaptureMetadataOutputObjectsDelegate>
 @property (nonatomic, strong) AVCaptureSession *captureSession;
-@property (nonatomic, strong) IBOutlet UIView *maskView;
+@property (nonatomic, weak) IBOutlet DXQRScannerMaskView *maskView;
+@property (nonatomic, weak) IBOutlet UIView *loadingView;
 @end
 
 @implementation DXQRScannerViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  self.maskView.hidden = YES;
+  self.loadingView.hidden = YES;
   [self start];
 }
 
@@ -55,6 +56,8 @@
   [self.view.layer insertSublayer:previewLayer atIndex:0];
   previewLayer.frame = self.view.bounds;
   [self.captureSession startRunning];
+  
+
 }
 
 #pragma mark -
