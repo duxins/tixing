@@ -1,6 +1,8 @@
 var TixingBridge = (function(){
   var version = 1.0;
   var scheme = 'tixing-action://';
+  var callbacksCount = 0;
+  var callbackPrefix = 'TixingCallback'
 
   function createIframe(src) {
     var iframe = document.createElement("iframe");
@@ -9,16 +11,28 @@ var TixingBridge = (function(){
     document.body.appendChild(iframe);
   }
 
+  function createCallback(callback){
+    var name = callbackPrefix + callbacksCount;
+    window[name] = callback;
+    callbacksCount ++;
+    return name
+  }
+
   return {
     getVersion: function(){
       return version;
     },
     callFunction: function(action, parameters, callback){
-      parameters = parameters || {};
-      callback = callback || '';
-      //TODO: Support real callback function
-      parameters['callback'] = callback;
-      var url = scheme + action + '/?' + JSON.stringify(parameters)
+      parameters = parameters || {}
+      callback = callback || ''
+
+      if (typeof callback == 'function') {
+        callback = createCallback(callback)
+      }
+
+      parameters.callback = callback;
+
+      var url = scheme + action + '/?' + JSON.stringify(parameters);
       createIframe(url);
     }
   };
