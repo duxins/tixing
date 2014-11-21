@@ -11,5 +11,6 @@
 @interface DXProgressHUD : NSObject
 
 + (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image;
++ (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image completion:(void (^)())completion;
 
 @end

@@ -11,5 +11,6 @@
 @interface DXAPIClient (Misc)
 
 - (RACSignal *)checkForUpdates;
+- (RACSignal *)leaveFeedback:(NSString *)content;
 
 @end

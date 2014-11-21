@@ -525,6 +525,24 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0Gj-F5-7gz" style="IBUITableViewCellStyleDefault" id="c72-gH-CDx">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c72-gH-CDx" id="9YF-Pr-3Rw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="意见反馈" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Gj-F5-7gz">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="0fL-nh-SBH" kind="push" id="ugB-HK-6Qv"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0IZ-mW-N1k" style="IBUITableViewCellStyleDefault" id="LC5-Az-nAg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LC5-Az-nAg" id="vg8-Q3-nNE">
@@ -604,6 +622,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zja-RJ-QeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2387" y="305"/>
+        </scene>
+        <!--意见反馈-->
+        <scene sceneID="ING-Ly-aEG">
+            <objects>
+                <tableViewController id="0fL-nh-SBH" customClass="DXFeedbackViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cu9-U3-bUH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="ble-Fe-bZu">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="140" id="9bC-4O-d5j">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9bC-4O-d5j" id="Mgm-mP-Ize">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoQ-d5-8bi">
+                                                    <rect key="frame" x="5" y="8" width="310" height="124"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="0fL-nh-SBH" id="2Fm-Dg-3f7"/>
+                                                    </connections>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请描述您遇到的问题或您的宝贵建议" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otm-5E-2p4">
+                                                    <rect key="frame" x="9" y="14" width="240" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.63222791234715581" green="0.6600181502525253" blue="0.6600181502525253" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="otm-5E-2p4" firstAttribute="top" secondItem="Mgm-mP-Ize" secondAttribute="top" constant="14" id="5hC-7J-Qht"/>
+                                                <constraint firstItem="otm-5E-2p4" firstAttribute="leading" secondItem="Mgm-mP-Ize" secondAttribute="leading" constant="9" id="A96-yc-PCP"/>
+                                                <constraint firstAttribute="trailing" secondItem="FoQ-d5-8bi" secondAttribute="trailing" constant="5" id="B6J-tA-Q3H"/>
+                                                <constraint firstItem="FoQ-d5-8bi" firstAttribute="top" secondItem="Mgm-mP-Ize" secondAttribute="top" constant="8" id="VAf-0i-RHA"/>
+                                                <constraint firstAttribute="bottom" secondItem="FoQ-d5-8bi" secondAttribute="bottom" constant="7" id="qut-rP-JEB"/>
+                                                <constraint firstItem="FoQ-d5-8bi" firstAttribute="leading" secondItem="Mgm-mP-Ize" secondAttribute="leading" constant="5" id="wqc-vE-dYg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="0fL-nh-SBH" id="rWg-pf-0eG"/>
+                            <outlet property="delegate" destination="0fL-nh-SBH" id="0Or-BG-MG5"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="意见反馈" id="W6B-FM-7PC">
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="LMI-Ze-SD9">
+                            <connections>
+                                <action selector="submit:" destination="0fL-nh-SBH" id="1l1-yT-UJ1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="feedbackTextView" destination="FoQ-d5-8bi" id="GYK-tD-jcv"/>
+                        <outlet property="placeholder" destination="otm-5E-2p4" id="PX9-qL-BhN"/>
+                        <outlet property="submitButton" destination="LMI-Ze-SD9" id="ZeU-jt-G1z"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o86-CR-mgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3067" y="-894"/>
         </scene>
         <!--服务-->
         <scene sceneID="F4v-1R-OZa">

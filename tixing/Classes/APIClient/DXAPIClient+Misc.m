@@ -16,4 +16,9 @@
   return [self GET:@"updates" parameters:@{@"version": DXVersionNumber}];
 }
 
+- (RACSignal *)leaveFeedback:(NSString *)content
+{
+  return [self POST:@"feedbacks" parameters:@{@"content": content}];
+}
+
 @end

@@ -11,7 +11,7 @@
 
 @implementation DXProgressHUD
 
-+ (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image
++ (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image completion:(void (^)())completion;
 {
   if (!image) {
     image = [UIImage imageNamed:@"tick"];
@@ -32,10 +32,16 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
       [UIView animateWithDuration:0.15 animations:^{
         [hud hide:YES];
+      }completion:^(BOOL finished) {
+        if (completion) { completion(); }
       }];
     });
   }];
-  
+}
+
++ (void)showSuccessMessage:(NSString *)message forView:(UIView *)view image:(UIImage *)image
+{
+  [self showSuccessMessage:message forView:view image:image completion:nil];
 }
 
 @end
