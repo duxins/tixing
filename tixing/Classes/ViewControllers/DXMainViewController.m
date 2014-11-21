@@ -32,6 +32,8 @@ static NSInteger const kSpacing = 5;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *notFoundMessageLabel;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
 @property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
 
@@ -90,7 +92,8 @@ static NSInteger const kSpacing = 5;
     self.notifications = result[@"data"];
     
     [self.loadingIndicator stopAnimating];
-    self.loadingView.hidden = self.notifications.count == 0 ? NO: YES;
+    self.loadingView.hidden = self.notifications.count != 0;
+    self.clearButton.enabled = self.notifications.count != 0;
     self.notFoundMessageLabel.hidden = self.loadingView.hidden;
     
     self.pagination = result[@"pagination"];
@@ -277,7 +280,8 @@ static NSInteger const kSpacing = 5;
   
   [self.tableView endUpdates];
   
-  self.loadingView.hidden = self.notifications.count == 0 ? NO: YES;
+  self.loadingView.hidden = self.notifications.count !=0;
+  self.clearButton.enabled = self.notifications.count !=0;
   self.notFoundMessageLabel.hidden = self.loadingView.hidden;
   
   [[[DXAPIClient sharedClient] deleteNotificationWithId:notification.notificationId] subscribeNext:^(id x) {}];
@@ -291,6 +295,23 @@ static NSInteger const kSpacing = 5;
   
   [DXProgressHUD showSuccessMessage:@"已复制" forView:self.view image:[UIImage imageNamed:@"clipboard"]];
   
+}
+#pragma mark -
+#pragma mark Actions
+- (IBAction)clearNotifications:(id)sender
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"是否确认清空消息列表" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+  [alert show];
+  [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
+    return [index integerValue] == 1;
+  }] flattenMap:^RACStream *(id value) {
+    DXNotification *notification = [self.notifications firstObject];
+    return [[DXAPIClient sharedClient] clearNotificationsUntil:notification.notificationId];
+  }] subscribeNext:^(id x) {
+    [self.notifications removeAllObjects];
+    [self.tableView reloadData];
+    [self refresh];
+  }];
 }
 
 #pragma mark -

@@ -43,4 +43,10 @@
   return [self DELETE:urlString parameters:nil];
 }
 
+- (RACSignal *)clearNotificationsUntil:(NSString *)notificationId
+{
+  if (!notificationId) { return [RACSignal empty]; }
+  return [self DELETE:@"notifications" parameters:@{@"until": notificationId}];
+}
+
 @end

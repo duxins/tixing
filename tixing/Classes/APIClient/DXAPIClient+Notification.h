@@ -13,5 +13,6 @@
 - (RACSignal *)retrieveNotifications;
 - (RACSignal *)retrieveNotificationWithId:(NSString *)notificationId;
 - (RACSignal *)deleteNotificationWithId:(NSString *)notificationId;
+- (RACSignal *)clearNotificationsUntil:(NSString *)notificationId;
 
 @end
