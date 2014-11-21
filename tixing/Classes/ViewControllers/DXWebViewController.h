@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DXWebViewController : UIViewController
+@interface DXWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, assign) BOOL buildBridge;
 @property (nonatomic, strong) NSURL *URL;

@@ -15,6 +15,9 @@
 
 @interface DXServiceDetailViewController ()
 @property(nonatomic, weak) IBOutlet UIWebView *webView;
+@property(nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic, assign) BOOL hasLoaded;
 @end
 
 @implementation DXServiceDetailViewController
@@ -24,6 +27,12 @@
   [self loadWebView];
   self.title = self.service.name;
   self.buildBridge = YES;
+  self.hasLoaded = NO;
+}
+
+- (void)dealloc
+{
+  [self.timer invalidate];
 }
 
 - (void)loadWebView
@@ -55,6 +64,35 @@
     }
   } error:^(NSError *error) {
     DDLogError(@"%@", error);
+  }];
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+  if (!self.hasLoaded) { //first time
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(retryLoading) userInfo:nil repeats:NO];
+  }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+  [super webViewDidFinishLoad:webView];
+  [self.timer invalidate];
+  self.hasLoaded = YES;
+  self.loadingIndicator.hidden = YES;
+}
+
+- (void)retryLoading
+{
+  [self.webView stopLoading];
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"服务加载失败，请点击重试" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"重试", nil];
+  [alert show];
+  [[alert rac_buttonClickedSignal] subscribeNext:^(NSNumber *index) {
+    if (index.integerValue == 1) { //retry
+      [self loadWebView];
+    }else{
+      [self.navigationController popViewControllerAnimated:YES];
+    }
   }];
 }
 

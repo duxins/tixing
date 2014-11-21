@@ -8,7 +8,7 @@
 
 #import "DXWebViewController.h"
 
-@interface DXWebViewController () <UIWebViewDelegate>
+@interface DXWebViewController ()
 @end
 
 @implementation DXWebViewController
