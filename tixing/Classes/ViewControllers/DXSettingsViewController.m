@@ -94,7 +94,8 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
 {
   sender.enabled = NO;
   [[[DXAPIClient sharedClient] keepSilentAtNight:sender.isOn] subscribeNext:^(id x) {
-    [DXCredentialStore sharedStore].user.silentAtNight = sender.isOn;
+    self.user.silentAtNight = sender.isOn;
+    [DXCredentialStore sharedStore].user = self.user;
     sender.enabled = YES;
   } error:^(NSError *error) {
     sender.enabled = YES;
