@@ -18,12 +18,14 @@
 @property (nonatomic, weak) IBOutlet UIImageView *thumbImageView;
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *openURLBarButton;
+@property (nonatomic, assign) BOOL hasOpened;
 @end
 
 @implementation DXNotificationViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.hasOpened = NO;
   
   if (self.notification) {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
@@ -41,9 +43,19 @@
       self.openURLBarButton.enabled = NO;
     }
     
-    if (self.notification.autoOpen) { [self openURL]; }
   }
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  if (!self.hasOpened && self.notification.autoOpen) {
+    [self openURL];
+    self.hasOpened = YES;
+  }
+}
+
+
 
 #pragma mark -
 #pragma mark Actions
