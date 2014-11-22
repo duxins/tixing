@@ -18,7 +18,7 @@ namespace :distribute do
   desc 'Upload .ipa file to fir.im'
   task fir: :build do
     token = $fir_token
-    short = 'xxtx'
+    short = 'tixing'
     bundle_id = 'com.duxinx.tixing'
     app_url = "http://fir.im/#{short}/info"
     ipa_path = './tixing.ipa'
