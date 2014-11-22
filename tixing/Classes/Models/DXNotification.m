@@ -19,6 +19,7 @@
            @"message": @"message",
            @"thumbURL": @"thumb",
            @"URL": @"url",
+           @"webURL": @"web_url",
            @"service": @"service",
            @"createdAt": @"created_at",
            };
@@ -53,6 +54,10 @@
 }
 
 + (NSValueTransformer *)URLJSONTransformer {
+  return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)webURLJSONTransformer {
   return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 

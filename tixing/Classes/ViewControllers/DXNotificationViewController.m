@@ -36,7 +36,8 @@
     self.thumbImageView.layer.masksToBounds = YES;
     [self.thumbImageView sd_setImageWithURL:self.notification.thumbURL placeholderImage:[UIImage imageNamed:@"placeholder"]];
     
-    if (![[UIApplication sharedApplication] canOpenURL:self.notification.URL]) {
+    UIApplication *applicatoin = [UIApplication sharedApplication];
+    if (![applicatoin canOpenURL:self.notification.URL] && ![applicatoin canOpenURL:self.notification.webURL]) {
       self.openURLBarButton.enabled = NO;
     }
   }
@@ -54,10 +55,26 @@
 
 - (IBAction)openURLButtonPressed:(id)sender
 {
-  NSURL *URL = self.notification.URL;
+  [self openURL];
+}
+
+- (void)openURL
+{
+  DXNotification *notification = self.notification;
   UIApplication *application = [UIApplication sharedApplication];
+  
+  NSURL *URL;
+  
+  if ([application canOpenURL:notification.URL]) {
+    URL = notification.URL;
+  }else if([application canOpenURL:notification.webURL]){
+    URL = notification.webURL;
+  }
+  
+  if (!URL) return;
+  
   if ([URL.scheme isEqualToString:@"http"] || [URL.scheme isEqualToString:@"https"]) {
-    [self performSegueWithIdentifier:@"OpenURL" sender:nil];
+    [self performSegueWithIdentifier:@"OpenURL" sender:URL];
   }else if ([application canOpenURL:URL]) {
     [application openURL:URL];
   }
@@ -69,7 +86,7 @@
 {
   if ([segue.identifier isEqualToString:@"OpenURL"]) {
     DXWebViewController *vc = segue.destinationViewController;
-    vc.URL = self.notification.URL;
+    vc.URL = sender;
   }
 }
 

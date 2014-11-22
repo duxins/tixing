@@ -20,4 +20,5 @@
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSURL *thumbURL;
 @property (nonatomic, copy, readonly) NSURL *URL;
+@property (nonatomic, copy, readonly) NSURL *webURL;
 @end
