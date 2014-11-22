@@ -40,6 +40,8 @@
     if (![applicatoin canOpenURL:self.notification.URL] && ![applicatoin canOpenURL:self.notification.webURL]) {
       self.openURLBarButton.enabled = NO;
     }
+    
+    if (self.notification.autoOpen) { [self openURL]; }
   }
 }
 

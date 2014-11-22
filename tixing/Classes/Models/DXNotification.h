@@ -21,4 +21,5 @@
 @property (nonatomic, copy, readonly) NSURL *thumbURL;
 @property (nonatomic, copy, readonly) NSURL *URL;
 @property (nonatomic, copy, readonly) NSURL *webURL;
+@property (nonatomic, assign) BOOL autoOpen;
 @end

@@ -13,5 +13,6 @@
 @interface DXNotificationViewController : UIViewController
 
 @property (nonatomic, strong) DXNotification *notification;
+@property (nonatomic, assign) BOOL autoOpen;
 
 @end

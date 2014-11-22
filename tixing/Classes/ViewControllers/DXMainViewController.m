@@ -65,6 +65,7 @@ static NSInteger const kSpacing = 5;
 {
   [[[DXAPIClient sharedClient] retrieveNotificationWithId:notificationId]
    subscribeNext:^(DXNotification *notification) {
+    notification.autoOpen = YES;
     [self performSegueWithIdentifier:@"ShowNotification" sender:notification];
   }];
 }
