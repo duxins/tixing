@@ -123,7 +123,7 @@
 
 #pragma mark -
 #pragma mark Push Notification
-- (void)didReceivePushNotification:(NSDictionary *)userInfo
+- (void)reportPushNotification:(NSDictionary *)userInfo
 {
   if (!self.mainViewController) return;
   
@@ -132,7 +132,7 @@
   
   if (!notificationId) return;
   
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"新提醒"
                                                   message:mesage
                                                  delegate:nil
                                         cancelButtonTitle:@"取消"
@@ -143,6 +143,18 @@
     }] subscribeNext:^(id x) {
       [self.mainViewController loadNotification:notificationId];
     }];
+}
+
+- (void)openPushNotification:(NSDictionary *)userInfo
+{
+  NSString *notificationId = userInfo[@"id"];
+  if (!notificationId) return;
+  
+  if (self.mainViewController) { //logged in
+    [self.mainViewController loadNotification:notificationId];
+  }else{
+    self.notificationId = notificationId;
+  }
 }
 
 @end

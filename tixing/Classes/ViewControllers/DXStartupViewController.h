@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy) NSString *notificationId;
 
-- (void)didReceivePushNotification:(NSDictionary *)userInfo;
+- (void)reportPushNotification:(NSDictionary *)userInfo;
+- (void)openPushNotification:(NSDictionary *)userInfo;
 
 @end

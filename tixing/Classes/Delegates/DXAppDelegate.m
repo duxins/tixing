@@ -14,10 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [self handleLaunchOptions:launchOptions];
   [self setupLogging];
   [self registerForNotification];
   [self customizeUI];
+  
+  NSDictionary *pushNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  if (pushNotification) {
+    [self application:application didReceiveRemoteNotification:pushNotification];
+  }
   return YES;
 }
 
@@ -25,19 +29,6 @@
 {
   [DDLog addLogger:[DDTTYLogger sharedInstance]];
   [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
-}
-
-- (void)handleLaunchOptions:(NSDictionary *)launchOptions
-{
-  NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-  if (!userInfo) return;
-  
-  NSString *notificationId = userInfo[@"id"];
-  if (!notificationId) return;
-  
-  UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-  DXStartupViewController *vc = [nav.viewControllers firstObject];
-  vc.notificationId = notificationId;
 }
 
 #pragma mark -
@@ -90,10 +81,14 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+  DDLogDebug(@"Notification Received: %@", userInfo);
   UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
   DXStartupViewController *vc = [nav.viewControllers firstObject];
-  [vc didReceivePushNotification:userInfo];
-  
+  if (application.applicationState == UIApplicationStateActive) {
+    [vc reportPushNotification:userInfo];
+  }else{
+    [vc openPushNotification:userInfo];
+  }
 }
 
 @end
