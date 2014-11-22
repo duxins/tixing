@@ -14,6 +14,7 @@
 #import "DXMainViewController.h"
 #import "DXAPIClient.h"
 #import "DXNotification.h"
+#import "DXSoundStore.h"
 
 @interface DXStartupViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -129,6 +130,11 @@
   
   NSString *notificationId = userInfo[@"id"];
   NSString *mesage = [userInfo valueForKeyPath:@"aps.alert"];
+  NSString *sound = [userInfo valueForKeyPath:@"aps.sound"];
+  
+  if (sound) {
+    [[DXSoundStore sharedStore] playSound:sound];
+  }
   
   if (!notificationId) return;
   

@@ -60,6 +60,7 @@
 {
   if (!fileName) return;
   
+  fileName = [fileName stringByReplacingOccurrencesOfString:@".caf" withString:@""];
   NSString *soundPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"caf"];
   if (!soundPath)  return;
   
