@@ -25,6 +25,7 @@ static NSInteger const kSpacing = 5;
 @property (nonatomic, strong) NSMutableArray *notifications;
 @property (nonatomic, strong) DXPagination *pagination;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
+@property (nonatomic, strong) NSMutableDictionary *heightsCache;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -48,6 +49,7 @@ static NSInteger const kSpacing = 5;
   
   self.dateFormatter = [[NSDateFormatter alloc] init];
   self.dateFormatter.dateFormat = @"yyyy-MM-dd";
+  self.heightsCache = [[NSMutableDictionary alloc] init];
   
   @weakify(self);
   [[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] subscribeNext:^(id x) {
@@ -87,7 +89,6 @@ static NSInteger const kSpacing = 5;
 
 - (void)refresh
 {
-  
   [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(NSDictionary *result) {
     [self.pullToRefreshView finishLoading];
     self.notifications = result[@"data"];
@@ -96,6 +97,7 @@ static NSInteger const kSpacing = 5;
     self.loadingView.hidden = self.notifications.count != 0;
     self.clearButton.enabled = self.notifications.count != 0;
     self.notFoundMessageLabel.hidden = self.loadingView.hidden;
+    self.heightsCache = [[NSMutableDictionary alloc] init];
     
     self.pagination = result[@"pagination"];
     [self.tableView reloadData];
@@ -154,6 +156,11 @@ static NSInteger const kSpacing = 5;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (indexPath.row % 2 == 1) return kSpacing;
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
+  
+  if (self.heightsCache[notification]){
+    return [self.heightsCache[notification] floatValue];
+  }
   
   if (!self.offscreenCell) {
     // Load UITableViewCell from Nib file
@@ -162,7 +169,6 @@ static NSInteger const kSpacing = 5;
     self.offscreenCell = [topLevelObjects objectAtIndex:0];
   }
   
-  DXNotification *notification = [self notificationForIndexPath:indexPath];
   self.offscreenCell.messageLabel.text = notification.message;
   
   [self.offscreenCell setNeedsUpdateConstraints];
@@ -173,13 +179,19 @@ static NSInteger const kSpacing = 5;
   
   CGFloat height = [self.offscreenCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
   
-  return height + 1;
+  self.heightsCache[notification] = @(height + 1);
+  
+  return [self.heightsCache[notification] floatValue];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (indexPath.row % 2 == 1) return kSpacing;
-  return 150;
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
+  if (self.heightsCache[notification]){
+    return [self.heightsCache[notification] floatValue];
+  }
+  return 90;
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -265,6 +277,7 @@ static NSInteger const kSpacing = 5;
 {
   DXNotification *notification = [self notificationForIndexPath:indexPath];
   BOOL isFirst = (self.notifications.firstObject == notification);
+  [self.heightsCache removeObjectForKey:notification];
   [self.notifications removeObject:notification];
   [self.tableView beginUpdates];
   
