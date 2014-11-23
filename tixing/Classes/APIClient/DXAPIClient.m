@@ -77,6 +77,11 @@ static NSString *kAuthTokenHeaderKey = @"Auth-Token";
   return [self requestWithMethod:@"POST" URLString:URLString parameters:parameters];
 }
 
+- (RACSignal *)PATCH:(NSString *)URLString parameters:(NSDictionary *)parameters
+{
+  return [self requestWithMethod:@"PATCH" URLString:URLString parameters:parameters];
+}
+
 - (RACSignal *)PUT:(NSString *)URLString parameters:(NSDictionary *)parameters
 {
   return [self requestWithMethod:@"PUT" URLString:URLString parameters:parameters];

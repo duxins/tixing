@@ -17,6 +17,7 @@
 - (RACSignal *)POST:(NSString *)URLString parameters:(NSDictionary *)parameters;
 - (RACSignal *)PUT:(NSString *)URLString parameters:(NSDictionary *)parameters;
 - (RACSignal *)DELETE:(NSString *)URLString parameters:(NSDictionary *)parameters;
+- (RACSignal *)PATCH:(NSString *)URLString parameters:(NSDictionary *)parameters;
 
 @end
 

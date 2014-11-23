@@ -833,7 +833,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eto-5h-gCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3067" y="658"/>
+            <point key="canvasLocation" x="4113" y="747"/>
         </scene>
         <!--关于-->
         <scene sceneID="GWR-JN-pA6">
@@ -904,13 +904,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FzR-Hi-u1W">
-                        <barButtonItem key="rightBarButtonItem" title="删除" id="a5c-AI-2Xu">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="info" id="uca-Wg-QIp">
                             <connections>
-                                <action selector="uninstallService:" destination="jly-1T-n1G" id="NO4-tb-1iS"/>
+                                <segue destination="gBz-Rh-Mni" kind="push" identifier="DisplayInfo" id="JzP-Ci-i2g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="infoButtonItem" destination="uca-Wg-QIp" id="TW1-6S-EJd"/>
                         <outlet property="loadingIndicator" destination="t0Q-f9-jPu" id="L3r-2p-cHN"/>
                         <outlet property="webView" destination="W7h-a3-SMP" id="GPT-HF-qTt"/>
                     </connections>
@@ -918,6 +919,160 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qks-K8-6A2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3657" y="-99"/>
+        </scene>
+        <!--详情-->
+        <scene sceneID="Or2-MT-nmA">
+            <objects>
+                <tableViewController id="gBz-Rh-Mni" customClass="DXServiceInfoViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xCO-si-K8x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="RhG-db-WbD" userLabel="HeaderView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者: Xin Du" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guT-Mm-c8k">
+                                    <rect key="frame" x="93" y="56" width="69" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                    <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <size key="shadowOffset" width="1" height="1"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消息提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2h-hk-4TC">
+                                    <rect key="frame" x="91" y="28" width="68" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" highlightedImage="bell" translatesAutoresizingMaskIntoConstraints="NO" id="5mr-tx-8mB">
+                                    <rect key="frame" x="15" y="18" width="60" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="ZPa-aI-8RP"/>
+                                        <constraint firstAttribute="width" constant="60" id="hMg-hg-yrr"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="5mr-tx-8mB" firstAttribute="leading" secondItem="RhG-db-WbD" secondAttribute="leading" constant="15" id="4dq-Ml-5H0"/>
+                                <constraint firstItem="guT-Mm-c8k" firstAttribute="top" secondItem="V2h-hk-4TC" secondAttribute="bottom" constant="7" id="JCb-D3-8PH"/>
+                                <constraint firstItem="V2h-hk-4TC" firstAttribute="leading" secondItem="5mr-tx-8mB" secondAttribute="trailing" constant="16" id="R7Z-jb-0KX"/>
+                                <constraint firstItem="V2h-hk-4TC" firstAttribute="top" secondItem="RhG-db-WbD" secondAttribute="top" constant="28" id="TM5-Vb-yZt"/>
+                                <constraint firstItem="5mr-tx-8mB" firstAttribute="top" secondItem="RhG-db-WbD" secondAttribute="top" constant="18" id="aYf-UI-XxO"/>
+                                <constraint firstItem="guT-Mm-c8k" firstAttribute="leading" secondItem="5mr-tx-8mB" secondAttribute="trailing" constant="18" id="qgu-2I-cQL"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="9P0-2w-ldQ" userLabel="FooterView">
+                            <rect key="frame" x="0.0" y="194" width="320" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESY-s1-hNS">
+                                    <rect key="frame" x="20" y="24" width="280" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="800" id="AAS-qi-s1g"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                    <state key="normal" title="删除服务" backgroundImage="btn-uninstall">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="btn-uninstall-highlight"/>
+                                    <connections>
+                                        <action selector="uninstallButtonPressed:" destination="gBz-Rh-Mni" eventType="touchUpInside" id="Dss-KE-hNp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="ESY-s1-hNS" secondAttribute="bottom" constant="8" id="0gr-3M-0lI"/>
+                                <constraint firstAttribute="trailing" secondItem="ESY-s1-hNS" secondAttribute="trailing" priority="800" constant="20" id="Kcd-sd-hQB"/>
+                                <constraint firstAttribute="centerX" secondItem="ESY-s1-hNS" secondAttribute="centerX" id="Qh1-PN-ewT"/>
+                                <constraint firstItem="ESY-s1-hNS" firstAttribute="leading" secondItem="9P0-2w-ldQ" secondAttribute="leading" priority="800" constant="20" id="kJi-kx-jjp"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection id="5e6-EG-PhA">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="45" id="SkH-8P-nv0">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SkH-8P-nv0" id="4B4-mX-FpA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服务提示音" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6OO-aN-YBZ">
+                                                    <rect key="frame" x="15" y="11" width="85" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKM-cl-3Ld">
+                                                    <rect key="frame" x="245" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.63222791229999997" green="0.66001815029999999" blue="0.66001815029999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3W0-Ww-f5w">
+                                                    <rect key="frame" x="267" y="11" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gKM-cl-3Ld" firstAttribute="top" secondItem="4B4-mX-FpA" secondAttribute="top" constant="12" id="1U0-WA-Vka"/>
+                                                <constraint firstAttribute="trailing" secondItem="gKM-cl-3Ld" secondAttribute="trailing" id="4B4-Ik-nRL"/>
+                                                <constraint firstAttribute="trailing" secondItem="3W0-Ww-f5w" secondAttribute="trailing" id="D0Y-FI-M3H"/>
+                                                <constraint firstItem="3W0-Ww-f5w" firstAttribute="top" secondItem="4B4-mX-FpA" secondAttribute="top" constant="11" id="hm3-HG-XL9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KJw-WA-N8X" kind="push" identifier="ShowSound" id="VS8-5z-rpf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="FFk-fy-Mmd">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FFk-fy-Mmd" id="IwI-XC-ch5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="接收提醒" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJq-Sa-Mj5">
+                                                    <rect key="frame" x="15" y="11" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtT-Tf-Iej">
+                                                    <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="notificationSwitchChanged:" destination="gBz-Rh-Mni" eventType="valueChanged" id="XlP-TX-it9"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wtT-Tf-Iej" firstAttribute="top" secondItem="IwI-XC-ch5" secondAttribute="top" constant="6" id="B7G-L3-Eew"/>
+                                                <constraint firstAttribute="trailing" secondItem="wtT-Tf-Iej" secondAttribute="trailing" constant="15" id="hYh-Ej-jvQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="gBz-Rh-Mni" id="0rZ-YS-Br9"/>
+                            <outlet property="delegate" destination="gBz-Rh-Mni" id="JgK-Ss-eBd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="详情" id="dws-D0-Wbe"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="5mr-tx-8mB" id="SCg-lq-u5f"/>
+                        <outlet property="notificationSwitch" destination="wtT-Tf-Iej" id="jIA-6F-PYS"/>
+                        <outlet property="serviceDescriptionLabel" destination="guT-Mm-c8k" id="S77-Fo-uL3"/>
+                        <outlet property="serviceTitleLabel" destination="V2h-hk-4TC" id="fTe-rg-32k"/>
+                        <outlet property="soundLabel" destination="gKM-cl-3Ld" id="CA8-uZ-QWu"/>
+                        <outlet property="soundLoadingIndicator" destination="3W0-Ww-f5w" id="bpj-gw-4Bt"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vtm-6D-R5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4113" y="-100"/>
         </scene>
         <!--提醒-->
         <scene sceneID="PDV-Ph-3Vk">
@@ -1196,8 +1351,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bell" width="66" height="73"/>
+        <image name="btn-uninstall" width="280" height="40"/>
+        <image name="btn-uninstall-highlight" width="280" height="40"/>
         <image name="clear" width="17" height="22"/>
         <image name="copy" width="16" height="20"/>
+        <image name="info" width="22" height="5"/>
         <image name="link" width="20" height="20"/>
         <image name="logo" width="122" height="122"/>
         <image name="service-coming-soon" width="31" height="22"/>
@@ -1209,4 +1368,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="VS8-5z-rpf"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -50,4 +50,10 @@
   return [self DELETE:urlString parameters:nil];
 }
 
+- (RACSignal *)updateServicePreferences:(NSDictionary *)preferences withServiceId:(NSString *)serviceId
+{
+  NSString *urlString = [NSString stringWithFormat:@"services/%@/installation", serviceId];
+  return [self PATCH:urlString parameters:preferences];
+}
+
 @end

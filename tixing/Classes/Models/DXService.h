@@ -16,5 +16,7 @@
 @property (nonatomic, readonly, copy) NSURL *iconURL;
 @property (nonatomic, readonly) NSURL *URL;
 @property (nonatomic, readonly, copy) NSString *desc;
+@property (nonatomic, strong) NSString *sound;
+@property (nonatomic, assign) BOOL enabled;
 
 @end

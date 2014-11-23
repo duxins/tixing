@@ -14,5 +14,6 @@
 - (RACSignal *)retrieveServiceWithId:(NSString *)serviceId;
 - (RACSignal *)installServiceWithId:(NSString *)serviceId;
 - (RACSignal *)uninstallServiceWithId:(NSString *)serviceId;
+- (RACSignal *)updateServicePreferences:(NSDictionary *)preferences withServiceId:(NSString *)serviceId;
 
 @end

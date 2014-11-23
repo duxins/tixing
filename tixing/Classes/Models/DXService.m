@@ -17,7 +17,9 @@
            @"name"      :  @"name",
            @"iconURL"   :  @"icon",
            @"URL"       :  @"url",
-           @"desc"      :  @"description"
+           @"desc"      :  @"description",
+           @"enabled"   :  @"enabled",
+           @"sound"     :  @"sound"
           };
 }
 

@@ -12,12 +12,14 @@
 #import "DXAPIClient.h"
 #import "DXMacros.h"
 #import "DXCredentialStore.h"
+#import "DXServiceInfoViewController.h"
 
 @interface DXServiceDetailViewController ()
 @property(nonatomic, weak) IBOutlet UIWebView *webView;
 @property(nonatomic, weak) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property(nonatomic, strong) NSTimer *timer;
 @property(nonatomic, assign) BOOL hasLoaded;
+@property(nonatomic, weak) IBOutlet UIBarButtonItem *infoButtonItem;
 @end
 
 @implementation DXServiceDetailViewController
@@ -28,6 +30,8 @@
   self.title = self.service.name;
   self.buildBridge = YES;
   self.hasLoaded = NO;
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+  self.infoButtonItem.enabled = YES;
 }
 
 - (void)dealloc
@@ -101,6 +105,19 @@
 - (void)js_actionUninstallService:(id)parameters
 {
   [self uninstallService:nil];
+}
+
+#pragma mark -
+#pragma mark Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"DisplayInfo"]) {
+    DXServiceInfoViewController *vc = segue.destinationViewController;
+    vc.service = self.service;
+    vc.uninstallBlock = ^(){
+      [self uninstallService:nil];
+    };
+  }
 }
 
 @end
