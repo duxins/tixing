@@ -13,6 +13,7 @@
 #import "DXMacros.h"
 #import "DXCredentialStore.h"
 #import "DXServiceInfoViewController.h"
+#import <EXTScope.h>
 
 @interface DXServiceDetailViewController ()
 @property(nonatomic, weak) IBOutlet UIWebView *webView;
@@ -26,7 +27,6 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self loadWebView];
   self.title = self.service.name;
   self.buildBridge = YES;
   self.hasLoaded = NO;
@@ -34,9 +34,20 @@
   self.infoButtonItem.enabled = YES;
 }
 
-- (void)dealloc
+- (void)viewDidDisappear:(BOOL)animated
 {
+  [super viewDidDisappear:animated];
+  DDLogDebug(@"Invalidate timer");
   [self.timer invalidate];
+  self.timer = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  if (!self.hasLoaded) {
+    DDLogDebug(@"Load webView");
+    [self loadWebView];
+  }
 }
 
 - (void)loadWebView
@@ -58,11 +69,14 @@
                                         otherButtonTitles:@"删除", nil];
   [alert show];
   
+  @weakify(self);
   [[[[alert rac_buttonClickedSignal] filter:^BOOL(NSNumber *index) {
     return [index integerValue] == 1;
   }] flattenMap:^RACStream *(id value) {
+    @strongify(self);
     return [[DXAPIClient sharedClient] uninstallServiceWithId:self.service.serviceId];
   }] subscribeNext:^(id x) {
+    @strongify(self);
     if (self.uninstallBlock) {
       self.uninstallBlock();
     }
