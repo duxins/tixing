@@ -340,4 +340,11 @@ static NSInteger const kSpacing = 5;
   }
 }
 
+#pragma mark -
+#pragma mark Rotation
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+  self.heightsCache = [[NSMutableDictionary alloc] init];
+}
+
 @end
