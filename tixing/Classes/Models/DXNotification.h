@@ -16,6 +16,7 @@
 @property (nonatomic, copy, readonly) NSString *notificationId;
 @property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, copy, readonly) NSString *message;
+@property (nonatomic, copy) NSString *highlight;
 @property (nonatomic, strong) DXService *service;
 @property (nonatomic, copy, readonly) NSDate *createdAt;
 @property (nonatomic, copy, readonly) NSURL *thumbURL;

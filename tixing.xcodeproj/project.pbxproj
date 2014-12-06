@@ -18,6 +18,7 @@
 		272268401A21BA4000AB068F /* DXServiceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2722683F1A21BA4000AB068F /* DXServiceInfoViewController.m */; };
 		2735672419FE665A007E9521 /* DXAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2735672319FE665A007E9521 /* DXAboutViewController.m */; };
 		2735672719FE6842007E9521 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 2735672619FE6842007E9521 /* about.html */; };
+		274A3D871A3003AF00E1F8B0 /* NSString+DXString.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */; };
 		27655D1219FB94F200C5D011 /* DXDeviceTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */; };
 		27655D1519FBA0A600C5D011 /* DXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1419FBA0A600C5D011 /* DXUser.m */; };
 		2766DDCD1A077D1300E3549C /* DXWebViewController+DXBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2766DDCC1A077D1300E3549C /* DXWebViewController+DXBridge.m */; };
@@ -102,6 +103,8 @@
 		2735672219FE665A007E9521 /* DXAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAboutViewController.h; sourceTree = "<group>"; };
 		2735672319FE665A007E9521 /* DXAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAboutViewController.m; sourceTree = "<group>"; };
 		2735672619FE6842007E9521 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		274A3D851A3003AF00E1F8B0 /* NSString+DXString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DXString.h"; sourceTree = "<group>"; };
+		274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DXString.m"; sourceTree = "<group>"; };
 		27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXDeviceTokenStore.h; sourceTree = "<group>"; };
 		27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDeviceTokenStore.m; sourceTree = "<group>"; };
 		27655D1319FBA0A600C5D011 /* DXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXUser.h; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				2778E0AB1A00B71E0081A52D /* NSDate+DXDate.m */,
 				2766DDCB1A077D1300E3549C /* DXWebViewController+DXBridge.h */,
 				2766DDCC1A077D1300E3549C /* DXWebViewController+DXBridge.m */,
+				274A3D851A3003AF00E1F8B0 /* NSString+DXString.h */,
+				274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -685,6 +690,7 @@
 				270A1FB719F5085700B2626A /* DXAPIClient+Notification.m in Sources */,
 				279965051A1764ED00123FD5 /* DXQRScannerMaskView.m in Sources */,
 				2766DDCD1A077D1300E3549C /* DXWebViewController+DXBridge.m in Sources */,
+				274A3D871A3003AF00E1F8B0 /* NSString+DXString.m in Sources */,
 				2787224A19F9113B00714D67 /* DXSoundViewController.m in Sources */,
 				2778E0B91A024DFE0081A52D /* DXStartupViewController.m in Sources */,
 				914F76B098D9498BBF4CC279 /* DXAppDelegate.m in Sources */,

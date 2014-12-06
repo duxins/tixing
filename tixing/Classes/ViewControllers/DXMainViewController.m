@@ -17,6 +17,7 @@
 #import <SSPullToRefresh/SSPullToRefresh.h>
 #import "DXPullToRefreshSimpleContentView.h"
 #import "DXProgressHUD.h"
+#import "NSString+DXString.h"
 #import <EXTScope.h>
 
 static NSInteger const kSpacing = 5;
@@ -144,7 +145,11 @@ static NSInteger const kSpacing = 5;
   DXNotification *notification = self.notifications[(NSUInteger)indexPath.row/2];
   
   cell.titleLabel.text = notification.title;
-  cell.messageLabel.text = notification.message;
+  if (notification.highlight) {
+    cell.messageLabel.attributedText = [notification.message dx_highlightWithString:notification.highlight];
+  }else{
+    cell.messageLabel.text = notification.message;
+  }
   cell.timeLabel.text = [notification.createdAt dx_timeAgoWithDateFormatter:self.dateFormatter];
   [cell.thumbImageView sd_setImageWithURL:notification.thumbURL placeholderImage:[UIImage imageNamed:@"placeholder"] options:0];
   return cell;
@@ -310,6 +315,7 @@ static NSInteger const kSpacing = 5;
   [DXProgressHUD showSuccessMessage:@"已复制" forView:self.view image:[UIImage imageNamed:@"clipboard"]];
   
 }
+
 #pragma mark -
 #pragma mark Actions
 - (IBAction)clearNotifications:(id)sender

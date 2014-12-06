@@ -17,6 +17,7 @@
            @"notificationId": @"id",
            @"title": @"title",
            @"message": @"message",
+           @"highlight": @"highlight",
            @"thumbURL": @"thumb",
            @"URL": @"url",
            @"webURL": @"web_url",
