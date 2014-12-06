@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sOV-fj-dn1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sOV-fj-dn1">
     <dependencies>
         <deployment version="2048" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -758,10 +758,14 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SCd-ck-yZk" id="V3k-r1-qLf">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Klx-ds-OIg">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Klx-ds-OIg">
                                             <rect key="frame" x="150" y="12" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Klx-ds-OIg" firstAttribute="top" secondItem="V3k-r1-qLf" secondAttribute="top" constant="12" id="g1A-pp-QJZ"/>
+                                        <constraint firstAttribute="centerX" secondItem="Klx-ds-OIg" secondAttribute="centerX" id="wXI-Hz-8tm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ServiceCell" rowHeight="55" id="cZ7-kQ-GcC" customClass="DXServiceCell">
@@ -1352,12 +1356,12 @@
     </scenes>
     <resources>
         <image name="bell" width="66" height="73"/>
-        <image name="btn-uninstall" width="280" height="40"/>
-        <image name="btn-uninstall-highlight" width="280" height="40"/>
+        <image name="btn-uninstall" width="9" height="40"/>
+        <image name="btn-uninstall-highlight" width="9" height="40"/>
         <image name="clear" width="17" height="22"/>
         <image name="copy" width="16" height="20"/>
         <image name="info" width="22" height="5"/>
-        <image name="link" width="20" height="20"/>
+        <image name="link" width="16" height="22"/>
         <image name="logo" width="122" height="122"/>
         <image name="service-coming-soon" width="31" height="22"/>
         <image name="service-placeholder" width="24" height="24"/>
