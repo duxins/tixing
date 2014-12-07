@@ -1,23 +1,33 @@
 require 'json'
-load 'config.rb' if File.exists?('config.rb')
+require 'yaml'
+
 
 def version_number
   `/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" tixing/Resources/Other-Sources/tixing-Info.plist`.chomp
 end
 
 def build_number
-  build = `/usr/libexec/PlistBuddy -c "Print CFBundleVersion" tixing/Resources/Other-Sources/tixing-Info.plist`.chomp
+  `/usr/libexec/PlistBuddy -c "Print CFBundleVersion" tixing/Resources/Other-Sources/tixing-Info.plist`.chomp
 end
 
 desc 'Build AdHoc ipa'
 task :build do
-  system("ipa build --configuration AdHoc") or raise '** BUILD FAILED **'
+  system("bundle exec ipa build --configuration AdHoc -s tixing") or raise '** BUILD FAILED **'
 end
 
-namespace :distribute do
+namespace :fir do
+  #FIXME: 使用企业证书重签名后，keychain 读写失败
+  task resign: :build  do
+    system("bundle exec fir publish ./tixing.ipa -r") or raise '** RESIGN FAILED **'
+  end
+
   desc 'Upload .ipa file to fir.im'
-  task fir: :build do
-    token = $fir_token
+  task upload: :build do
+    config_file = File.expand_path('~/.fir/default.yaml')
+    config = YAML.load_file(config_file) if File.exists?(config_file)
+    #system("bundle exec fir publish ./tixing.ipa") or raise '** UPLOAD FAILED **'
+    raise 'Fir token not found' if config['token'].nil?
+    token = config['token']
     short = 'tixing'
     bundle_id = 'com.duxinx.tixing'
     app_url = "http://fir.im/#{short}/info"
