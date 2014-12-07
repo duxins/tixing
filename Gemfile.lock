@@ -1,0 +1,66 @@
+GEM
+  remote: http://ruby.taobao.org/
+  specs:
+    CFPropertyList (2.2.8)
+    aws-sdk (1.59.1)
+      aws-sdk-v1 (= 1.59.1)
+    aws-sdk-v1 (1.59.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+    commander (4.2.1)
+      highline (~> 1.6.11)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    fir-cli (0.2.0)
+      highline (~> 1.6)
+      lagunitas (= 0.0.1)
+      paint (~> 0.9)
+      pngdefry (= 0.1.1)
+      rest_client (~> 1.8)
+      ruby_apk (~> 0.7)
+      thor (~> 0.19)
+      user_config (= 0.0.4)
+    highline (1.6.21)
+    json (1.8.1)
+    lagunitas (0.0.1)
+      CFPropertyList
+      pngdefry (>= 0.1.0)
+      zip
+    mini_portile (0.6.1)
+    multipart-post (2.0.0)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
+    netrc (0.7.9)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
+    paint (0.9.0)
+    pngdefry (0.1.1)
+    rest_client (1.8.2)
+      netrc (~> 0.7.7)
+    ruby_apk (0.7.1)
+      rubyzip (< 1.0.0)
+    rubyzip (0.9.9)
+    shenzhen (0.5.4)
+      aws-sdk (~> 1.0)
+      commander (~> 4.1)
+      dotenv (~> 0.7)
+      faraday (~> 0.8)
+      faraday_middleware (~> 0.9)
+      json (~> 1.8)
+      net-sftp (~> 2.1.2)
+    thor (0.19.1)
+    user_config (0.0.4)
+    zip (2.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fir-cli
+  shenzhen
