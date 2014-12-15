@@ -35,7 +35,7 @@ static NSInteger const kSpacing = 5;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *notFoundMessageLabel;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+@property (strong, nonatomic) UIBarButtonItem *clearButton;
 
 @property (nonatomic, strong) DXNotificationCell *offscreenCell;
 @property (nonatomic, strong) SSPullToRefreshView *pullToRefreshView;
@@ -62,7 +62,20 @@ static NSInteger const kSpacing = 5;
   }];
   
   [self setupTableView];
+  [self setNavigationBar];
   [self refresh];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+  [super viewDidDisappear:animated];
+  self.navigationItem.leftBarButtonItem = nil;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  self.navigationItem.leftBarButtonItem = self.clearButton;
 }
 
 - (void)loadNotification:(NSString *)notificationId
@@ -91,6 +104,13 @@ static NSInteger const kSpacing = 5;
   longPressGesture.minimumPressDuration = 0.7;
   longPressGesture.delegate = self;
   [self.tableView addGestureRecognizer:longPressGesture];
+}
+
+- (void)setNavigationBar
+{
+  self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+  self.clearButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clear"] style:UIBarButtonItemStyleBordered target:self action:@selector(clearNotifications:)];
+  self.clearButton.tintColor = [UIColor colorWithRed:1.0 green:0 blue:0 alpha:0.6];
 }
 
 - (void)refresh

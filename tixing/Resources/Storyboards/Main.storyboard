@@ -365,12 +365,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="全部" id="6dV-AS-pq8">
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="clear" id="74w-M6-I4M">
-                            <color key="tintColor" red="1" green="0.27530248880324315" blue="0.0085127920877532404" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="clearNotifications:" destination="KBg-kG-4Yj" id="X5f-Y8-BEn"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="QZb-KK-NzB">
                             <color key="tintColor" red="0.12156862745098039" green="0.5490196078431373" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -379,7 +373,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clearButton" destination="74w-M6-I4M" id="Ia8-GO-By0"/>
                         <outlet property="loadingIndicator" destination="9uH-K4-39I" id="HLv-3f-ZOv"/>
                         <outlet property="loadingView" destination="AAJ-M7-SA6" id="TuA-dd-lU9"/>
                         <outlet property="notFoundMessageLabel" destination="Wdf-KG-boN" id="Y8Y-Q6-N1b"/>
@@ -1387,7 +1380,6 @@
         <image name="bell" width="66" height="73"/>
         <image name="btn-uninstall" width="9" height="40"/>
         <image name="btn-uninstall-highlight" width="9" height="40"/>
-        <image name="clear" width="17" height="22"/>
         <image name="copy" width="16" height="20"/>
         <image name="info" width="22" height="5"/>
         <image name="link" width="16" height="22"/>
