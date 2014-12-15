@@ -26,6 +26,12 @@
   [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)js_actionAppVersion:(id)parameters
+{
+  NSString *callback = parameters[@"callback"];
+  [self callJSFunction:callback parameters:@{@"versionNumber": DXVersionNumber, @"buildNumber": DXBuildNumber}];
+}
+
 #pragma mark - 
 #pragma makr Media
 - (void)js_actionPlaySound:(id)parameters

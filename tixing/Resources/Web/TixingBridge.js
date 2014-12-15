@@ -47,6 +47,10 @@ var TixingBridge = (function(){
   bridge.alert = function(message){
     this.callFunction('alert', {'message': message});
   }
+
+  bridge.getAppVersion = function(callback){
+    this.callFunction('appVersion', null, callback);
+  }
 })(TixingBridge);
 
 //Service
