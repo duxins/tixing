@@ -57,6 +57,7 @@
 		27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F619FA47EA001C963E /* DXServiceDetailViewController.m */; };
 		27B547FA19FA55E2001C963E /* DXSound.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547F919FA55E2001C963E /* DXSound.m */; };
 		27B547FD19FA56CD001C963E /* DXSoundStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B547FC19FA56CD001C963E /* DXSoundStore.m */; };
+		27D6028A1A3ECCF5008B26DD /* DXDefaultsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D602891A3ECCF5008B26DD /* DXDefaultsStore.m */; };
 		27DC7D081A037DD50027AC18 /* DXSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC7D071A037DD50027AC18 /* DXSignupViewController.m */; };
 		27DC7D111A0490DE0027AC18 /* TixingBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 27DC7D101A0490DE0027AC18 /* TixingBridge.js */; };
 		2B09414E5DC64B07AEAD4C89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183453294DCF4BA0A79EA4E7 /* Foundation.framework */; };
@@ -169,6 +170,8 @@
 		27B547F919FA55E2001C963E /* DXSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSound.m; sourceTree = "<group>"; };
 		27B547FB19FA56CD001C963E /* DXSoundStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSoundStore.h; sourceTree = "<group>"; };
 		27B547FC19FA56CD001C963E /* DXSoundStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSoundStore.m; sourceTree = "<group>"; };
+		27D602881A3ECCF5008B26DD /* DXDefaultsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXDefaultsStore.h; sourceTree = "<group>"; };
+		27D602891A3ECCF5008B26DD /* DXDefaultsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDefaultsStore.m; sourceTree = "<group>"; };
 		27DC7D061A037DD50027AC18 /* DXSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSignupViewController.h; sourceTree = "<group>"; };
 		27DC7D071A037DD50027AC18 /* DXSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSignupViewController.m; sourceTree = "<group>"; };
 		27DC7D101A0490DE0027AC18 /* TixingBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = TixingBridge.js; sourceTree = "<group>"; };
@@ -424,6 +427,8 @@
 				27B547FC19FA56CD001C963E /* DXSoundStore.m */,
 				27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */,
 				27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */,
+				27D602881A3ECCF5008B26DD /* DXDefaultsStore.h */,
+				27D602891A3ECCF5008B26DD /* DXDefaultsStore.m */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -720,6 +725,7 @@
 				277AE5CD19F636EE009422FE /* DXSettingsViewController.m in Sources */,
 				277AE5C719F62FCD009422FE /* DXLoginViewController.m in Sources */,
 				27B547FA19FA55E2001C963E /* DXSound.m in Sources */,
+				27D6028A1A3ECCF5008B26DD /* DXDefaultsStore.m in Sources */,
 				27B547F719FA47EA001C963E /* DXServiceDetailViewController.m in Sources */,
 				2778E0B61A01F3190081A52D /* DXProgressHUD.m in Sources */,
 				2778E09B19FF7DA10081A52D /* DXNotification.m in Sources */,
