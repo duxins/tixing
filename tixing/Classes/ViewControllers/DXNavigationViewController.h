@@ -13,5 +13,7 @@
 
 - (void)openNotification:(DXNotification *)notification;
 - (void)openURLforNotification:(DXNotification *)notification;
+- (void)showLoadingIndicator;
+- (void)hideLoadingIndicator;
 
 @end

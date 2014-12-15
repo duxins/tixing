@@ -67,10 +67,14 @@ static NSInteger const kSpacing = 5;
 
 - (void)loadNotification:(NSString *)notificationId
 {
+  [(DXNavigationViewController *)self.navigationController showLoadingIndicator];
   [[[DXAPIClient sharedClient] retrieveNotificationWithId:notificationId]
    subscribeNext:^(DXNotification *notification) {
+    [(DXNavigationViewController *)self.navigationController hideLoadingIndicator];
      notification.autoOpen = YES;
      [self openNotification:notification];
+  }error:^(NSError *error) {
+    [(DXNavigationViewController *)self.navigationController hideLoadingIndicator];
   }];
 }
 

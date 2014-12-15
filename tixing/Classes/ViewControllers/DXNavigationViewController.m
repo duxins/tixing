@@ -11,9 +11,10 @@
 #import "DXDefaultsStore.h"
 #import "DXWebViewController.h"
 #import "DXNotificationViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface DXNavigationViewController ()
-
+@property (nonatomic, strong) MBProgressHUD *hud;
 @end
 
 @implementation DXNavigationViewController
@@ -54,6 +55,34 @@
   }else if ([application canOpenURL:notificationURL]) {
     [application openURL:notificationURL];
   }
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (MBProgressHUD *)hud
+{
+  if (!_hud) {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.opacity = 0.55f;
+  }
+  return _hud;
+}
+
+#pragma mark -
+#pragma mark Public methods
+- (void)showLoadingIndicator
+{
+  self.hud.transform = CGAffineTransformMakeScale(1.5, 1.5);
+  [self.hud show:YES];
+  [UIView animateWithDuration:0.15 animations:^{
+    self.hud.transform = CGAffineTransformIdentity;
+  }];
+}
+
+- (void)hideLoadingIndicator
+{
+  [self.hud hide:YES];
 }
 
 @end
