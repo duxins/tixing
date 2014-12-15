@@ -868,7 +868,7 @@
         <!--关于-->
         <scene sceneID="GWR-JN-pA6">
             <objects>
-                <viewController id="czn-ek-wfT" customClass="DXAboutViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DXAboutViewController" id="czn-ek-wfT" customClass="DXAboutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6br-J8-A5v"/>
                         <viewControllerLayoutGuide type="bottom" id="uBC-r6-1gZ"/>
@@ -880,6 +880,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srv-4G-RCg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="czn-ek-wfT" id="FNP-FZ-AtN"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

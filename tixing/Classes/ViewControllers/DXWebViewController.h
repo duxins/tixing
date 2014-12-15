@@ -15,7 +15,7 @@
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 
-- (void)loadLocalFile:(NSString *)fileName replacements:(NSDictionary *)replacements;
+- (void)loadLocalFile:(NSString *)fileName;
 
 - (void)LoadURL:(NSURL *)URL;
 

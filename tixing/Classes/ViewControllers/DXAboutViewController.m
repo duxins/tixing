@@ -17,9 +17,7 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  NSString *version = [NSString stringWithFormat:@"%@ build %@", DXVersionNumber, DXBuildNumber];
-  [self loadLocalFile:@"about.html" replacements:@{@"#{VERSION}": version}];
+  [self loadLocalFile:@"about.html"];
 }
-
 
 @end

@@ -29,17 +29,10 @@
   [self.webView loadRequest:request];
 }
 
-- (void)loadLocalFile:(NSString *)fileName replacements:(NSDictionary *)replacements
+- (void)loadLocalFile:(NSString *)fileName
 {
   NSURL *URL = [[NSBundle mainBundle] URLForResource:fileName withExtension:@""];
-  
-  __block NSString *HTMLString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
-  
-  [replacements enumerateKeysAndObjectsUsingBlock:^(NSString *pattern, NSString *replacement, BOOL *stop) {
-    HTMLString = [HTMLString stringByReplacingOccurrencesOfString:pattern withString:replacement];
-  }];
-  
-  [self.webView loadHTMLString:HTMLString baseURL:nil];
+  [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
 }
 
 - (void)insertBridgeJS

@@ -59,7 +59,7 @@ p {
 </style>
 </head>
 <body>
-<h1>消息提醒 <span class='version'>#{VERSION}</span></h1>
+<h1>消息提醒 <span class='version' id='version'></span></h1>
 <p class='copyright'>Copyright &copy; 2014 Xin Du</p>
 
 <p>开发过程中使用的第三方开源类库，组件: </p>
@@ -142,6 +142,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 THE SOFTWARE.
 </pre>
 
+<script>
+document.addEventListener("bridge:ready", function(){
+  TixingBridge.getAppVersion(function(data){
+    var version = data.versionNumber + ' build ' + data.buildNumber;
+    document.getElementById('version').innerHTML = version;
+  });
+});
+</script>
+<script src='TixingBridge.js'></script>
 </body>
 </html>
 
