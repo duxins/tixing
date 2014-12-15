@@ -7,6 +7,7 @@
 //
 
 #import "DXNotificationCell.h"
+#import "UIColor+DXColor.h"
 
 @interface DXNotificationCell()
 @property (nonatomic, weak) IBOutlet UIView *ballonView;
@@ -24,7 +25,7 @@
   layer.cornerRadius = 4;
   layer.masksToBounds = YES;
   layer.borderWidth = 1.0f;
-  layer.borderColor = [UIColor colorWithRed:0.85f green:0.88f blue:0.9f alpha:1].CGColor;
+  layer.borderColor = [UIColor dx_borderColor].CGColor;
   self.selectionStyle = UITableViewCellSelectionStyleNone;
   self.backgroundColor = [UIColor clearColor];
 }

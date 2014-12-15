@@ -9,6 +9,7 @@
 #import "DXAppDelegate.h"
 #import "DXDeviceTokenStore.h"
 #import "DXStartupViewController.h"
+#import "UIColor+DXColor.h"
 
 @implementation DXAppDelegate
 
@@ -35,7 +36,7 @@
 #pragma makr UI Customization
 - (void)customizeUI
 {
-  [self.window setTintColor:[UIColor colorWithRed:0.17f green:0.48f blue:0.93f alpha:1]];
+  [self.window setTintColor: [UIColor dx_tintColor]];
 }
 
 #pragma mark - 

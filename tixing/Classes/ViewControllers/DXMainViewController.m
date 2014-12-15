@@ -19,6 +19,7 @@
 #import "DXProgressHUD.h"
 #import "NSString+DXString.h"
 #import "DXNavigationViewController.h"
+#import "UIColor+DXColor.h"
 #import <EXTScope.h>
 
 static NSInteger const kSpacing = 5;
@@ -110,7 +111,7 @@ static NSInteger const kSpacing = 5;
 {
   self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
   self.clearButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"clear"] style:UIBarButtonItemStyleBordered target:self action:@selector(clearNotifications:)];
-  self.clearButton.tintColor = [UIColor colorWithRed:1.0 green:0 blue:0 alpha:0.6];
+  self.clearButton.tintColor = [UIColor dx_clearButtonColor];
 }
 
 - (void)refresh
