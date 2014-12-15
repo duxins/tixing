@@ -18,6 +18,7 @@
 #import "DXPullToRefreshSimpleContentView.h"
 #import "DXProgressHUD.h"
 #import "NSString+DXString.h"
+#import "DXNavigationViewController.h"
 #import <EXTScope.h>
 
 static NSInteger const kSpacing = 5;
@@ -68,8 +69,8 @@ static NSInteger const kSpacing = 5;
 {
   [[[DXAPIClient sharedClient] retrieveNotificationWithId:notificationId]
    subscribeNext:^(DXNotification *notification) {
-    notification.autoOpen = YES;
-    [self performSegueWithIdentifier:@"ShowNotification" sender:notification];
+     notification.autoOpen = YES;
+     [self openNotification:notification];
   }];
 }
 
@@ -237,7 +238,10 @@ static NSInteger const kSpacing = 5;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
-  [self performSegueWithIdentifier:@"ShowNotification" sender:[self notificationForIndexPath:indexPath]];
+  
+  DXNotification *notification = [self notificationForIndexPath:indexPath];
+  
+  [self openNotification:notification];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -273,6 +277,11 @@ static NSInteger const kSpacing = 5;
 
 #pragma mark - 
 #pragma mark Helpers
+- (void)openNotification:(DXNotification *)notification
+{
+  [(DXNavigationViewController *)self.navigationController openNotification:notification];
+}
+
 - (DXNotification *)notificationForIndexPath:(NSIndexPath *)indexPath
 {
    return self.notifications[(NSUInteger)indexPath.row/2];
@@ -332,18 +341,6 @@ static NSInteger const kSpacing = 5;
     [self.tableView reloadData];
     [self refresh];
   }];
-}
-
-#pragma mark -
-#pragma mark Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-  if ([segue.identifier isEqualToString:@"ShowNotification"]) {
-    DXNotification *notification = sender;
-    DXNotificationViewController *vc = segue.destinationViewController;
-    vc.notification = notification;
-  }
 }
 
 #pragma mark -

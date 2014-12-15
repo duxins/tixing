@@ -407,7 +407,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f1m-Gd-3eF" id="eUY-9U-ClT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="服务" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6hv-BI-b6G">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="提醒服务" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6hv-BI-b6G">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -423,6 +423,31 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="提醒" footerTitle="开启后，晚上22:00 ~ 早上 8:00 将不会发出提示音" id="gJn-TO-32P">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="z6U-vL-Ko8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z6U-vL-Ko8" id="mz0-au-11u">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自动打开链接" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgX-tU-ubY">
+                                                    <rect key="frame" x="15" y="11" width="128" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XZ-vw-ltM">
+                                                    <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="autoOpenSwitchChanged:" destination="g1K-je-UiP" eventType="valueChanged" id="HrJ-Re-MeX"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="6XZ-vw-ltM" secondAttribute="trailing" constant="15" id="psa-G6-34v"/>
+                                                <constraint firstItem="6XZ-vw-ltM" firstAttribute="top" secondItem="mz0-au-11u" secondAttribute="top" constant="6" id="xR4-D0-IhT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="45" id="Evi-vG-tQD">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Evi-vG-tQD" id="inM-0o-KoU">
@@ -464,18 +489,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="694-Bi-eZa" id="fL0-G5-fGd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="夜间静音" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-Hm-Ns9">
-                                                    <rect key="frame" x="15" y="11" width="68" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gMU-p9-b1b">
                                                     <rect key="frame" x="256" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="soundSwitchChanged:" destination="g1K-je-UiP" eventType="valueChanged" id="SVD-kR-ZzI"/>
                                                     </connections>
                                                 </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="夜间静音" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTI-Hm-Ns9">
+                                                    <rect key="frame" x="15" y="11" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="gMU-p9-b1b" secondAttribute="trailing" constant="15" id="Ppj-yq-twB"/>
@@ -613,6 +638,7 @@
                     <navigationItem key="navigationItem" title="设置" id="sq0-VA-f3j"/>
                     <connections>
                         <outlet property="accountCell" destination="tAg-SE-DMY" id="gcb-eK-rZS"/>
+                        <outlet property="autoOpenSwitch" destination="6XZ-vw-ltM" id="agP-HQ-fJf"/>
                         <outlet property="logoutIndicator" destination="ANR-hX-h3i" id="bZp-7V-yBR"/>
                         <outlet property="soundIndicator" destination="6FL-no-fBX" id="qaa-Sr-Gkv"/>
                         <outlet property="soundLabel" destination="B6v-CR-WV6" id="VIK-35-C1m"/>
@@ -1081,7 +1107,7 @@
         <!--提醒-->
         <scene sceneID="PDV-Ph-3Vk">
             <objects>
-                <viewController id="nZd-ka-vaI" customClass="DXNotificationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DXNotificationViewController" id="nZd-ka-vaI" customClass="DXNotificationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tkc-BG-teV"/>
                         <viewControllerLayoutGuide type="bottom" id="Lgr-CS-O9d"/>
@@ -1197,7 +1223,7 @@
         <!--Web View Controller-->
         <scene sceneID="Tdf-8l-VMe">
             <objects>
-                <viewController id="7BK-iD-Uk3" customClass="DXWebViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DXWebViewController" id="7BK-iD-Uk3" customClass="DXWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0zb-WP-EGU"/>
                         <viewControllerLayoutGuide type="bottom" id="jJv-Nr-I3n"/>
@@ -1317,10 +1343,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="-790"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="spS-0O-PCy">
             <objects>
-                <navigationController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="m11-7i-tdC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="m11-7i-tdC" customClass="DXNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nyT-ul-omZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1373,6 +1399,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VS8-5z-rpf"/>
+        <segue reference="9tO-hZ-TO7"/>
     </inferredMetricsTieBreakers>
 </document>

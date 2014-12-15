@@ -15,6 +15,7 @@
 #import "DXConfig.h"
 #import "DXMacros.h"
 #import "DXDeviceTokenStore.h"
+#import "DXDefaultsStore.h"
 
 static NSString *const kServiceIndexPathKey = @"service";
 static NSString *const kSilentIndexPathKey  = @"silent";
@@ -32,7 +33,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
 @property (nonatomic, weak) IBOutlet UILabel *soundLabel;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *soundIndicator;
 @property (nonatomic, weak) IBOutlet UITableViewCell *accountCell;
-
+@property (nonatomic, weak) IBOutlet UISwitch *autoOpenSwitch;
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *logoutIndicator;
 
 @end
@@ -45,6 +46,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   self.user = [DXCredentialStore sharedStore].user;
   self.accountCell.detailTextLabel.text = self.user.name;
   [self.soundSwitch setOn:self.user.silentAtNight animated:NO];
+  [self.autoOpenSwitch setOn:[DXDefaultsStore autoOpenNotificationLinkEnabled] animated:NO];
   [self displaySoundName];
 }
 
@@ -78,7 +80,7 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
   if (!_indexPathsByKey) {
     _indexPathsByKey = @{
                          kServiceIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:0], //服务
-                         kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:1], //夜间静音
+                         kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:2], //夜间静音
                          kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
                          kAppStoreIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:3], //给软件评分
                          kCheckUpdatesIndexPathKey: [NSIndexPath indexPathForRow:2 inSection:3], //检查新版本
@@ -101,6 +103,11 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
     sender.enabled = YES;
     [sender setOn:!sender.isOn animated:YES];
   }];
+}
+
+- (IBAction)autoOpenSwitchChanged:(UISwitch *)sender
+{
+  [DXDefaultsStore setAutoOpenNotificationLinkEnabled:sender.isOn];
 }
 
 #pragma mark -

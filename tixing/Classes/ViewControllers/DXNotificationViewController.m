@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "DXProgressHUD.h"
 #import "DXWebViewController.h"
+#import "DXNavigationViewController.h"
 
 @interface DXNotificationViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -46,17 +47,6 @@
   }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-  [super viewDidAppear:animated];
-  if (!self.hasOpened && self.notification.autoOpen) {
-    [self openURL];
-    self.hasOpened = YES;
-  }
-}
-
-
-
 #pragma mark -
 #pragma mark Actions
 
@@ -69,30 +59,9 @@
 
 - (IBAction)openURLButtonPressed:(id)sender
 {
-  [self openURL];
+  [(DXNavigationViewController *)self.navigationController openURLforNotification:self.notification];
 }
 
-- (void)openURL
-{
-  DXNotification *notification = self.notification;
-  UIApplication *application = [UIApplication sharedApplication];
-  
-  NSURL *URL;
-  
-  if ([application canOpenURL:notification.URL]) {
-    URL = notification.URL;
-  }else if([application canOpenURL:notification.webURL]){
-    URL = notification.webURL;
-  }
-  
-  if (!URL) return;
-  
-  if ([URL.scheme isEqualToString:@"http"] || [URL.scheme isEqualToString:@"https"]) {
-    [self performSegueWithIdentifier:@"OpenURL" sender:URL];
-  }else if ([application canOpenURL:URL]) {
-    [application openURL:URL];
-  }
-}
 
 #pragma mark - 
 #pragma mark Navigation

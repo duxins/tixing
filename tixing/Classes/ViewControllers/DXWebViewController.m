@@ -18,6 +18,7 @@
   self.buildBridge = NO;
   
   if (self.URL) {
+    DDLogDebug(@"[WEBVIEW] Started load URL: %@", self.URL);
     [self LoadURL:self.URL];
   }
 }
