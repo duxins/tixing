@@ -48,6 +48,10 @@ var TixingBridge = (function(){
     this.callFunction('alert', {'message': message});
   }
 
+  bridge.confirm = function(message, callback){
+    this.callFunction('confirm', {'message': message}, callback);
+  }
+
   bridge.getAppVersion = function(callback){
     this.callFunction('appVersion', null, callback);
   }

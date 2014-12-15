@@ -10,6 +10,7 @@
 #import "DXMacros.h"
 #import "DXSoundStore.h"
 #import "DXQRScannerViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation DXWebViewController (DXBridge)
 
@@ -19,6 +20,18 @@
 {
   NSString *message = parameters[@"message"];
   DXAlert(message).show;
+}
+
+- (void)js_actionConfirm:(id)parameters
+{
+  NSString *message = parameters[@"message"];
+  NSString *callback = parameters[@"callback"];
+  UIAlertView *alert = DXConfirm(message);
+  [alert show];
+  [[alert rac_buttonClickedSignal]
+      subscribeNext:^(NSNumber *index) {
+       if ([index integerValue] == 1) [self callJSFunction:callback parameters:nil];
+      }];
 }
 
 - (void)js_actionGoBack:(id)parameters
