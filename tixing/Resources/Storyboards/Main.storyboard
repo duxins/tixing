@@ -1170,19 +1170,51 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-Sa-PR6">
                                 <rect key="frame" x="0.0" y="107" width="320" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-nl-JP6">
-                                        <rect key="frame" x="133" y="12" width="55" height="20"/>
-                                        <state key="normal" title="  复制" image="copy"/>
-                                        <connections>
-                                            <action selector="copyButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="co4-g7-jjn"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBY-0U-ErQ" userLabel="Buttons">
+                                        <rect key="frame" x="15" y="8" width="290" height="28"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-nl-JP6">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
+                                                <state key="normal" title="复制链接"/>
+                                                <connections>
+                                                    <action selector="copyButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="co4-g7-jjn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-Ur-aTf">
+                                                <rect key="frame" x="230" y="0.0" width="60" height="30"/>
+                                                <state key="normal" title="查看详情"/>
+                                                <connections>
+                                                    <action selector="openURLButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="P1r-df-UG2"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6Y-Y8-U0Y">
+                                                <rect key="frame" x="100" y="0.0" width="90" height="30"/>
+                                                <state key="normal" title="通过邮件分享"/>
+                                                <connections>
+                                                    <action selector="sendEmailButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="wO0-vF-bvg"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ttg-mJ-fok" userLabel="vLine1">
+                                                <rect key="frame" x="80" y="6" width="1" height="18"/>
+                                                <color key="backgroundColor" red="0.94069602269999997" green="0.94069602269999997" blue="0.94069602269999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-Vf-edI" userLabel="vLine2">
+                                                <rect key="frame" x="210" y="6" width="1" height="18"/>
+                                                <color key="backgroundColor" red="0.94069602269999997" green="0.94069602269999997" blue="0.94069602269999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="290" id="DXQ-ql-5Q8"/>
+                                            <constraint firstAttribute="height" constant="28" id="tJk-KW-8Xs"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="JBY-0U-ErQ" firstAttribute="top" secondItem="lIi-Sa-PR6" secondAttribute="top" constant="8" id="Jep-N2-eHa"/>
                                     <constraint firstAttribute="height" constant="44" id="TJt-FH-CiI"/>
-                                    <constraint firstAttribute="centerX" secondItem="P6w-nl-JP6" secondAttribute="centerX" id="VVb-NA-wdX"/>
-                                    <constraint firstItem="P6w-nl-JP6" firstAttribute="top" secondItem="lIi-Sa-PR6" secondAttribute="top" constant="12" id="td2-PQ-TK8"/>
+                                    <constraint firstAttribute="centerX" secondItem="JBY-0U-ErQ" secondAttribute="centerX" id="UWg-Oi-zPz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1196,17 +1228,12 @@
                             <constraint firstItem="lIi-Sa-PR6" firstAttribute="top" secondItem="fUb-tR-5Si" secondAttribute="bottom" id="zSf-io-cX6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="提醒" id="u74-pZ-xUf">
-                        <barButtonItem key="rightBarButtonItem" image="link" id="rzW-7w-e8g">
-                            <connections>
-                                <action selector="openURLButtonPressed:" destination="nZd-ka-vaI" id="pcd-ge-1HN"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="提醒" id="u74-pZ-xUf"/>
                     <connections>
                         <outlet property="dateLabel" destination="y6M-My-8Yk" id="2S6-RF-usi"/>
                         <outlet property="messageLabel" destination="nE1-ZB-wie" id="Lbs-Tf-Q9i"/>
-                        <outlet property="openURLBarButton" destination="rzW-7w-e8g" id="JLA-vO-3Zu"/>
+                        <outlet property="openURLButton" destination="NWM-Ur-aTf" id="Ona-gM-KdO"/>
+                        <outlet property="sendEmailButton" destination="o6Y-Y8-U0Y" id="bgl-zE-EKb"/>
                         <outlet property="thumbImageView" destination="C7s-ak-5s6" id="ZPs-QX-FIc"/>
                         <outlet property="titleLabel" destination="SBF-67-I18" id="0gg-nv-1H4"/>
                         <segue destination="7BK-iD-Uk3" kind="push" identifier="OpenURL" id="h5p-gY-e4f"/>
@@ -1380,9 +1407,7 @@
         <image name="bell" width="66" height="73"/>
         <image name="btn-uninstall" width="9" height="40"/>
         <image name="btn-uninstall-highlight" width="9" height="40"/>
-        <image name="copy" width="16" height="20"/>
         <image name="info" width="22" height="5"/>
-        <image name="link" width="16" height="22"/>
         <image name="logo" width="122" height="122"/>
         <image name="service-coming-soon" width="31" height="22"/>
         <image name="service-placeholder" width="24" height="24"/>

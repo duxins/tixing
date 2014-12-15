@@ -20,6 +20,7 @@
 		2735672719FE6842007E9521 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 2735672619FE6842007E9521 /* about.html */; };
 		274A3D871A3003AF00E1F8B0 /* NSString+DXString.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */; };
 		276002B51A3F1D68007C45D6 /* UIColor+DXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 276002B41A3F1D68007C45D6 /* UIColor+DXColor.m */; };
+		276002B71A3F3A04007C45D6 /* share_email.html in Resources */ = {isa = PBXBuildFile; fileRef = 276002B61A3F3A04007C45D6 /* share_email.html */; };
 		27655D1219FB94F200C5D011 /* DXDeviceTokenStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */; };
 		27655D1519FBA0A600C5D011 /* DXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27655D1419FBA0A600C5D011 /* DXUser.m */; };
 		2766DDCD1A077D1300E3549C /* DXWebViewController+DXBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 2766DDCC1A077D1300E3549C /* DXWebViewController+DXBridge.m */; };
@@ -110,6 +111,7 @@
 		274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DXString.m"; sourceTree = "<group>"; };
 		276002B31A3F1D68007C45D6 /* UIColor+DXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DXColor.h"; sourceTree = "<group>"; };
 		276002B41A3F1D68007C45D6 /* UIColor+DXColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DXColor.m"; sourceTree = "<group>"; };
+		276002B61A3F3A04007C45D6 /* share_email.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = share_email.html; sourceTree = "<group>"; };
 		27655D1019FB94F200C5D011 /* DXDeviceTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXDeviceTokenStore.h; sourceTree = "<group>"; };
 		27655D1119FB94F200C5D011 /* DXDeviceTokenStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDeviceTokenStore.m; sourceTree = "<group>"; };
 		27655D1319FBA0A600C5D011 /* DXUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXUser.h; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			children = (
 				2735672619FE6842007E9521 /* about.html */,
 				27DC7D101A0490DE0027AC18 /* TixingBridge.js */,
+				276002B61A3F3A04007C45D6 /* share_email.html */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				2787227219F9D66E00714D67 /* tixing.caf in Resources */,
 				2735672719FE6842007E9521 /* about.html in Resources */,
 				2787226F19F9D66E00714D67 /* elevator.caf in Resources */,
+				276002B71A3F3A04007C45D6 /* share_email.html in Resources */,
 				2787224419F9101400714D67 /* sounds.json in Resources */,
 				2766DDDB1A09128C00E3549C /* Launch Screen.xib in Resources */,
 			);

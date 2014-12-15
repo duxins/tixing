@@ -1,0 +1,85 @@
+<style type='text/css'>
+body{
+  color:white;
+  background: white;
+}
+
+#container{
+  margin-top: 20px;
+  color: black;
+}
+
+#message {
+  border: 1px solid #edefed;
+  padding: 3px;
+}
+
+#message-title {
+  height: 30px;
+  padding: 5px 10px;
+}
+
+#message-body, #message-link {
+  padding:10px;
+}
+
+#message-link {
+  color: #666; 
+}
+
+#thumb {
+  float:left;
+  width: 40px;
+  height: 30px;
+}
+
+#thumb img{
+  width:30px;
+  height: 30px;
+}
+
+#title{
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 14px;
+  float:left;
+}
+
+#datetime{
+  font-size: 12px;
+  line-height: 20px;
+  font-weight:normal;
+  color: #666;
+}
+
+#signature{
+  color: #6666;
+  padding-top: 20px;
+}
+</style>
+
+<div id='container'>
+  
+<div id='message'>
+	<div id='message-title'>
+    <span id='thumb'>
+      <img src='#{THUMB}'/>
+    </span>
+    <span id='title'>
+    #{TITLE} <br> <span id='datetime'>#{DATETIME}</span>
+    </span>
+	</div>
+	<div id='message-body'>
+    #{MESSAGE}
+	</div>
+  <div id='message-link'>
+    查看详情： <br> <a href='#{URL}'>#{URL}</a>
+  </div>
+</div>	
+
+<div id='signature'>
+发自 - <a href="https://itunes.apple.com/cn/app/xiao-xi-ti-xing/id933267052?l=zh&ls=1&mt=8">消息提醒客户端</a>
+</div>
+
+</div>
+
