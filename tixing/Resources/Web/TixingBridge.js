@@ -1,5 +1,5 @@
 var TixingBridge = (function(){
-  var version = 1.0;
+  var version = 1.1;
   var scheme = 'tixing-action://';
   var callbacksCount = 0;
   var callbackPrefix = 'TixingCallback'
@@ -67,3 +67,4 @@ var TixingBridge = (function(){
   }
 })(TixingBridge);
 
+document.dispatchEvent(new Event('bridge:ready'));
