@@ -15,10 +15,13 @@
   NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self];
   if (!string) return attributedString;
   
-  NSRange range = [self rangeOfString:string];
-  if (range.location != NSNotFound) {
+  NSArray *ranges = [self dx_rangesOfString:string];
+  
+  for (NSValue *value in ranges) {
+    NSRange range = [value rangeValue];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
   }
+  
   return attributedString;
 }
 
