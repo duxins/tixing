@@ -10,12 +10,14 @@
 #import "DXDeviceTokenStore.h"
 #import "DXStartupViewController.h"
 #import "UIColor+DXColor.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation DXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   [self setupLogging];
+  [self setupCrashlytics];
   [self registerForNotification];
   [self customizeUI];
   
@@ -30,6 +32,13 @@
 {
   [DDLog addLogger:[DDTTYLogger sharedInstance]];
   [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
+}
+
+- (void)setupCrashlytics
+{
+#ifndef DEBUG
+  [Crashlytics startWithAPIKey:@"04310f07710ec9ec8b285820ee7637ae1fe37e36"];
+#endif
 }
 
 #pragma mark -
