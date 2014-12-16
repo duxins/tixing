@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FE36673C67B6419EE244120 /* libPods-UnitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D476F86CE59FF276FDCB433 /* libPods-UnitTests.a */; };
 		270A1FA319F4ED4A00B2626A /* DXAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA219F4ED4A00B2626A /* DXAPIClient.m */; };
 		270A1FA619F4F32400B2626A /* DXCredentialStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA519F4F32400B2626A /* DXCredentialStore.m */; };
 		270A1FAA19F4F6A000B2626A /* DXConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 270A1FA919F4F6A000B2626A /* DXConfig.m */; };
@@ -125,6 +126,7 @@
 		2766DDD61A08FE1B00E3549C /* dingdong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dingdong.caf; sourceTree = "<group>"; };
 		2766DDD81A08FF4700E3549C /* piano.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.caf; sourceTree = "<group>"; };
 		2766DDDA1A09128C00E3549C /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		277884CD1A4007E200EC2E02 /* DXTestHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DXTestHelper.h; sourceTree = "<group>"; };
 		2778E08419FF31BB0081A52D /* DXAPIClient+Misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DXAPIClient+Misc.h"; sourceTree = "<group>"; };
 		2778E08519FF31BB0081A52D /* DXAPIClient+Misc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DXAPIClient+Misc.m"; sourceTree = "<group>"; };
 		2778E09619FF74D50081A52D /* NSError+DXError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+DXError.h"; sourceTree = "<group>"; };
@@ -185,14 +187,17 @@
 		27DC7D061A037DD50027AC18 /* DXSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXSignupViewController.h; sourceTree = "<group>"; };
 		27DC7D071A037DD50027AC18 /* DXSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXSignupViewController.m; sourceTree = "<group>"; };
 		27DC7D101A0490DE0027AC18 /* TixingBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = TixingBridge.js; sourceTree = "<group>"; };
+		2D476F86CE59FF276FDCB433 /* libPods-UnitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UnitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4922A1A977CD4254AA57C5F5 /* tixing-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tixing-Prefix.pch"; sourceTree = "<group>"; };
 		506BBE8C21A248E285442B22 /* tixing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tixing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AECA6A45C067A7A7786C03E /* libPods-tixing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tixing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6570A88D113C4127BD21E3F1 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		67B97B747492099FEA38D4D4 /* Pods-UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2E34414980F4D82BB40AA34 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A6F2F1B026544C84A36F0504 /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		B743B35CF69E4A109425166E /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		D6B206A3FA1445E996DD2EAE /* DXAppDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = DXAppDelegate.h; sourceTree = "<group>"; };
+		E1DB0AB85276B424D85CFE9B /* Pods-UnitTests.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnitTests.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests.adhoc.xcconfig"; sourceTree = "<group>"; };
 		EAA818D0652A42F6B84A519D /* DXAppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DXAppDelegate.m; sourceTree = "<group>"; };
 		FC9422FA6F9A48FDBC16A903 /* main.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE36673C67B6419EE244120 /* libPods-UnitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +243,8 @@
 			children = (
 				181CAAE635664C050BFAD6B0 /* Pods-tixing.release.xcconfig */,
 				18665888E0F8F0FA3A64341F /* Pods-tixing.debug.xcconfig */,
+				67B97B747492099FEA38D4D4 /* Pods-UnitTests.release.xcconfig */,
+				E1DB0AB85276B424D85CFE9B /* Pods-UnitTests.adhoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -284,6 +292,13 @@
 				276002B61A3F3A04007C45D6 /* share_email.html */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		2745D3C21A4015C1004DF6DA /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 		2787224019F90C1A00714D67 /* Sounds */ = {
@@ -386,6 +401,7 @@
 		8C418543B95E46278E38AEAF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				277884CD1A4007E200EC2E02 /* DXTestHelper.h */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -396,6 +412,7 @@
 				276002B91A3FB631007C45D6 /* Crashlytics.framework */,
 				D6937746B0014F0BBC9645D5 /* iOS */,
 				5AECA6A45C067A7A7786C03E /* libPods-tixing.a */,
+				2D476F86CE59FF276FDCB433 /* libPods-UnitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -451,6 +468,7 @@
 		E4C5CCCFB52F41E1B69F0D7E /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				2745D3C21A4015C1004DF6DA /* Fixtures */,
 				C9B2EB71A4AB4656BCEF41BC /* Resources */,
 				8C418543B95E46278E38AEAF /* Tests */,
 			);
@@ -569,9 +587,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64D24935898141DCBAB4CD05 /* Build configuration list for PBXNativeTarget "UnitTests" */;
 			buildPhases = (
+				9F86BA8BAF64A8EAC611CDB8 /* Check Pods Manifest.lock */,
 				806AB20DCE814423B84343B5 /* Sources */,
 				439E6F80E4214316A37C4CBC /* Frameworks */,
 				C8C37F4BE87C4BB7A3BEEF96 /* Resources */,
+				C11C0CB23415F5BF06179F56 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -715,6 +735,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tixing/Pods-tixing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F86BA8BAF64A8EAC611CDB8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C11C0CB23415F5BF06179F56 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UnitTests/Pods-UnitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -928,6 +978,7 @@
 		};
 		27C3D7231A076279009F6765 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DB0AB85276B424D85CFE9B /* Pods-UnitTests.adhoc.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/tixing.app/tixing";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -947,6 +998,7 @@
 		};
 		56F1C0D7BE924D9FBD860498 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1DB0AB85276B424D85CFE9B /* Pods-UnitTests.adhoc.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/tixing.app/tixing";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1088,6 +1140,7 @@
 		};
 		FE2EC44D1D3D4F5F9D9DC949 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67B97B747492099FEA38D4D4 /* Pods-UnitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/tixing.app/tixing";
 				FRAMEWORK_SEARCH_PATHS = (
