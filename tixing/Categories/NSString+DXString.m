@@ -21,4 +21,17 @@
   }
   return attributedString;
 }
+
+// Taken from http://stackoverflow.com/a/9667382/575163
+- (NSArray *)dx_rangesOfString:(NSString *)searchString
+{
+  NSMutableArray *results = [NSMutableArray array];
+  NSRange searchRange = NSMakeRange(0, [self length]);
+  NSRange range;
+  while ((range = [self rangeOfString:searchString options:0 range:searchRange]).location != NSNotFound) {
+    [results addObject:[NSValue valueWithRange:range]];
+    searchRange = NSMakeRange(NSMaxRange(range), [self length] - NSMaxRange(range));
+  }
+  return results;
+}
 @end
