@@ -25,10 +25,15 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
+  - Expecta (0.3.1)
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
   - MBProgressHUD (0.9)
+  - OCMock (3.1.1)
+  - OHHTTPStubs (3.1.6):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/Core (3.1.6)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
@@ -39,6 +44,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
+  - Specta (0.3.0.beta1)
   - SSKeychain (1.2.2)
   - SSPullToRefresh (1.2.0)
   - TMCache (1.2.2)
@@ -46,21 +52,34 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.4.1)
   - CocoaLumberjack (~> 1.9.2)
+  - Expecta (~> 0.3.1)
   - Mantle (~> 1.5)
   - MBProgressHUD (~> 0.9)
+  - OCMock (~> 3.1.1)
+  - OHHTTPStubs (~> 3.1.6)
   - ReactiveCocoa (~> 2.3.1)
   - SDWebImage (~> 3.7.1)
+  - Specta (from `https://github.com/specta/specta.git`, tag `v0.3.0.beta1`)
   - SSKeychain (~> 1.2.2)
   - SSPullToRefresh (~> 1.2.0)
   - TMCache (~> 1.2.2)
 
+EXTERNAL SOURCES:
+  Specta:
+    :git: https://github.com/specta/specta.git
+    :tag: v0.3.0.beta1
+
 SPEC CHECKSUMS:
   AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
+  OHHTTPStubs: 6781373b69e0a67b27239799f11764d0fbefac55
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  Specta: 63e8ac8e07db6675c7096d37f77a266a1be4c02d
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
   TMCache: e2c9225de7a107b529d1d04baa58eb5eab3051f3
