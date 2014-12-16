@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *dateLabel;
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *openURLBarButton;
 @property (nonatomic, weak) IBOutlet UIButton *openURLButton;
+@property (nonatomic, weak) IBOutlet UIButton *saveURLButton;
 @property (nonatomic, weak) IBOutlet UIButton *sendEmailButton;
 @property (nonatomic, assign) BOOL hasOpened;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
@@ -48,15 +49,21 @@
     if (![applicatoin canOpenURL:self.notification.URL] && ![applicatoin canOpenURL:self.notification.webURL]) {
       self.openURLBarButton.enabled = NO;
       self.openURLButton.enabled = NO;
+      self.saveURLButton.enabled = NO;
     }
     
+    if (!self.notification.service && [self.notification.title isEqualToString:@"消息提醒"]) {
+      self.openURLButton.enabled = NO;
+      self.saveURLButton.enabled = NO;
+      self.sendEmailButton.enabled = NO;
+    }
   }
 }
 
 #pragma mark -
 #pragma mark Actions
 
-- (IBAction)copyButtonPressed:(id)sender
+- (IBAction)saveButtonPressed:(id)sender
 {
   UIPasteboard *pb = [UIPasteboard generalPasteboard];
   [pb setString:[self.notification.webURL absoluteString]];
@@ -72,14 +79,7 @@
 {
   self.sendEmailButton.enabled = NO;
   NSString *subject = [NSString stringWithFormat:@"来自 %@ 的提醒", self.notification.title];
-  
-  NSURL *emailTemplateURL = [[NSBundle mainBundle] URLForResource:@"share_email" withExtension:@"html"];
-  NSString *body = [NSString stringWithContentsOfURL:emailTemplateURL encoding:NSUTF8StringEncoding error:nil];
-  body = [body stringByReplacingOccurrencesOfString:@"#{TITLE}" withString:self.notification.title];
-  body = [body stringByReplacingOccurrencesOfString:@"#{MESSAGE}" withString:self.notification.message];
-  body = [body stringByReplacingOccurrencesOfString:@"#{THUMB}" withString:[self.notification.thumbURL absoluteString]];
-  body = [body stringByReplacingOccurrencesOfString:@"#{URL}" withString:[self.notification.webURL absoluteString]];
-  body = [body stringByReplacingOccurrencesOfString:@"#{DATETIME}" withString:[self.dateFormatter stringFromDate:self.notification.createdAt]];
+  NSString *body = [self emailBody];
   MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
   mc.mailComposeDelegate = self;
   [mc setSubject:subject];
@@ -91,19 +91,21 @@
 #pragma mark MFMailComposeViewControllerDelegate
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-  NSLog(@"hello");
   self.sendEmailButton.enabled = YES;
   [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -
-#pragma mark Navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+#pragma mark Helpers
+- (NSString *)emailBody
 {
-  if ([segue.identifier isEqualToString:@"OpenURL"]) {
-    DXWebViewController *vc = segue.destinationViewController;
-    vc.URL = sender;
-  }
+  NSURL *emailTemplateURL = [[NSBundle mainBundle] URLForResource:@"share_email" withExtension:@"html"];
+  NSString *body = [NSString stringWithContentsOfURL:emailTemplateURL encoding:NSUTF8StringEncoding error:nil];
+  body = [body stringByReplacingOccurrencesOfString:@"#{TITLE}" withString:self.notification.title];
+  body = [body stringByReplacingOccurrencesOfString:@"#{MESSAGE}" withString:self.notification.message];
+  body = [body stringByReplacingOccurrencesOfString:@"#{DATETIME}" withString:[self.dateFormatter stringFromDate:self.notification.createdAt]];
+  body = [body stringByReplacingOccurrencesOfString:@"#{THUMB}" withString:[self.notification.thumbURL absoluteString]];
+  body = [body stringByReplacingOccurrencesOfString:@"#{URL}" withString:[self.notification.webURL absoluteString]];
+  return body;
 }
-
 @end

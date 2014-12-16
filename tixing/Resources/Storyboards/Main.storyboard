@@ -1177,7 +1177,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                 <state key="normal" title="复制链接"/>
                                                 <connections>
-                                                    <action selector="copyButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="co4-g7-jjn"/>
+                                                    <action selector="saveButtonPressed:" destination="nZd-ka-vaI" eventType="touchUpInside" id="0vW-fU-3uA"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWM-Ur-aTf">
@@ -1233,6 +1233,7 @@
                         <outlet property="dateLabel" destination="y6M-My-8Yk" id="2S6-RF-usi"/>
                         <outlet property="messageLabel" destination="nE1-ZB-wie" id="Lbs-Tf-Q9i"/>
                         <outlet property="openURLButton" destination="NWM-Ur-aTf" id="Ona-gM-KdO"/>
+                        <outlet property="saveURLButton" destination="P6w-nl-JP6" id="dER-hE-Mbc"/>
                         <outlet property="sendEmailButton" destination="o6Y-Y8-U0Y" id="bgl-zE-EKb"/>
                         <outlet property="thumbImageView" destination="C7s-ak-5s6" id="ZPs-QX-FIc"/>
                         <outlet property="titleLabel" destination="SBF-67-I18" id="0gg-nv-1H4"/>
