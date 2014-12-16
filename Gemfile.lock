@@ -1,5 +1,5 @@
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     CFPropertyList (2.2.8)
     aws-sdk (1.59.1)
