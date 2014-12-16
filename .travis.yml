@@ -1,3 +1,4 @@
 language: objective-c
 xcode_workspace: tixing.xcworkspace
 xcode_scheme: tixing
+xcode_sdk: iphonesimulator
