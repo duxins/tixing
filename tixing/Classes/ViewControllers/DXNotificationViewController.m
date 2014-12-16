@@ -57,6 +57,10 @@
       self.saveURLButton.enabled = NO;
       self.sendEmailButton.enabled = NO;
     }
+    
+    if (![MFMailComposeViewController canSendMail]) {
+      self.sendEmailButton.enabled = NO;
+    }
   }
 }
 
