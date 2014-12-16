@@ -10,6 +10,15 @@ def build_number
   `/usr/libexec/PlistBuddy -c "Print CFBundleVersion" tixing/Resources/Other-Sources/tixing-Info.plist`.chomp
 end
 
+task :default => :test do
+end
+
+desc 'Run unit tests'
+task :test do
+  cmd = "xctool -workspace tixing.xcworkspace -scheme 'tixing' clean test -sdk iphonesimulator"
+  system(cmd)
+end
+
 desc 'Build AdHoc ipa'
 task :build do
   system("bundle exec ipa build --configuration AdHoc -s tixing") or raise '** BUILD FAILED **'
