@@ -2,3 +2,6 @@ language: objective-c
 xcode_workspace: tixing.xcworkspace
 xcode_scheme: tixing
 xcode_sdk: iphonesimulator
+
+before_script:
+  - 'cp ./tixing/Config/DXConfig.m.example ./tixing/Config/DXConfig.m'
