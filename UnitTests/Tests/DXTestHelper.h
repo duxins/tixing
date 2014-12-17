@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #define EXP_SHORTHAND
 #import <Expecta/Expecta.h>
+#import "EXPMatches+match.h"
 #import <Specta/Specta.h>
 #import <OCMock/OCMock.h>
 #import <OHHTTPStubs/OHHTTPStubs.h>

@@ -22,6 +22,7 @@
 		2745D3C41A403DCA004DF6DA /* NSDate_DXDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745D3C31A403DCA004DF6DA /* NSDate_DXDateTests.m */; };
 		2745D3C61A406F56004DF6DA /* DXDefaultsStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745D3C51A406F56004DF6DA /* DXDefaultsStoreTests.m */; };
 		2745D3C81A40837A004DF6DA /* NSString_DXStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745D3C71A40837A004DF6DA /* NSString_DXStringTests.m */; };
+		2745D3CF1A410358004DF6DA /* EXPMatches+match.m in Sources */ = {isa = PBXBuildFile; fileRef = 2745D3CE1A410358004DF6DA /* EXPMatches+match.m */; };
 		274A3D871A3003AF00E1F8B0 /* NSString+DXString.m in Sources */ = {isa = PBXBuildFile; fileRef = 274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */; };
 		276002B51A3F1D68007C45D6 /* UIColor+DXColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 276002B41A3F1D68007C45D6 /* UIColor+DXColor.m */; };
 		276002B71A3F3A04007C45D6 /* share_email.html in Resources */ = {isa = PBXBuildFile; fileRef = 276002B61A3F3A04007C45D6 /* share_email.html */; };
@@ -115,6 +116,8 @@
 		2745D3C31A403DCA004DF6DA /* NSDate_DXDateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDate_DXDateTests.m; sourceTree = "<group>"; };
 		2745D3C51A406F56004DF6DA /* DXDefaultsStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXDefaultsStoreTests.m; sourceTree = "<group>"; };
 		2745D3C71A40837A004DF6DA /* NSString_DXStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_DXStringTests.m; sourceTree = "<group>"; };
+		2745D3CD1A410358004DF6DA /* EXPMatches+match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EXPMatches+match.h"; sourceTree = "<group>"; };
+		2745D3CE1A410358004DF6DA /* EXPMatches+match.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EXPMatches+match.m"; sourceTree = "<group>"; };
 		274A3D851A3003AF00E1F8B0 /* NSString+DXString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DXString.h"; sourceTree = "<group>"; };
 		274A3D861A3003AF00E1F8B0 /* NSString+DXString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DXString.m"; sourceTree = "<group>"; };
 		276002B31A3F1D68007C45D6 /* UIColor+DXColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DXColor.h"; sourceTree = "<group>"; };
@@ -411,6 +414,8 @@
 				2745D3C31A403DCA004DF6DA /* NSDate_DXDateTests.m */,
 				2745D3C51A406F56004DF6DA /* DXDefaultsStoreTests.m */,
 				2745D3C71A40837A004DF6DA /* NSString_DXStringTests.m */,
+				2745D3CD1A410358004DF6DA /* EXPMatches+match.h */,
+				2745D3CE1A410358004DF6DA /* EXPMatches+match.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 			files = (
 				2745D3C41A403DCA004DF6DA /* NSDate_DXDateTests.m in Sources */,
 				2745D3C81A40837A004DF6DA /* NSString_DXStringTests.m in Sources */,
+				2745D3CF1A410358004DF6DA /* EXPMatches+match.m in Sources */,
 				2745D3C61A406F56004DF6DA /* DXDefaultsStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
