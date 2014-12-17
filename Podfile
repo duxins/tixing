@@ -15,6 +15,7 @@ target "tixing" do
     pod 'SSPullToRefresh', '~> 1.2.0'
     pod 'SDWebImage', '~>3.7.1'
     pod 'MBProgressHUD', '~>0.9'
+    pod 'NJKWebViewProgress', '~> 0.2.3'
 end
 
 target "UnitTests" do
