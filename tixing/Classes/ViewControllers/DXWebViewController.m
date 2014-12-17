@@ -7,8 +7,12 @@
 //
 
 #import "DXWebViewController.h"
+#import <NJKWebViewProgress/NJKWebViewProgress.h>
+#import <NJKWebViewProgress/NJKWebViewProgressView.h>
 
-@interface DXWebViewController ()
+@interface DXWebViewController () <NJKWebViewProgressDelegate>
+@property (nonatomic, strong) NJKWebViewProgress *progress;
+@property (nonatomic, weak) IBOutlet NJKWebViewProgressView *progressView;
 @end
 
 @implementation DXWebViewController
@@ -20,6 +24,19 @@
     DDLogDebug(@"[WEBVIEW] Started load URL: %@", self.URL);
     [self LoadURL:self.URL];
   }
+  
+  if (self.showProgressBar) {
+    self.progress = [[NJKWebViewProgress alloc] init];
+    self.webView.delegate = self.progress;
+    self.progress.webViewProxyDelegate = self;
+    self.progress.progressDelegate = self;
+    self.progressView.hidden = NO;
+  }
+}
+
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
+{
+  [self.progressView setProgress:progress];
 }
 
 - (void)LoadURL:(NSURL *)URL

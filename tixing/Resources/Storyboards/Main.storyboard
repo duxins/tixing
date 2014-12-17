@@ -1260,17 +1260,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RW9-MP-smj" userLabel="Progress Bar" customClass="NJKWebViewProgressView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="n7e-cL-EYY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="RW9-MP-smj" firstAttribute="leading" secondItem="g2D-Uf-yT7" secondAttribute="leading" id="A3p-gF-wAo"/>
                             <constraint firstItem="DCT-Sn-ypB" firstAttribute="leading" secondItem="g2D-Uf-yT7" secondAttribute="leading" id="JHj-pe-9FY"/>
+                            <constraint firstAttribute="trailing" secondItem="RW9-MP-smj" secondAttribute="trailing" id="Vau-BA-D42"/>
                             <constraint firstItem="jJv-Nr-I3n" firstAttribute="top" secondItem="DCT-Sn-ypB" secondAttribute="bottom" id="XZJ-V8-7kF"/>
+                            <constraint firstItem="RW9-MP-smj" firstAttribute="top" secondItem="0zb-WP-EGU" secondAttribute="bottom" id="g2H-8V-vsO"/>
                             <constraint firstItem="DCT-Sn-ypB" firstAttribute="top" secondItem="0zb-WP-EGU" secondAttribute="bottom" id="lPd-G3-cza"/>
                             <constraint firstAttribute="trailing" secondItem="DCT-Sn-ypB" secondAttribute="trailing" id="w48-DS-E2I"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qbJ-hL-bM7"/>
                     <connections>
+                        <outlet property="progressView" destination="RW9-MP-smj" id="1SI-4l-Q0T"/>
                         <outlet property="webView" destination="DCT-Sn-ypB" id="Wj2-TN-yaQ"/>
                     </connections>
                 </viewController>

@@ -49,6 +49,7 @@
   
   if ([scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"]) {
     DXWebViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DXWebViewController"];
+    vc.showProgressBar = YES;
     vc.URL = notificationURL;
     vc.title = notification.title;
     [self pushViewController:vc animated:YES];

@@ -11,6 +11,7 @@
 @interface DXWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, assign) BOOL buildBridge;
+@property (nonatomic, assign) BOOL showProgressBar;
 @property (nonatomic, strong) NSURL *URL;
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
