@@ -28,6 +28,26 @@
 		"name": "alarm"
 	},
 	{
+		"label": "提醒",
+		"name": "message"
+	},
+	{
+		"label": "金币",
+		"name": "coin"
+	},
+	{
+		"label": "鞭子",
+		"name": "whip"
+	},
+	{
+		"label": "竖琴",
+		"name": "harp"
+	},
+	{
+		"label": "玻璃",
+		"name": "glass"
+	},
+  {
 		"label": "无",
 		"name": "default"
 	},
