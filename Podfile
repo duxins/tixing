@@ -16,6 +16,7 @@ target "tixing" do
     pod 'SDWebImage', '~>3.7.1'
     pod 'MBProgressHUD', '~>0.9'
     pod 'NJKWebViewProgress', '~> 0.2.3'
+    pod 'MTMigration', '~> 0.0.3'
 end
 
 target "UnitTests" do

@@ -30,6 +30,7 @@ PODS:
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
   - MBProgressHUD (0.9)
+  - MTMigration (0.0.3)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core
     - NJKWebViewProgress/ProgressView
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - Expecta (~> 0.3.1)
   - Mantle (~> 1.5)
   - MBProgressHUD (~> 0.9)
+  - MTMigration (~> 0.0.3)
   - NJKWebViewProgress (~> 0.2.3)
   - OCMock (~> 3.1.1)
   - OHHTTPStubs (~> 3.1.6)
@@ -81,6 +83,7 @@ SPEC CHECKSUMS:
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
+  MTMigration: 9d8b33a8bd78474fce6ebe211b2c5c20b2d57b16
   NJKWebViewProgress: 721b57080c840c76f70ff6c2dda4f836ee1b27c1
   OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
   OHHTTPStubs: 6781373b69e0a67b27239799f11764d0fbefac55
