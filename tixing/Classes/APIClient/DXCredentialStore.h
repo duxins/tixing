@@ -25,4 +25,6 @@ extern NSString *const TixingNotificationLogin;
 - (void)userDidLogin:(DXUser *)user;
 - (void)userDidLogout;
 
+- (void)moveUserCacheToUserdefaults;
+
 @end

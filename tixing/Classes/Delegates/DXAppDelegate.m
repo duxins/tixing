@@ -11,11 +11,15 @@
 #import "DXStartupViewController.h"
 #import "UIColor+DXColor.h"
 #import <Crashlytics/Crashlytics.h>
+#import "DXCredentialStore.h"
+#import <MTMigration/MTMigration.h>
+#import "DXCredentialStore.h"
 
 @implementation DXAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [self migrate];
   [self setupLogging];
   [self setupCrashlytics];
   [self registerForNotification];
@@ -26,6 +30,15 @@
     [self application:application didReceiveRemoteNotification:pushNotification];
   }
   return YES;
+}
+
+- (void)migrate
+{
+  [MTMigration migrateToVersion:@"1.1.5" block:^{
+    DDLogDebug(@"Migrate to version 1.1.5");
+    // 修改用户缓存位置
+    [[DXCredentialStore sharedStore] moveUserCacheToUserdefaults];
+  }];
 }
 
 - (void)setupLogging

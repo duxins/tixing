@@ -68,18 +68,34 @@ static NSString *const kLastUserCacheKey = @"io.tixing.cache.user.last";
 
 - (DXUser *)user
 {
-  return [[TMCache sharedCache] objectForKey:kCurrentUserCacheKey];
+  NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUserCacheKey];
+  if (!data) return nil;
+  return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
 - (void)setUser:(DXUser *)user
 {
   if (!user) {
     DDLogDebug(@"Delete user cache");
-    [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:kCurrentUserCacheKey];
   }else{
     DDLogDebug(@"Cache User = %@", user.name);
-    [[TMCache sharedCache] setObject:user forKey:kCurrentUserCacheKey];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:kCurrentUserCacheKey];
   }
+  
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)moveUserCacheToUserdefaults
+{
+  DXUser *user = [[TMCache sharedCache] objectForKey:kCurrentUserCacheKey];
+  if (!user) {
+    return;
+  }
+  DDLogDebug(@"Started move user cache: %@", user.name);
+  [self setUser:user];
+  [[TMCache sharedCache] removeObjectForKey:kCurrentUserCacheKey];
 }
 
 - (NSString *)lastUserName
