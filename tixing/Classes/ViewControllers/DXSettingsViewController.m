@@ -83,7 +83,6 @@ static NSString *const kCheckUpdatesIndexPathKey = @"update";
                          kSilentIndexPathKey:  [NSIndexPath indexPathForRow:1 inSection:2], //夜间静音
                          kAccountIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:2], //用户名
                          kAppStoreIndexPathKey: [NSIndexPath indexPathForRow:0 inSection:3], //给软件评分
-                         kCheckUpdatesIndexPathKey: [NSIndexPath indexPathForRow:2 inSection:3], //检查新版本
                          kLogoutIndexPathKey:  [NSIndexPath indexPathForRow:0 inSection:4], //退出登录
                          };
   }
