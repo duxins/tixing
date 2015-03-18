@@ -122,4 +122,8 @@
   return parameters;
 }
 
+#pragma mark - Actions
+- (IBAction)close:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end

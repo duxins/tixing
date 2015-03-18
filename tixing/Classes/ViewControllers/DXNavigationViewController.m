@@ -48,13 +48,31 @@
   NSString *scheme = notificationURL.scheme;
   
   if ([scheme isEqualToString:@"http"] || [scheme isEqualToString:@"https"]) {
-    DXWebViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DXWebViewController"];
-    vc.showProgressBar = YES;
-    vc.URL = notificationURL;
-    vc.title = notification.title;
-    [self pushViewController:vc animated:YES];
+    [self openWebURL:notificationURL];
   }else if ([application canOpenURL:notificationURL]) {
     [application openURL:notificationURL];
+  }
+}
+
+- (void)openWebURL:(NSURL *)webURL
+{
+  DXWebViewController *web;
+  UINavigationController *nav;
+  
+  //Reuse DXWebViewController
+  if ([self.presentedViewController isKindOfClass:[UINavigationController class]]) {
+    nav = (UINavigationController *)self.presentedViewController;
+    web = (DXWebViewController *)nav.topViewController;
+    web.title = @"正在加载...";
+    [web LoadURL:webURL];
+  }else{
+    nav = [self.storyboard instantiateViewControllerWithIdentifier:@"DXWebNavigationController"];
+    [self presentViewController:nav animated:YES completion:nil];
+    web = (DXWebViewController *)nav.topViewController;
+    web.title = @"正在加载...";
+    web.showProgressBar = YES;
+    web.automaticTitleDetectionEnabled = YES;
+    web.URL = webURL;
   }
 }
 
