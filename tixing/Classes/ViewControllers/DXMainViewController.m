@@ -43,6 +43,8 @@ static NSInteger const kSpacing = 5;
 
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 
+@property (nonatomic, assign) BOOL isRefreshing;
+
 @end
 
 @implementation DXMainViewController
@@ -87,6 +89,7 @@ static NSInteger const kSpacing = 5;
     [(DXNavigationViewController *)self.navigationController hideLoadingIndicator];
      notification.autoOpen = YES;
      [self openNotification:notification];
+     [self refresh];
   }error:^(NSError *error) {
     [(DXNavigationViewController *)self.navigationController hideLoadingIndicator];
   }];
@@ -116,6 +119,10 @@ static NSInteger const kSpacing = 5;
 
 - (void)refresh
 {
+  if (self.isRefreshing) {
+    return;
+  }
+  self.isRefreshing = YES;
   [[[DXAPIClient sharedClient] retrieveNotifications] subscribeNext:^(NSDictionary *result) {
     [self.pullToRefreshView finishLoading];
     self.notifications = result[@"data"];
@@ -128,9 +135,11 @@ static NSInteger const kSpacing = 5;
     
     self.pagination = result[@"pagination"];
     [self.tableView reloadData];
+    self.isRefreshing = NO;
   } error:^(NSError *error) {
     [self.pullToRefreshView finishLoading];
     DDLogError(@"error:%@", error);
+    self.isRefreshing = NO;
   }];
 }
 
