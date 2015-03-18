@@ -60,6 +60,9 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+  if (self.isAutomaticTitleDetectionEnabled) {
+    self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+  }
   if (self.buildBridge) { [self insertBridgeJS]; }
 }
 

@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) BOOL buildBridge;
 @property (nonatomic, assign) BOOL showProgressBar;
+@property (nonatomic, assign, getter=isAutomaticTitleDetectionEnabled) BOOL automaticTitleDetectionEnabled;
 @property (nonatomic, strong) NSURL *URL;
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
