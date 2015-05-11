@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.4.1):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.4.1)
+    - AFNetworking/NSURLSession (= 2.4.1)
+    - AFNetworking/Reachability (= 2.4.1)
+    - AFNetworking/Security (= 2.4.1)
+    - AFNetworking/Serialization (= 2.4.1)
+    - AFNetworking/UIKit (= 2.4.1)
   - AFNetworking/NSURLConnection (2.4.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -21,36 +21,36 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions
+    - CocoaLumberjack/Extensions (= 1.9.2)
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
   - Expecta (0.3.1)
   - Mantle (1.5):
-    - Mantle/extobjc
+    - Mantle/extobjc (= 1.5)
   - Mantle/extobjc (1.5)
   - MBProgressHUD (0.9)
   - MTMigration (0.0.3)
   - NJKWebViewProgress (0.2.3):
-    - NJKWebViewProgress/Core
-    - NJKWebViewProgress/ProgressView
+    - NJKWebViewProgress/Core (= 0.2.3)
+    - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - OCMock (3.1.1)
   - OHHTTPStubs (3.1.6):
-    - OHHTTPStubs/Core
+    - OHHTTPStubs/Core (= 3.1.6)
   - OHHTTPStubs/Core (3.1.6)
   - ReactiveCocoa (2.3.1):
-    - ReactiveCocoa/UI
+    - ReactiveCocoa/UI (= 2.3.1)
   - ReactiveCocoa/Core (2.3.1):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
   - SDWebImage (3.7.1):
-    - SDWebImage/Core
+    - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
-  - Specta (0.3.0.beta1)
+  - Specta (1.0.0)
   - SSKeychain (1.2.2)
   - SSPullToRefresh (1.2.0)
   - TMCache (1.2.2)
@@ -67,31 +67,26 @@ DEPENDENCIES:
   - OHHTTPStubs (~> 3.1.6)
   - ReactiveCocoa (~> 2.3.1)
   - SDWebImage (~> 3.7.1)
-  - Specta (from `https://github.com/specta/specta.git`, tag `v0.3.0.beta1`)
+  - Specta (~> 1.0.0)
   - SSKeychain (~> 1.2.2)
   - SSPullToRefresh (~> 1.2.0)
   - TMCache (~> 1.2.2)
 
-EXTERNAL SOURCES:
-  Specta:
-    :git: https://github.com/specta/specta.git
-    :tag: v0.3.0.beta1
-
 SPEC CHECKSUMS:
-  AFNetworking: 0aabc6fae66d6e5d039eeb21c315843c7aae51ab
-  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
-  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
-  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  MTMigration: 9d8b33a8bd78474fce6ebe211b2c5c20b2d57b16
-  NJKWebViewProgress: 721b57080c840c76f70ff6c2dda4f836ee1b27c1
-  OCMock: f6cb8c162ab9d5620dddf411282c7b2c0ee78854
-  OHHTTPStubs: 6781373b69e0a67b27239799f11764d0fbefac55
-  ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  Specta: 63e8ac8e07db6675c7096d37f77a266a1be4c02d
-  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
-  SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
-  TMCache: e2c9225de7a107b529d1d04baa58eb5eab3051f3
+  AFNetworking: 41d45d2c14219af0fa5addf3cfd433a002c13c9f
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  Expecta: a354d4633409dd9fe8c4f5ff5130426adbe31628
+  Mantle: 3bf6db311c8b4a19b6be01f2483fa4590aa166f3
+  MBProgressHUD: d8e7ea388dc1549a42e0d219067cf5f2c898fb66
+  MTMigration: a06e60335edffbb0006a89f15959331d7bad8e14
+  NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
+  OCMock: a73f69963a8a542b0b343e2617650e4dca0cbbc2
+  OHHTTPStubs: b671969016b4c6f5ee3c26080c81114ba82e0710
+  ReactiveCocoa: 334468a83b2c5f669f7cfb9a084415ee23219b4f
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
+  SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
+  SSPullToRefresh: d32c6af9cfcfbc737265cd9ff8848c29c1aa5b5d
+  TMCache: 4c52a46d533af2047b011e92444df24e27116252
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.37.1
